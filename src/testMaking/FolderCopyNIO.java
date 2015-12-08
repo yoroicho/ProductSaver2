@@ -41,23 +41,19 @@ public class FolderCopyNIO {
 
     public static void main(String[] args) throws IOException {
 
-        Path dir = new File("D:\\My Documents\\Office のカスタム テンプレート").toPath();
+        Path dir = new File("D:\\My Documents").toPath();
         final List<Path> list = new ArrayList<>();
         Files.walkFileTree(dir, new FileVisitor<Path>() {
 
             @Override
             public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+               list.add(dir);
                 return FileVisitResult.CONTINUE;
             }
 
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                if (file.getFileName().toString().endsWith(".txt")) {
-                    list.add(file);
-                }
-                        if (file.getFileName().toString().endsWith("/")) {
-                    list.add(file);
-                }
+                        list.add(file);
                 return FileVisitResult.CONTINUE;
             }
 
@@ -74,7 +70,7 @@ public class FolderCopyNIO {
         for (Path path : list) {
             System.out.println(path);
         }
-
+System.out.println(list.size());
         /*
         //java nio folder copy
 		EnumSet options = EnumSet.of(FileVisitOption.FOLLOW_LINKS);
