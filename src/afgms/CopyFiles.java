@@ -89,11 +89,24 @@ public class CopyFiles {
 
         @Override
         public FileVisitResult visitFile(Path file, BasicFileAttributes atts)
-                throws IOException {
+                throws IOException {         
             Path targetFile = this.target.resolve(this.source.relativize(file));
-            Files.copy(file, targetFile,StandardCopyOption.REPLACE_EXISTING);
+                        // 各々の確認じぶん
+            System.out.println("Path file " + file.toString());
+            System.out.println("BFA "+ atts.toString());
+            System.out.println("targetFile "+ targetFile.toString());
+            System.out.println("this.source.relativize(file) "+ this.source.relativize(file));
+            if(file.toFile().lastModified()>targetFile.toFile().lastModified()){
+                System.out.println(targetFile +" 新しいファイルで上書きします　file.toFile().lastModified()>targetFile.toFile().lastModified()");
+                        Files.copy(file, targetFile,StandardCopyOption.REPLACE_EXISTING);
             System.out.println("[COPY FILE] " + targetFile);
             mainJFrame.setMessagejTextAreaRedirectErrorStream(null);
+            
+            }else{
+                 System.out.println(targetFile +" スキップします　file.toFile().lastModified()>targetFile.toFile().lastModified()");
+            System.out.println("[SKIP FILE] " + targetFile);
+            }
+
             return FileVisitResult.CONTINUE;
         }
     }
