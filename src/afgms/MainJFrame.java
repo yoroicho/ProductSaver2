@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 
 /**
@@ -18,30 +20,40 @@ import javax.swing.JFileChooser;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
+    private String crlf;
 
     /**
      * Creates new form NewJFrame
      */
     public MainJFrame() {
+        this.crlf = "\n";
         initComponents();
-    }
 
-    public void printInputStreamSystemInvoke (InputStream isSystemInvoke) throws IOException {
-        BufferedReader brSystemInvoke = new BufferedReader (new InputStreamReader (isSystemInvoke));
+        // 改行コードを取得
         try {
-            for (;;) {
-                String line = brSystemInvoke.readLine ();
-                if (line == null) break;
-                System.out.println (line);
-                jTextAreaRedirectErrorStream.append(line);
-            }
-        } finally {
-            brSystemInvoke.close ();
+            this.crlf = System.getProperty("line.separator");
+        } catch (SecurityException e) {
         }
     }
-    
-    public void setMessagejTextAreaRedirectErrorStream(String msg){
-        jTextAreaRedirectErrorStream.setText(msg);
+
+    public void printInputStreamSystemInvoke(InputStream isSystemInvoke) throws IOException {
+        BufferedReader brSystemInvoke = new BufferedReader(new InputStreamReader(isSystemInvoke));
+        try {
+            for (;;) {
+                String line = brSystemInvoke.readLine();
+                if (line == null) {
+                    break;
+                }
+                System.out.println(line);
+                jTextAreaRedirectErrorStream.append(line + crlf);
+            }
+        } finally {
+            brSystemInvoke.close();
+        }
+    }
+
+    public void setMessagejTextAreaRedirectErrorStream(String msg) {
+        jTextAreaRedirectErrorStream.setText(msg + crlf);
     }
 
     /**
@@ -59,8 +71,8 @@ public class MainJFrame extends javax.swing.JFrame {
         jTextFieldSystemDir = new javax.swing.JTextField();
         jTextFieldSourceDir = new javax.swing.JTextField();
         jButtonSourceDir = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        jTextFieldCopyTarget1 = new javax.swing.JTextField();
+        jButtonCatDir1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaRedirectErrorStream = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
@@ -71,14 +83,14 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
+        jTextFieldCopyTarget2 = new javax.swing.JTextField();
+        jButtonCatDir2 = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        jButtonWriteCat1 = new javax.swing.JButton();
+        jButtonWriteCat2 = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -111,9 +123,14 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextField3.setText("jTextField3");
+        jTextFieldCopyTarget1.setText("jTextField3");
 
-        jButton3.setText("参　照");
+        jButtonCatDir1.setText("参　照");
+        jButtonCatDir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCatDir1ActionPerformed(evt);
+            }
+        });
 
         jTextAreaRedirectErrorStream.setColumns(20);
         jTextAreaRedirectErrorStream.setRows(5);
@@ -141,9 +158,9 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel4.setText("退避　２");
 
-        jTextField4.setText("jTextField4");
+        jTextFieldCopyTarget2.setText("jTextField4");
 
-        jButton7.setText("参　照");
+        jButtonCatDir2.setText("参　照");
 
         jRadioButton1.setText("無世代");
 
@@ -163,12 +180,17 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jRadioButton4.setText("世代増");
 
-        jButton8.setText("書　込");
-
-        jButton9.setText("書　込");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        jButtonWriteCat1.setText("書　込");
+        jButtonWriteCat1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                jButtonWriteCat1ActionPerformed(evt);
+            }
+        });
+
+        jButtonWriteCat2.setText("書　込");
+        jButtonWriteCat2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonWriteCat2ActionPerformed(evt);
             }
         });
 
@@ -224,12 +246,12 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(jButtonSystemInvoke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldCopyTarget2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldCopyTarget1, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jButtonCatDir1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonCatDir2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jRadioButton1)
@@ -266,8 +288,8 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton8)
-                                    .addComponent(jButton9, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addComponent(jButtonWriteCat1)
+                                    .addComponent(jButtonWriteCat2, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jTextFieldSystemDir)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -307,19 +329,19 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCopyTarget1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton8))
+                    .addComponent(jButtonCatDir1)
+                    .addComponent(jButtonWriteCat1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7)
+                    .addComponent(jTextFieldCopyTarget2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCatDir2)
                     .addComponent(jRadioButton3)
                     .addComponent(jRadioButton4)
-                    .addComponent(jButton9)
+                    .addComponent(jButtonWriteCat2)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,9 +370,9 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void jButtonWriteCat2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteCat2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_jButtonWriteCat2ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
@@ -385,6 +407,26 @@ public class MainJFrame extends javax.swing.JFrame {
         systemInvokeThread.setSourceDir(this.jTextFieldSourceDir.getText());
         systemInvokeThread.start();
     }//GEN-LAST:event_jButtonSystemInvokeActionPerformed
+
+    private void jButtonCatDir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCatDir1ActionPerformed
+        JFileChooser filechooserCatDir1 = new JFileChooser();
+        filechooserCatDir1.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int selected = filechooserCatDir1.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+            File fileCatDir1 = filechooserCatDir1.getSelectedFile();
+            this.jTextFieldCopyTarget1.setText(fileCatDir1.getPath());
+        }
+    }//GEN-LAST:event_jButtonCatDir1ActionPerformed
+
+    private void jButtonWriteCat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteCat1ActionPerformed
+        try {
+            CopyFiles copyFiles = new CopyFiles();
+            copyFiles.setMainJFrame(this);
+            copyFiles.copySibling(this.jTextFieldSourceDir.getText(), this.jTextFieldCopyTarget1.getText());
+        } catch (IOException ex) {
+            Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonWriteCat1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -425,15 +467,15 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButtonCatDir1;
+    private javax.swing.JButton jButtonCatDir2;
     private javax.swing.JButton jButtonSourceDir;
     private javax.swing.JButton jButtonSystemDir;
     private javax.swing.JButton jButtonSystemInvoke;
+    private javax.swing.JButton jButtonWriteCat1;
+    private javax.swing.JButton jButtonWriteCat2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -456,15 +498,14 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaRedirectErrorStream;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextFieldCopyTarget1;
+    private javax.swing.JTextField jTextFieldCopyTarget2;
     private javax.swing.JTextField jTextFieldSourceDir;
     private javax.swing.JTextField jTextFieldSystemDir;
     // End of variables declaration//GEN-END:variables
 
-   
 }
