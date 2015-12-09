@@ -53,7 +53,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     public void setMessagejTextAreaRedirectErrorStream(String msg) {
-        jTextAreaRedirectErrorStream.setText(msg + crlf);
+        jTextAreaRedirectErrorStream.append(msg + crlf);
     }
 
     /**
@@ -85,10 +85,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextFieldCopyTarget2 = new javax.swing.JTextField();
         jButtonCatDir2 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        jRadioButtonSaveCat1Paste = new javax.swing.JRadioButton();
+        jRadioButtonSaveCat1Fork = new javax.swing.JRadioButton();
+        jRadioButtonSaveCat2Paste = new javax.swing.JRadioButton();
+        jRadioButtonSaveCat2Fork = new javax.swing.JRadioButton();
         jButtonWriteCat1 = new javax.swing.JButton();
         jButtonWriteCat2 = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox();
@@ -162,23 +162,23 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jButtonCatDir2.setText("参　照");
 
-        jRadioButton1.setText("無世代");
+        jRadioButtonSaveCat1Paste.setText("無世代");
 
-        jRadioButton2.setText("世代増");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        jRadioButtonSaveCat1Fork.setText("世代増");
+        jRadioButtonSaveCat1Fork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                jRadioButtonSaveCat1ForkActionPerformed(evt);
             }
         });
 
-        jRadioButton3.setText("無世代");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        jRadioButtonSaveCat2Paste.setText("無世代");
+        jRadioButtonSaveCat2Paste.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                jRadioButtonSaveCat2PasteActionPerformed(evt);
             }
         });
 
-        jRadioButton4.setText("世代増");
+        jRadioButtonSaveCat2Fork.setText("世代増");
 
         jButtonWriteCat1.setText("書　込");
         jButtonWriteCat1.addActionListener(new java.awt.event.ActionListener() {
@@ -254,12 +254,12 @@ public class MainJFrame extends javax.swing.JFrame {
                                     .addComponent(jButtonCatDir2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton1)
-                                    .addComponent(jRadioButton3))
+                                    .addComponent(jRadioButtonSaveCat1Paste)
+                                    .addComponent(jRadioButtonSaveCat2Paste))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton2)
-                                    .addComponent(jRadioButton4))
+                                    .addComponent(jRadioButtonSaveCat1Fork)
+                                    .addComponent(jRadioButtonSaveCat2Fork))
                                 .addGap(0, 91, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel5)
@@ -331,16 +331,16 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldCopyTarget1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
+                    .addComponent(jRadioButtonSaveCat1Paste)
+                    .addComponent(jRadioButtonSaveCat1Fork)
                     .addComponent(jButtonCatDir1)
                     .addComponent(jButtonWriteCat1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldCopyTarget2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCatDir2)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4)
+                    .addComponent(jRadioButtonSaveCat2Paste)
+                    .addComponent(jRadioButtonSaveCat2Fork)
                     .addComponent(jButtonWriteCat2)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -374,13 +374,13 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonWriteCat2ActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void jRadioButtonSaveCat1ForkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSaveCat1ForkActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_jRadioButtonSaveCat1ForkActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void jRadioButtonSaveCat2PasteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSaveCat2PasteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_jRadioButtonSaveCat2PasteActionPerformed
 
     private void jButtonSystemDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSystemDirActionPerformed
         JFileChooser filechooserSystemDir = new JFileChooser();
@@ -491,10 +491,10 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButtonSaveCat1Fork;
+    private javax.swing.JRadioButton jRadioButtonSaveCat1Paste;
+    private javax.swing.JRadioButton jRadioButtonSaveCat2Fork;
+    private javax.swing.JRadioButton jRadioButtonSaveCat2Paste;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaRedirectErrorStream;
     private javax.swing.JTextField jTextField1;

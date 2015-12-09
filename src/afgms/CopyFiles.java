@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * http://waman.hatenablog.com/entry/20120816/1345150695 を参考に改編
+ * ファイルの操作が衝突しないようにSynchronizid処理が必要と思われる。
  */
 package afgms;
 
@@ -21,11 +20,10 @@ import java.nio.file.attribute.BasicFileAttributes;
  * @author 00499
  */
 public class CopyFiles {
-    
-        // クラスごとSynchronized にする必要がある。
-    
+
+    // クラスごとSynchronized にする必要がある。
     private static MainJFrame mainJFrame; //コールバック用
-    
+
     public void copySibling(String srcDir, String targetDir) throws IOException {
         Path src = Paths.get(srcDir).getParent();
         Path target = Paths.get(targetDir);
@@ -56,8 +54,6 @@ public class CopyFiles {
         this.mainJFrame = mainJFrame;
     }
 
-
-
     /**
      * ビジターの実装
      */
@@ -78,6 +74,7 @@ public class CopyFiles {
             try {
                 Files.copy(dir, targetDir);
                 System.out.println("[COPY DIR] " + targetDir);
+                mainJFrame.setMessagejTextAreaRedirectErrorStream("[COPY DIR] " + targetDir);
             } catch (FileAlreadyExistsException ex) {
                 if (!Files.isDirectory(targetDir)) {
                     throw ex;
@@ -89,22 +86,25 @@ public class CopyFiles {
 
         @Override
         public FileVisitResult visitFile(Path file, BasicFileAttributes atts)
-                throws IOException {         
+                throws IOException {
             Path targetFile = this.target.resolve(this.source.relativize(file));
-                        // 各々の確認じぶん
-            System.out.println("Path file " + file.toString());
-            System.out.println("BFA "+ atts.toString());
-            System.out.println("targetFile "+ targetFile.toString());
-            System.out.println("this.source.relativize(file) "+ this.source.relativize(file));
-            if(file.toFile().lastModified()>targetFile.toFile().lastModified()){
-                System.out.println(targetFile +" 新しいファイルで上書きします　file.toFile().lastModified()>targetFile.toFile().lastModified()");
-                        Files.copy(file, targetFile,StandardCopyOption.REPLACE_EXISTING);
-            System.out.println("[COPY FILE] " + targetFile);
-            mainJFrame.setMessagejTextAreaRedirectErrorStream(null);
-            
-            }else{
-                 System.out.println(targetFile +" スキップします　file.toFile().lastModified()>targetFile.toFile().lastModified()");
-            System.out.println("[SKIP FILE] " + targetFile);
+            // 各々の確認じぶん
+            /*
+             System.out.println("Path file " + file.toString());
+             System.out.println("BFA " + atts.toString());
+             System.out.println("targetFile " + targetFile.toString());
+             System.out.println("this.source.relativize(file) " + this.source.relativize(file));
+             */
+            if (file.toFile().lastModified() > targetFile.toFile().lastModified()) {
+                //System.out.println(targetFile + " 上書きします");
+                Files.copy(file, targetFile, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("[COPY FILE] " + targetFile);
+                mainJFrame.setMessagejTextAreaRedirectErrorStream("[COPY FILE] " + targetFile);
+
+            } else {
+                //System.out.println(targetFile + " スキップします");
+                System.out.println("[SKIP FILE] " + targetFile);
+                mainJFrame.setMessagejTextAreaRedirectErrorStream("[SKIP FILE] " + targetFile);
             }
 
             return FileVisitResult.CONTINUE;

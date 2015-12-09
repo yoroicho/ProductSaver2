@@ -59,13 +59,13 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonSaveCat1Paste" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonSaveCat2Paste" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonSaveCat1Fork" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonSaveCat2Fork" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="91" max="32767" attributes="0"/>
                           </Group>
@@ -151,8 +151,8 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jTextFieldCopyTarget1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRadioButtonSaveCat1Paste" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRadioButtonSaveCat1Fork" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonCatDir1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonWriteCat1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -160,8 +160,8 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jTextFieldCopyTarget2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonCatDir2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jRadioButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jRadioButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRadioButtonSaveCat2Paste" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRadioButtonSaveCat2Fork" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonWriteCat2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -304,28 +304,28 @@
         <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+    <Component class="javax.swing.JRadioButton" name="jRadioButtonSaveCat1Paste">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x7121;&#x4e16;&#x4ee3;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+    <Component class="javax.swing.JRadioButton" name="jRadioButtonSaveCat1Fork">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x4e16;&#x4ee3;&#x5897;"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonSaveCat1ForkActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton3">
+    <Component class="javax.swing.JRadioButton" name="jRadioButtonSaveCat2Paste">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x7121;&#x4e16;&#x4ee3;"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonSaveCat2PasteActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton4">
+    <Component class="javax.swing.JRadioButton" name="jRadioButtonSaveCat2Fork">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x4e16;&#x4ee3;&#x5897;"/>
       </Properties>
