@@ -2,9 +2,9 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupCat1">
     </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup2">
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupCat2">
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -216,9 +216,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCopyTarget1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField3"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldCopyTarget1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonCatDir1">
       <Properties>
@@ -295,9 +295,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCopyTarget2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField4"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonCatDir2">
       <Properties>
@@ -332,7 +329,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonWriteCat1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x66f8;&#x3000;&#x8fbc;"/>
+        <Property name="text" type="java.lang.String" value="&#x624b;&#x52d5;&#x66f8;&#x8fbc;"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonWriteCat1ActionPerformed"/>
@@ -340,7 +337,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonWriteCat2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x66f8;&#x3000;&#x8fbc;"/>
+        <Property name="text" type="java.lang.String" value="&#x624b;&#x52d5;&#x66f8;&#x8fbc;"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonWriteCat2ActionPerformed"/>

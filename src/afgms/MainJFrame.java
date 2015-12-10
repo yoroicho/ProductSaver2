@@ -26,10 +26,19 @@ public class MainJFrame extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public MainJFrame() {
-        this.crlf = "\n";
+
         initComponents();
 
+        // 表示を初期化
+        this.buttonGroupCat1.add(this.jRadioButtonSaveCat1Paste);
+        this.buttonGroupCat1.add(this.jRadioButtonSaveCat1Fork);
+        this.buttonGroupCat2.add(this.jRadioButtonSaveCat2Paste);
+        this.buttonGroupCat2.add(this.jRadioButtonSaveCat2Fork);
+        this.jRadioButtonSaveCat1Fork.setSelected(true); // Cat1は基本世代管理
+        this.jRadioButtonSaveCat2Paste.setSelected(true); // Cat2は基本上書き
+        
         // 改行コードを取得
+                this.crlf = "\n";
         try {
             this.crlf = System.getProperty("line.separator");
         } catch (SecurityException e) {
@@ -65,8 +74,8 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroupCat1 = new javax.swing.ButtonGroup();
+        buttonGroupCat2 = new javax.swing.ButtonGroup();
         jButtonSystemDir = new javax.swing.JButton();
         jTextFieldSystemDir = new javax.swing.JTextField();
         jTextFieldSourceDir = new javax.swing.JTextField();
@@ -123,7 +132,11 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldCopyTarget1.setText("jTextField3");
+        jTextFieldCopyTarget1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCopyTarget1ActionPerformed(evt);
+            }
+        });
 
         jButtonCatDir1.setText("参　照");
         jButtonCatDir1.addActionListener(new java.awt.event.ActionListener() {
@@ -158,8 +171,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel4.setText("退避　２");
 
-        jTextFieldCopyTarget2.setText("jTextField4");
-
         jButtonCatDir2.setText("参　照");
 
         jRadioButtonSaveCat1Paste.setText("無世代");
@@ -180,14 +191,14 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jRadioButtonSaveCat2Fork.setText("世代増");
 
-        jButtonWriteCat1.setText("書　込");
+        jButtonWriteCat1.setText("手動書込");
         jButtonWriteCat1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonWriteCat1ActionPerformed(evt);
             }
         });
 
-        jButtonWriteCat2.setText("書　込");
+        jButtonWriteCat2.setText("手動書込");
         jButtonWriteCat2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonWriteCat2ActionPerformed(evt);
@@ -428,6 +439,10 @@ public class MainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonWriteCat1ActionPerformed
 
+    private void jTextFieldCopyTarget1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCopyTarget1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCopyTarget1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -465,8 +480,8 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroupCat1;
+    private javax.swing.ButtonGroup buttonGroupCat2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonCatDir1;
