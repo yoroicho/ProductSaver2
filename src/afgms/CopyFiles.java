@@ -24,8 +24,8 @@ import java.util.Calendar;
 public class CopyFiles {
 
     // クラスごとSynchronized にする必要がある。
-    public final int COPY_PASTE = 0; // 上書きコピーの定数
-    public final int COPY_FORK = 1; // 世代分離コピーの定数
+    public static final int COPY_PASTE = 0; // 上書きコピーの定数
+    public static final int COPY_FORK = 1; // 世代分離コピーの定数
 
     private static MainJFrame mainJFrame; //コールバック用
 
@@ -34,12 +34,23 @@ public class CopyFiles {
         SimpleDateFormat sdf = new SimpleDateFormat("_yyyyMMddHHmmssSSS");
         String strDate = srcFileName + sdf.format(cal.getTime());
         System.out.println(strDate);
-        return "";
+        return strDate;
     }
 
     public void copySibling(String srcDir, String targetDir, int copyMode)
-            throws IOException { // 新型・（コピーﾓｰﾄﾞの選択を実装予定）
+            throws IOException { // 新型・（コピーﾓｰﾄﾞの選択を実装）
         Path src = Paths.get(srcDir).getParent();
+        if(copyMode == CopyFiles.COPY_PASTE){
+            
+        }else if (copyMode == CopyFiles.COPY_FORK){
+                           Path target = Paths.get(targetDir,calcForkDirName(src.getFileName().toString()));
+                           if(target.toFile().mkdir()){
+                               mainJFrame.setMessagejTextAreaRedirectErrorStream("新しいフォルダ "+target.toString());
+                           }else{
+                               mainJFrame.setMessagejTextAreaRedirectErrorStream("フォルダを作成出来ませんでした");
+                               return;
+                           }
+        }
         Path target = Paths.get(targetDir);
         copy(src, target);
     }
@@ -47,7 +58,10 @@ public class CopyFiles {
     public void copySibling(String srcDir, String targetDir) throws IOException { // 旧 PasteかForkかの選択なし
         Path src = Paths.get(srcDir).getParent();
         calcForkDirName(src.getFileName().toString()); // テスト用このメソッドでは使わない
-        Path target = Paths.get(targetDir);
+        
+        Path target = Paths.get(targetDir,calcForkDirName(src.getFileName().toString()));
+        System.out.println("新ターゲット"+target.toString());
+        target.toFile().mkdir();
         copy(src, target);
     }
 
