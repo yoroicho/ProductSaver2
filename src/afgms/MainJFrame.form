@@ -123,10 +123,9 @@
                                               <Component id="jRadioButtonSaveCat3Paste" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jRadioButtonSaveCat3Fork" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="91" pref="91" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -194,14 +193,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCopyTarget3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonCatDir3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="jRadioButtonSaveCat3Paste" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jRadioButtonSaveCat3Fork" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonWriteCat3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldCopyTarget3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonCatDir3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>

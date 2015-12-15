@@ -40,27 +40,27 @@ public class CopyFiles {
     public void copySibling(String srcDir, String targetDir, int copyMode)
             throws IOException { // 新型・（コピーﾓｰﾄﾞの選択を実装）
         Path src = Paths.get(srcDir).getParent();
-        if(copyMode == CopyFiles.COPY_PASTE){
-            
-        }else if (copyMode == CopyFiles.COPY_FORK){
-                           Path target = Paths.get(targetDir,calcForkDirName(src.getFileName().toString()));
-                           if(target.toFile().mkdir()){
-                               mainJFrame.setMessagejTextAreaRedirectErrorStream("新しいフォルダ "+target.toString());
-                           }else{
-                               mainJFrame.setMessagejTextAreaRedirectErrorStream("フォルダを作成出来ませんでした");
-                               return;
-                           }
+        if (copyMode == CopyFiles.COPY_PASTE) {
+
+        } else if (copyMode == CopyFiles.COPY_FORK) {
+            Path target = Paths.get(targetDir, calcForkDirName(src.getFileName().toString()));
+            if (target.toFile().mkdir()) {
+                mainJFrame.setMessagejTextAreaRedirectErrorStream("新しいフォルダ " + target.toString());
+            } else {
+                mainJFrame.setMessagejTextAreaRedirectErrorStream("フォルダを作成出来ませんでした");
+                return;
+            }
         }
-        Path target = Paths.get(targetDir);
+         Path target = Paths.get(targetDir); // たぶんここがバグの原因
         copy(src, target);
     }
 
     public void copySibling(String srcDir, String targetDir) throws IOException { // 旧 PasteかForkかの選択なし
         Path src = Paths.get(srcDir).getParent();
         calcForkDirName(src.getFileName().toString()); // テスト用このメソッドでは使わない
-        
-        Path target = Paths.get(targetDir,calcForkDirName(src.getFileName().toString()));
-        System.out.println("新ターゲット"+target.toString());
+
+        Path target = Paths.get(targetDir, calcForkDirName(src.getFileName().toString()));
+        System.out.println("新ターゲット" + target.toString());
         target.toFile().mkdir();
         copy(src, target);
     }
@@ -124,13 +124,19 @@ public class CopyFiles {
                 throws IOException {
             Path targetFile = this.target.resolve(this.source.relativize(file));
             // 各々の確認じぶん
-            /*
+         
              System.out.println("Path file " + file.toString());
              System.out.println("BFA " + atts.toString());
              System.out.println("targetFile " + targetFile.toString());
              System.out.println("this.source.relativize(file) " + this.source.relativize(file));
-             */
-            if (file.toFile().lastModified() > targetFile.toFile().lastModified()) {
+          
+
+            if ( !(targetFile.toFile().exists())){
+                
+                System.out.println("相手方にファイルが存在しない");
+            }
+            
+            if (file.toFile().lastModified() > targetFile.toFile().lastModified() || !(targetFile.toFile().exists())) {
                 //System.out.println(targetFile + " 上書きします");
                 Files.copy(file, targetFile, StandardCopyOption.REPLACE_EXISTING);
                 System.out.println("[COPY FILE] " + targetFile);
