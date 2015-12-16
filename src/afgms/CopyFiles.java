@@ -40,10 +40,11 @@ public class CopyFiles {
     public void copySibling(String srcDir, String targetDir, int copyMode)
             throws IOException { // 新型・（コピーﾓｰﾄﾞの選択を実装）
         Path src = Paths.get(srcDir).getParent();
+                 Path target = Paths.get(targetDir); // バグ修正テスト（直ったと思われる）
         if (copyMode == CopyFiles.COPY_PASTE) {
 
         } else if (copyMode == CopyFiles.COPY_FORK) {
-            Path target = Paths.get(targetDir, calcForkDirName(src.getFileName().toString()));
+            target = Paths.get(targetDir, calcForkDirName(src.getFileName().toString()));
             if (target.toFile().mkdir()) {
                 mainJFrame.setMessagejTextAreaRedirectErrorStream("新しいフォルダ " + target.toString());
             } else {
@@ -51,7 +52,7 @@ public class CopyFiles {
                 return;
             }
         }
-         Path target = Paths.get(targetDir); // たぶんここがバグの原因
+         //Path target = Paths.get(targetDir); // たぶんここがバグの原因（究明できたと思われる）
         copy(src, target);
     }
 
