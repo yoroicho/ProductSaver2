@@ -40,19 +40,29 @@ public class CopyFiles {
     public void copySibling(String srcDir, String targetDir, int copyMode)
             throws IOException { // 新型・（コピーﾓｰﾄﾞの選択を実装）
         Path src = Paths.get(srcDir).getParent();
-                 Path target = Paths.get(targetDir); // バグ修正テスト（直ったと思われる）
-        if (copyMode == CopyFiles.COPY_PASTE) {
+        Path target = Paths.get(targetDir); // バグ修正テスト（直ったと思われる）
+        if (copyMode == CopyFiles.COPY_PASTE) { // 上書きの場合、フォルダ名を固定とする。
+            target = Paths.get(targetDir, src.getFileName().toString() + "_AFGMS_BAK");
+            if (target.toFile().mkdir()) {
+                mainJFrame.setMessagejTextAreaRedirectErrorStream("初回バックアップ保存 " + target.toString());
+            } else {
+                if (!target.toFile().exists()) { // フォルダが作成されず、存在もしない
+                    mainJFrame.setMessagejTextAreaRedirectErrorStream("フォルダを作成出来ませんでした(上書)");
+                } else {
+                    mainJFrame.setMessagejTextAreaRedirectErrorStream("上書きバックアップ保存");
+                }
 
+            }
         } else if (copyMode == CopyFiles.COPY_FORK) {
             target = Paths.get(targetDir, calcForkDirName(src.getFileName().toString()));
             if (target.toFile().mkdir()) {
                 mainJFrame.setMessagejTextAreaRedirectErrorStream("新しいフォルダ " + target.toString());
             } else {
-                mainJFrame.setMessagejTextAreaRedirectErrorStream("フォルダを作成出来ませんでした");
+                mainJFrame.setMessagejTextAreaRedirectErrorStream("フォルダを作成出来ませんでした(分岐)");
                 return;
             }
         }
-         //Path target = Paths.get(targetDir); // たぶんここがバグの原因（究明できたと思われる）
+
         copy(src, target);
     }
 
@@ -125,21 +135,24 @@ public class CopyFiles {
                 throws IOException {
             Path targetFile = this.target.resolve(this.source.relativize(file));
             // 各々の確認じぶん
-         
-             System.out.println("Path file " + file.toString());
-             System.out.println("BFA " + atts.toString());
-             System.out.println("targetFile " + targetFile.toString());
-             System.out.println("this.source.relativize(file) " + this.source.relativize(file));
-          
 
-            if ( !(targetFile.toFile().exists())){
-                
+            System.out.println("Path file " + file.toString());
+            System.out.println("BFA " + atts.toString());
+            System.out.println("targetFile " + targetFile.toString());
+            System.out.println("this.source.relativize(file) " + this.source.relativize(file));
+
+            if (!(targetFile.toFile().exists())) {
+
                 System.out.println("相手方にファイルが存在しない");
             }
-            
+
             if (file.toFile().lastModified() > targetFile.toFile().lastModified() || !(targetFile.toFile().exists())) {
-                //System.out.println(targetFile + " 上書きします");
+                if (targetFile.toFile().exists()) { // もともとファイルが存在する（上書き）の場合
+                    targetFile.toFile().setWritable(true); // 元の状態がどうあれ読取専用を解除し、上書きできるようにする。
+                }
                 Files.copy(file, targetFile, StandardCopyOption.REPLACE_EXISTING);
+                // コピー後のファイルを読み取り専用にする。実装するか否か未定
+                targetFile.toFile().setReadOnly(); // 読取専用へ再び戻す。
                 System.out.println("[COPY FILE] " + targetFile);
                 mainJFrame.setMessagejTextAreaRedirectErrorStream("[COPY FILE] " + targetFile);
 
