@@ -42,7 +42,7 @@ public class CopyFiles {
         Path src = Paths.get(srcDir).getParent();
         Path target = Paths.get(targetDir); // バグ修正テスト（直ったと思われる）
         if (copyMode == CopyFiles.COPY_PASTE) { // 上書きの場合、フォルダ名を固定とする。
-            target = Paths.get(targetDir, src.getFileName().toString() + "_AFGMS_BAK");
+            target = Paths.get(targetDir, src.getFileName().toString() + "_AFGMS_BAK"); // こちらは世代管理をしていないコピーの文言を追加
             if (target.toFile().mkdir()) {
                 mainJFrame.setMessagejTextAreaRedirectErrorStream("初回バックアップ保存 " + target.toString());
             } else {
@@ -54,7 +54,7 @@ public class CopyFiles {
 
             }
         } else if (copyMode == CopyFiles.COPY_FORK) {
-            target = Paths.get(targetDir, calcForkDirName(src.getFileName().toString()));
+            target = Paths.get(targetDir, calcForkDirName(src.getFileName().toString())); // こちらにもＢＡＫなどの文言を入れたほうがよい
             if (target.toFile().mkdir()) {
                 mainJFrame.setMessagejTextAreaRedirectErrorStream("新しいフォルダ " + target.toString());
             } else {
