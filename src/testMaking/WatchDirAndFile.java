@@ -24,10 +24,10 @@ import java.nio.file.WatchService;
 public class WatchDirAndFile {
      private static volatile boolean stop = false;
 
-    public void watchStart(WD wd) {
+    public void watchStart(WD wd,String dirPath) {
         FileSystem fileSystem = FileSystems.getDefault();
         // 監視対象ディレクトリのPathを
-        Path path = fileSystem.getPath("\\\\192.168.0.13\\fax本店12F\\5742-7785");
+        Path path = fileSystem.getPath(dirPath);
         try {
             // WatchServiceの取得
             WatchService watchService = fileSystem.newWatchService();
