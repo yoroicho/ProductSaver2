@@ -23,8 +23,9 @@ import java.nio.file.WatchService;
  */
 public class WatchDirAndFile {
      private static volatile boolean stop = false;
-
+private static WD wd;
     public void watchStart(WD wd,String dirPath) {
+        this.wd = wd;
         FileSystem fileSystem = FileSystems.getDefault();
         // 監視対象ディレクトリのPathを
         Path path = fileSystem.getPath(dirPath);
@@ -46,7 +47,7 @@ public class WatchDirAndFile {
             });
             while (!Thread.currentThread().isInterrupted() && !stop) {
                 System.out.println("Watching...");
-                wd.setJTextAreaAnser("Watching...");
+                wd.setJTextAreaAnser("監視中");
                 try {
                     // イベントが発生するまで待機
                     WatchKey watchKey = watchService.take();
@@ -62,8 +63,9 @@ public class WatchDirAndFile {
                             wd.setJTextAreaAnser("対象コンテンツ : " + event.context());
                             wd.setJTextAreaAnser("イベント回数 : " + event.count());
                             Path targetPath = FileSystems.getDefault().getPath(watchableName + "\\" + event.context());
+                            stop = true;
                             processContent(targetPath, event);
-                            System.out.println();
+                            //stop = true;
                         }
                         if (!watchKey.reset()) {
                             // Is this right ?
@@ -77,7 +79,8 @@ public class WatchDirAndFile {
                 }
             }
             System.out.println("See you.");
-            wd.setJTextAreaAnser("See you.");
+            wd.setJTextAreaAnser("監視終了");
+            stop = false;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -93,7 +96,7 @@ public class WatchDirAndFile {
                             String line = null;
                             while ((line = reader.readLine()) != null) {
                                 System.out.println(line);
-                                //wd.setJTextAreaAnser(line);
+                                wd.setJTextAreaAnser(line);
                             }
                         }
                     }

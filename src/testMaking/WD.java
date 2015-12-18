@@ -5,6 +5,8 @@
  */
 package testMaking;
 
+import java.awt.Color;
+
 /**
  *
  * @author 00499
@@ -81,15 +83,18 @@ public class WD extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartActionPerformed
+        this.jButtonStart.setBackground(Color.blue);
+
         WatchDirAndFile watchDirAndFile = new WatchDirAndFile();
-        watchDirAndFile.watchStart(this,this.jTextFieldDir.getText());
+        watchDirAndFile.watchStart(this, this.jTextFieldDir.getText());
+                System.out.println("blue");
+        this.jButtonStart.setBackground(Color.red);
     }//GEN-LAST:event_jButtonStartActionPerformed
 
-    public void setJTextAreaAnser (String mas){
-        this.jTextAreaAnser.append(mas+"\r\n");
+    public void setJTextAreaAnser(String mas) {
+        this.jTextAreaAnser.append(mas + "\r\n");
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
