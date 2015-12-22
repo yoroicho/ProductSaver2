@@ -23,6 +23,7 @@ public class FolderCopyNIO {
 	public static Path target = Paths.get("D:/target");
 
 	public static void main(String[] args) throws IOException {
+            /*
 		//java nio folder copy
 		EnumSet options = EnumSet.of(FileVisitOption.FOLLOW_LINKS);
 		//check first if source is a directory
@@ -78,6 +79,6 @@ public class FolderCopyNIO {
 	public static void kopya(Path source,Path target) throws IOException{
 		CopyOption[] options = new CopyOption[]{REPLACE_EXISTING,COPY_ATTRIBUTES};
 		System.out.println("Copied file "+Files.copy(source, target,options));
-
+*/
 	}
 }
