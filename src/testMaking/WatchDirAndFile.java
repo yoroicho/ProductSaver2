@@ -24,6 +24,20 @@ import java.nio.file.WatchService;
 public class WatchDirAndFile {
      private static volatile boolean stop = false;
 private static WD wd;
+
+    /**
+     * @return the stop
+     */
+    public static boolean isStop() {
+        return stop;
+    }
+
+    /**
+     * @param aStop the stop to set
+     */
+    public static void setStop(boolean aStop) {
+        stop = aStop;
+    }
     public void watchStart(WD wd,String dirPath) {
         this.wd = wd;
         FileSystem fileSystem = FileSystems.getDefault();
@@ -42,10 +56,10 @@ private static WD wd;
             Runtime.getRuntime().addShutdownHook(new Thread() {
                 @Override
                 public void run() {
-                    stop = false;
+                    setStop(false);
                 }
             });
-            while (!Thread.currentThread().isInterrupted() && !stop) {
+            while (!Thread.currentThread().isInterrupted() && !isStop()) {
                 System.out.println("Watching...");
                 wd.setJTextAreaAnser("監視中");
                 try {
@@ -63,9 +77,9 @@ private static WD wd;
                             wd.setJTextAreaAnser("対象コンテンツ : " + event.context());
                             wd.setJTextAreaAnser("イベント回数 : " + event.count());
                             Path targetPath = FileSystems.getDefault().getPath(watchableName + "\\" + event.context());
-                            stop = true;
+                            setStop(true);
                             processContent(targetPath, event);
-                            //stop = true;
+                            wd.setBlue();
                         }
                         if (!watchKey.reset()) {
                             // Is this right ?
@@ -80,7 +94,7 @@ private static WD wd;
             }
             System.out.println("See you.");
             wd.setJTextAreaAnser("監視終了");
-            stop = false;
+            setStop(false);
         } catch (IOException e) {
             e.printStackTrace();
         }

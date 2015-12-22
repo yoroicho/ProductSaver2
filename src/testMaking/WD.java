@@ -82,12 +82,17 @@ public class WD extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartActionPerformed
+    public void setBlue(){
         this.jButtonStart.setBackground(Color.blue);
+    }
+    
+    private void jButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartActionPerformed
+        
 
         WatchDirAndFile watchDirAndFile = new WatchDirAndFile();
         watchDirAndFile.watchStart(this, this.jTextFieldDir.getText());
                 System.out.println("blue");
+                WatchDirAndFile.setStop(false);
         this.jButtonStart.setBackground(Color.red);
     }//GEN-LAST:event_jButtonStartActionPerformed
 
