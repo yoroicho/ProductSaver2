@@ -238,16 +238,18 @@
                   <Component id="jCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextFieldCopyTarget2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonCatDir2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jRadioButtonSaveCat2Paste" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jRadioButtonSaveCat2Fork" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonWriteCat2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="jCheckBox3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jCheckBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jTextFieldCopyTarget2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonCatDir2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jRadioButtonSaveCat2Paste" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jRadioButtonSaveCat2Fork" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonWriteCat2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -261,12 +263,12 @@
                       <Component id="jTextFieldCopyTarget3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonCatDir3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                      <Component id="jButtonWriteCat3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="jCheckBox5" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jCheckBox6" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jButtonWriteCat3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -323,6 +325,9 @@
     <Component class="javax.swing.JTextField" name="jTextFieldSystemDir">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldSourceDir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x88ab;&#x8d77;&#x52d5;&#x30d5;&#x30a1;&#x30a4;&#x30eb;&#xff08;&#x30bd;&#x30fc;&#x30b9;&#xff09;&#x306f;&#x672c;&#x30b7;&#x30b9;&#x30c6;&#x30e0;&#x3067;&#x4f5c;&#x3089;&#x308c;&#x306a;&#x3044;&#x306e;&#x3067;&#x3001;&#x89aa;&#x30d5;&#x30a9;&#x30eb;&#x30c0;&#x3092;&#x5225;&#x30b7;&#x30b9;&#x30c6;&#x30e0;&#x3067;&#x4f5c;&#x308b;&#x5fc5;&#x8981;&#x304c;&#x3042;&#x308b;&#x3002;"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonSourceDir">
       <Properties>
