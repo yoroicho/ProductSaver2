@@ -172,7 +172,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldSourceDir.setText("被起動ファイル（ソース）は本システムで作られないので、親フォルダを別システムで作る必要がある。");
+        jTextFieldSourceDir.setText("フォルダーは存在しない場合はダイアログを出して作成するかどうかユーザに選択させる。");
 
         jButtonSourceDir.setText("参　照");
         jButtonSourceDir.addActionListener(new java.awt.event.ActionListener() {
@@ -351,7 +351,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel18.setText("作成フォルダ名");
 
-        jButton8.setText("フォルダを作成し移動");
+        jButton8.setText("Dir作成移動（不要？）");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
