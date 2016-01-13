@@ -255,7 +255,6 @@
                                       <Component id="jTextField2" min="-2" pref="335" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jComboBoxMakeCode" min="-2" pref="733" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jCheckBox7" min="-2" max="-2" attributes="0"/>
@@ -444,7 +443,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x9001;&#x51fa;&#x5206;&#x5c90;"/>
+                <Property name="text" type="java.lang.String" value="&#xff08;&#x7d42;&#x4e86;&#x5f8c;&#x306b;&#xff1f;&#xff09;&#x9001;&#x51fa;&#x5206;&#x5c90;"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel17">

@@ -206,7 +206,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel16.setText("フォルダ名付加文");
 
-        jButton1.setText("送出分岐");
+        jButton1.setText("（終了後に？）送出分岐");
 
         jLabel17.setText("資源格納");
 
@@ -517,7 +517,6 @@ public class MainJFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jComboBoxMakeCode, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jCheckBox7)
