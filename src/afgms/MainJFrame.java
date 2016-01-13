@@ -166,6 +166,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jTextFieldCopyTarget3 = new javax.swing.JTextField();
         jButtonCatDir3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -180,7 +181,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGap(0, 507, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        jTabbedPane1.addTab("基幹情報", jPanel1);
 
         jRadioButtonSaveCat3Paste.setText("無世代");
         jRadioButtonSaveCat3Paste.addActionListener(new java.awt.event.ActionListener() {
@@ -648,6 +649,19 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab3", jPanel3);
 
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1261, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 504, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("環境設定", jPanel4);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -832,6 +846,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JRadioButton jRadioButtonSaveCat1Fork;
     private javax.swing.JRadioButton jRadioButtonSaveCat1Paste;
     private javax.swing.JRadioButton jRadioButtonSaveCat2Fork;
