@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>ソーシャルブックマーク</comment>
+<entry key="url3">http://www.delicious.com/</entry>
+<entry key="sitename3">delicious</entry>
+<entry key="url2">http://clip.livedoor.com/</entry>
+<entry key="sitename2">livedoor クリップ</entry>
+<entry key="url1">http://b.hatena.ne.jp/</entry>
+<entry key="sitename1">はてなブックマーク</entry>
+</properties>
