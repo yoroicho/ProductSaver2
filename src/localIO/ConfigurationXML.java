@@ -33,7 +33,7 @@ public class ConfigurationXML {
         if(conf.containsKey(key))
             conf.setProperty(key, value);
         else {
-            System.err.println("Key not exists: " + key);
+            System.err.println("Key not found: " + key);
         }
     }
 
