@@ -14,13 +14,13 @@ import localIO.*;
 public class testConfigurationXML {
     
     public static void main(String[] args) {
-        localIO.ConfigurationXML conf = new localIO.ConfigurationXML("D:\\My Documents\\myCocConfTest3.XML");
+        localIO.ConfigurationXML conf = new localIO.ConfigurationXML("test20160120test.XML");
         conf.addProperty("testKeyA", "A");
-        conf.storeToXML("D:\\My Documents\\myCocConfTest3.XML", "普通のセーブ");
-        conf.setProperty("testKeyA", "");
+        conf.storeToXML("test20160120test.XML", "普通のセーブ");
+        conf.setProperty("testKeyAm", "");
         System.out.println("読み出しました" + conf.getProperty("testKeyA"));
         conf.remove("testKeyA");
-        conf.storeToXML("D:\\My Documents\\myCocConfTest3.XML", "変更後のセーブ");
+        conf.storeToXML("test20160120testm.XML", "変更後のセーブ");
     }
     
 }

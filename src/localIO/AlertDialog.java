@@ -17,7 +17,7 @@ import javax.swing.KeyStroke;
  *
  * @author 00499
  */
-public class ErrorOkCancelDialog extends javax.swing.JDialog {
+public class AlertDialog extends javax.swing.JDialog {
 
     /**
      * A return status code - returned if Cancel button has been pressed
@@ -28,10 +28,19 @@ public class ErrorOkCancelDialog extends javax.swing.JDialog {
      */
     public static final int RET_OK = 1;
 
+    public void setJTextAreaMessage(String msg){
+        jTextAreaMessage.setText(msg);
+    }
+    
+    public String getJTextAreaMessage(){
+        return this.jTextAreaMessage.getText();
+    }
+    
+    
     /**
      * Creates new form ErrorOkCancelDialog
      */
-    public ErrorOkCancelDialog(java.awt.Frame parent, boolean modal) {
+    public AlertDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
@@ -65,6 +74,8 @@ public class ErrorOkCancelDialog extends javax.swing.JDialog {
 
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaMessage = new javax.swing.JTextArea();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -86,6 +97,10 @@ public class ErrorOkCancelDialog extends javax.swing.JDialog {
             }
         });
 
+        jTextAreaMessage.setColumns(20);
+        jTextAreaMessage.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaMessage);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,6 +111,7 @@ public class ErrorOkCancelDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cancelButton)
                 .addContainerGap())
+            .addComponent(jScrollPane1)
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cancelButton, okButton});
@@ -103,7 +119,8 @@ public class ErrorOkCancelDialog extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(266, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
                     .addComponent(okButton))
@@ -131,7 +148,7 @@ public class ErrorOkCancelDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_closeDialog
     
     private void doClose(int retStatus) {
-        returnStatus = retStatus;
+        setReturnStatus(retStatus);
         setVisible(false);
         dispose();
     }
@@ -153,20 +170,21 @@ public class ErrorOkCancelDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ErrorOkCancelDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlertDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ErrorOkCancelDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlertDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ErrorOkCancelDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlertDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ErrorOkCancelDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlertDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ErrorOkCancelDialog dialog = new ErrorOkCancelDialog(new javax.swing.JFrame(), true);
+                AlertDialog dialog = new AlertDialog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -180,8 +198,17 @@ public class ErrorOkCancelDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextAreaMessage;
     private javax.swing.JButton okButton;
     // End of variables declaration//GEN-END:variables
 
     private int returnStatus = RET_CANCEL;
+
+    /**
+     * @param returnStatus the returnStatus to set
+     */
+    public void setReturnStatus(int returnStatus) {
+        this.returnStatus = returnStatus;
+    }
 }
