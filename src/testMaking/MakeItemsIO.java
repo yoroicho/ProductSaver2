@@ -1,6 +1,6 @@
 package testMaking;
 
-import fromEclipce.view.*;
+//import fromEclipce.view.*;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;

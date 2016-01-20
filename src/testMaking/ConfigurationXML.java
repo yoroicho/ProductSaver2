@@ -46,18 +46,18 @@ public class ConfigurationXML {
     }
 
     public static void main(String[] args) {
-        args[0] = "test.xml";
-        ConfigurationXML conf = new ConfigurationXML(args[0]);
+        //args[0] = "test.xml";
+        //ConfigurationXML conf = new ConfigurationXML(args[0]);
         
         // 読み込み
         //System.out.println("sitename1: " + conf.getProperty("sitename1"));
         //System.out.println("url1: " + conf.getProperty("url1"));
 
         // 追加
-        conf.addProperty("sitename3", "delicious");
-        conf.addProperty("url3", "http://www.delicious.com/");
+        //conf.addProperty("sitename3", "delicious");
+        //conf.addProperty("url3", "http://www.delicious.com/");
 
         // 説明を指定して保存
-        conf.storeToXML(args[0], "ソーシャルブックマーク");
+        //conf.storeToXML(args[0], "ソーシャルブックマーク");
     }
 }
