@@ -17,8 +17,9 @@ public class testConfigurationXML {
     public static void main(String[] args) {
         String jarPath = System.getProperty("java.class.path");
 //String dirPath = jarPath.substring(0, jarPath.lastIndexOf(File.separator)+1);
-String dirPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
-        String filePath= dirPath +"test20160120test.XML";
+//String dirPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+        File file = new File(System.getProperty("java.class.path"));
+        String filePath=  file.getParent() +"test20160120test.XML";
 
         //filePath = System.getProperty("java.class.path")+"test20160120test.XML"; 
         System.out.println(filePath);

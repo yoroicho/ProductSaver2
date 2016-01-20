@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import localIO.ConfigurationXML;
 
 /**
  *
@@ -21,6 +22,8 @@ import javax.swing.JFileChooser;
 public class MainJFrame extends javax.swing.JFrame {
 
     private String crlf;
+
+    private boolean isShowedSysPanel = false;
 
     /**
      * Creates new form NewJFrame
@@ -172,8 +175,56 @@ public class MainJFrame extends javax.swing.JFrame {
         jButtonCatDir3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        jPanelExeSys = new javax.swing.JPanel();
+        jLabelSeq1 = new javax.swing.JLabel();
+        jButtonSystemDirSeq1 = new javax.swing.JButton();
+        jTextFieldSystemDirSeq1 = new javax.swing.JTextField();
+        jTextFieldSeq1 = new javax.swing.JTextField();
+        jLabelSeq4 = new javax.swing.JLabel();
+        jTextFieldSeq2 = new javax.swing.JTextField();
+        jTextFieldSystemDirSeq2 = new javax.swing.JTextField();
+        jTextFieldSeq3 = new javax.swing.JTextField();
+        jLabelSeq5 = new javax.swing.JLabel();
+        jTextFieldSystemDirSeq3 = new javax.swing.JTextField();
+        jLabelSeq6 = new javax.swing.JLabel();
+        jTextFieldSystemDirSeq4 = new javax.swing.JTextField();
+        jTextFieldSeq4 = new javax.swing.JTextField();
+        jLabelSeq7 = new javax.swing.JLabel();
+        jTextFieldSystemDirSeq5 = new javax.swing.JTextField();
+        jTextFieldSeq5 = new javax.swing.JTextField();
+        jLabelSeq8 = new javax.swing.JLabel();
+        jTextFieldSeq6 = new javax.swing.JTextField();
+        jTextFieldSystemDirSeq6 = new javax.swing.JTextField();
+        jLabelSeq9 = new javax.swing.JLabel();
+        jTextFieldSystemDirSeq7 = new javax.swing.JTextField();
+        jTextFieldSeq7 = new javax.swing.JTextField();
+        jTextFieldSeq8 = new javax.swing.JTextField();
+        jLabelSeq10 = new javax.swing.JLabel();
+        jTextFieldSystemDirSeq8 = new javax.swing.JTextField();
+        jLabelSeq11 = new javax.swing.JLabel();
+        jTextFieldSeq9 = new javax.swing.JTextField();
+        jTextFieldSystemDirSeq9 = new javax.swing.JTextField();
+        jLabelSeq12 = new javax.swing.JLabel();
+        jTextFieldSeq10 = new javax.swing.JTextField();
+        jTextFieldSystemDirSeq10 = new javax.swing.JTextField();
+        jButtonSystemDirSeq2 = new javax.swing.JButton();
+        jButtonSystemDirSeq3 = new javax.swing.JButton();
+        jButtonSystemDirSeq4 = new javax.swing.JButton();
+        jButtonSystemDirSeq5 = new javax.swing.JButton();
+        jButtonSystemDirSeq6 = new javax.swing.JButton();
+        jButtonSystemDirSeq7 = new javax.swing.JButton();
+        jButtonSystemDirSeq8 = new javax.swing.JButton();
+        jButtonSystemDirSeq9 = new javax.swing.JButton();
+        jButtonSystemDirSeq10 = new javax.swing.JButton();
+        jButtonEnter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         jLabel19.setText("Vessel");
 
@@ -210,7 +261,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton9)
-                .addContainerGap(346, Short.MAX_VALUE))
+                .addContainerGap(449, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("基幹情報", jPanel1);
@@ -676,7 +727,7 @@ public class MainJFrame extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 507, Short.MAX_VALUE)
+            .addGap(0, 607, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab3", jPanel3);
@@ -689,10 +740,280 @@ public class MainJFrame extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
+            .addGap(0, 607, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("環境設定", jPanel4);
+
+        jPanelExeSys.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanelExeSysFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jPanelExeSysFocusLost(evt);
+            }
+        });
+        jPanelExeSys.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                jPanelExeSysComponentHidden(evt);
+            }
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanelExeSysComponentShown(evt);
+            }
+        });
+
+        jLabelSeq1.setText("１");
+
+        jButtonSystemDirSeq1.setText("参　照");
+        jButtonSystemDirSeq1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq1ActionPerformed(evt);
+            }
+        });
+
+        jLabelSeq4.setText("２");
+
+        jLabelSeq5.setText("３");
+
+        jLabelSeq6.setText("４");
+
+        jLabelSeq7.setText("５");
+
+        jLabelSeq8.setText("６");
+
+        jLabelSeq9.setText("７");
+
+        jLabelSeq10.setText("８");
+
+        jLabelSeq11.setText("９");
+
+        jLabelSeq12.setText("10");
+
+        jButtonSystemDirSeq2.setText("参　照");
+        jButtonSystemDirSeq2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq2ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq3.setText("参　照");
+        jButtonSystemDirSeq3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq3ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq4.setText("参　照");
+        jButtonSystemDirSeq4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq4ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq5.setText("参　照");
+        jButtonSystemDirSeq5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq5ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq6.setText("参　照");
+        jButtonSystemDirSeq6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq6ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq7.setText("参　照");
+        jButtonSystemDirSeq7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq7ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq8.setText("参　照");
+        jButtonSystemDirSeq8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq8ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq9.setText("参　照");
+        jButtonSystemDirSeq9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq9ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq10.setText("参　照");
+        jButtonSystemDirSeq10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq10ActionPerformed(evt);
+            }
+        });
+
+        jButtonEnter.setText("適　　用");
+        jButtonEnter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEnterActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelExeSysLayout = new javax.swing.GroupLayout(jPanelExeSys);
+        jPanelExeSys.setLayout(jPanelExeSysLayout);
+        jPanelExeSysLayout.setHorizontalGroup(
+            jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelExeSysLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonEnter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                        .addComponent(jLabelSeq4)
+                        .addGap(12, 12, 12)
+                        .addComponent(jTextFieldSeq2, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldSystemDirSeq2, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonSystemDirSeq2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelExeSysLayout.createSequentialGroup()
+                        .addComponent(jLabelSeq1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldSeq1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldSystemDirSeq1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonSystemDirSeq1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelExeSysLayout.createSequentialGroup()
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                                .addComponent(jLabelSeq5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldSeq3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldSystemDirSeq3, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                                .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                                        .addComponent(jLabelSeq12)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextFieldSeq10))
+                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                                        .addComponent(jLabelSeq6)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jTextFieldSeq4))
+                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                                        .addComponent(jLabelSeq7)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jTextFieldSeq5))
+                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                                        .addComponent(jLabelSeq8)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jTextFieldSeq6))
+                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                                        .addComponent(jLabelSeq9)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jTextFieldSeq7))
+                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabelSeq10)
+                                            .addComponent(jLabelSeq11))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextFieldSeq8)
+                                            .addComponent(jTextFieldSeq9))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldSystemDirSeq4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSystemDirSeq5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSystemDirSeq6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSystemDirSeq7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSystemDirSeq8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSystemDirSeq9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSystemDirSeq10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonSystemDirSeq4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSystemDirSeq5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSystemDirSeq3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSystemDirSeq6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSystemDirSeq7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSystemDirSeq8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSystemDirSeq9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSystemDirSeq10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(378, 378, 378))
+        );
+        jPanelExeSysLayout.setVerticalGroup(
+            jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSeq1)
+                    .addComponent(jButtonSystemDirSeq1)
+                    .addComponent(jTextFieldSystemDirSeq1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldSeq1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq2)
+                            .addComponent(jTextFieldSystemDirSeq2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq3)
+                            .addComponent(jTextFieldSystemDirSeq3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq4)
+                            .addComponent(jTextFieldSystemDirSeq4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq5)
+                            .addComponent(jTextFieldSystemDirSeq5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq6)
+                            .addComponent(jTextFieldSystemDirSeq6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq7)
+                            .addComponent(jTextFieldSystemDirSeq7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq8)
+                            .addComponent(jTextFieldSystemDirSeq8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq9)
+                            .addComponent(jTextFieldSystemDirSeq9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq10)
+                            .addComponent(jTextFieldSystemDirSeq10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelSeq12)
+                        .addComponent(jTextFieldSeq10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonEnter)
+                .addContainerGap(258, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("実行SYS", jPanelExeSys);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -715,50 +1036,6 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonWriteCat2ActionPerformed
 
-    private void jRadioButtonSaveCat1ForkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSaveCat1ForkActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonSaveCat1ForkActionPerformed
-
-    private void jRadioButtonSaveCat2PasteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSaveCat2PasteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonSaveCat2PasteActionPerformed
-
-    private void jButtonSystemDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSystemDirActionPerformed
-        JFileChooser filechooserSystemDir = new JFileChooser();
-        int selected = filechooserSystemDir.showOpenDialog(this);
-        if (selected == JFileChooser.APPROVE_OPTION) {
-            File fileSystemDir = filechooserSystemDir.getSelectedFile();
-            this.jTextFieldSystemDir.setText(fileSystemDir.getPath());
-        }
-    }//GEN-LAST:event_jButtonSystemDirActionPerformed
-
-    private void jButtonSourceDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSourceDirActionPerformed
-        JFileChooser filechooserSourceDir = new JFileChooser();
-        int selected = filechooserSourceDir.showOpenDialog(this);
-        if (selected == JFileChooser.APPROVE_OPTION) {
-            File fileSourceDir = filechooserSourceDir.getSelectedFile();
-            this.jTextFieldSourceDir.setText(fileSourceDir.getPath());
-        }
-    }//GEN-LAST:event_jButtonSourceDirActionPerformed
-
-    private void jButtonSystemInvokeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSystemInvokeActionPerformed
-        SystemInvokeThread systemInvokeThread = new SystemInvokeThread();
-        systemInvokeThread.setMainJFrame(this);
-        systemInvokeThread.setSystemDir(this.jTextFieldSystemDir.getText());
-        systemInvokeThread.setSourceDir(this.jTextFieldSourceDir.getText());
-        systemInvokeThread.start();
-    }//GEN-LAST:event_jButtonSystemInvokeActionPerformed
-
-    private void jButtonCatDir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCatDir1ActionPerformed
-        JFileChooser filechooserCatDir1 = new JFileChooser();
-        filechooserCatDir1.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int selected = filechooserCatDir1.showOpenDialog(this);
-        if (selected == JFileChooser.APPROVE_OPTION) {
-            File fileCatDir1 = filechooserCatDir1.getSelectedFile();
-            this.jTextFieldCopyTarget1.setText(fileCatDir1.getPath());
-        }
-    }//GEN-LAST:event_jButtonCatDir1ActionPerformed
-
     private void jButtonWriteCat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteCat1ActionPerformed
         int copyMode = CopyFiles.COPY_FORK; // 世代分離のほうが安全そうなので
         if (this.jRadioButtonSaveCat1Paste.isSelected()) { // 上書きの場合
@@ -770,17 +1047,241 @@ public class MainJFrame extends javax.swing.JFrame {
                 this.jTextFieldSourceDir.getText(), this.jTextFieldCopyTarget1.getText(), copyMode);
     }//GEN-LAST:event_jButtonWriteCat1ActionPerformed
 
+    private void jRadioButtonSaveCat2PasteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSaveCat2PasteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonSaveCat2PasteActionPerformed
+
+    private void jRadioButtonSaveCat1ForkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSaveCat1ForkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonSaveCat1ForkActionPerformed
+
+    private void jButtonCatDir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCatDir1ActionPerformed
+        JFileChooser filechooserCatDir1 = new JFileChooser();
+        filechooserCatDir1.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int selected = filechooserCatDir1.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+            File fileCatDir1 = filechooserCatDir1.getSelectedFile();
+            this.jTextFieldCopyTarget1.setText(fileCatDir1.getPath());
+        }
+    }//GEN-LAST:event_jButtonCatDir1ActionPerformed
+
     private void jTextFieldCopyTarget1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCopyTarget1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCopyTarget1ActionPerformed
+
+    private void jButtonSourceDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSourceDirActionPerformed
+        JFileChooser filechooserSourceDir = new JFileChooser();
+        int selected = filechooserSourceDir.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+            File fileSourceDir = filechooserSourceDir.getSelectedFile();
+            this.jTextFieldSourceDir.setText(fileSourceDir.getPath());
+        }
+    }//GEN-LAST:event_jButtonSourceDirActionPerformed
+
+    private void jButtonSystemDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSystemDirActionPerformed
+        JFileChooser filechooserSystemDir = new JFileChooser();
+        int selected = filechooserSystemDir.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+            File fileSystemDir = filechooserSystemDir.getSelectedFile();
+            this.jTextFieldSystemDir.setText(fileSystemDir.getPath());
+        }
+    }//GEN-LAST:event_jButtonSystemDirActionPerformed
+
+    private void jButtonSystemInvokeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSystemInvokeActionPerformed
+        SystemInvokeThread systemInvokeThread = new SystemInvokeThread();
+        systemInvokeThread.setMainJFrame(this);
+        systemInvokeThread.setSystemDir(this.jTextFieldSystemDir.getText());
+        systemInvokeThread.setSourceDir(this.jTextFieldSourceDir.getText());
+        systemInvokeThread.start();
+    }//GEN-LAST:event_jButtonSystemInvokeActionPerformed
+
+    private void jButtonWriteCat3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteCat3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonWriteCat3ActionPerformed
 
     private void jRadioButtonSaveCat3PasteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSaveCat3PasteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonSaveCat3PasteActionPerformed
 
-    private void jButtonWriteCat3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWriteCat3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonWriteCat3ActionPerformed
+    private void jButtonSystemDirSeq1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSystemDirSeq1ActionPerformed
+        JFileChooser filechooserSystemDir = new JFileChooser();
+        int selected = filechooserSystemDir.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+            File fileSystemDirSeq1 = filechooserSystemDir.getSelectedFile();
+            this.jTextFieldSystemDirSeq1.setText(fileSystemDirSeq1.getPath());
+        }
+    }//GEN-LAST:event_jButtonSystemDirSeq1ActionPerformed
+
+    private void jButtonSystemDirSeq2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSystemDirSeq2ActionPerformed
+        JFileChooser filechooserSystemDir = new JFileChooser();
+        int selected = filechooserSystemDir.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+            File fileSystemDirSeq2 = filechooserSystemDir.getSelectedFile();
+            this.jTextFieldSystemDirSeq2.setText(fileSystemDirSeq2.getPath());
+        }
+    }//GEN-LAST:event_jButtonSystemDirSeq2ActionPerformed
+
+    private void jButtonSystemDirSeq3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSystemDirSeq3ActionPerformed
+        JFileChooser filechooserSystemDir = new JFileChooser();
+        int selected = filechooserSystemDir.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+            File fileSystemDirSeq3 = filechooserSystemDir.getSelectedFile();
+            this.jTextFieldSystemDirSeq3.setText(fileSystemDirSeq3.getPath());
+        }
+    }//GEN-LAST:event_jButtonSystemDirSeq3ActionPerformed
+
+    private void jButtonSystemDirSeq4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSystemDirSeq4ActionPerformed
+        JFileChooser filechooserSystemDir = new JFileChooser();
+        int selected = filechooserSystemDir.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+            File fileSystemDirSeq4 = filechooserSystemDir.getSelectedFile();
+            this.jTextFieldSystemDirSeq4.setText(fileSystemDirSeq4.getPath());
+        }
+    }//GEN-LAST:event_jButtonSystemDirSeq4ActionPerformed
+
+    private void jButtonSystemDirSeq5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSystemDirSeq5ActionPerformed
+        JFileChooser filechooserSystemDir = new JFileChooser();
+        int selected = filechooserSystemDir.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+            File fileSystemDirSeq5 = filechooserSystemDir.getSelectedFile();
+            this.jTextFieldSystemDirSeq5.setText(fileSystemDirSeq5.getPath());
+        }
+    }//GEN-LAST:event_jButtonSystemDirSeq5ActionPerformed
+
+    private void jButtonSystemDirSeq6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSystemDirSeq6ActionPerformed
+        JFileChooser filechooserSystemDir = new JFileChooser();
+        int selected = filechooserSystemDir.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+            File fileSystemDirSeq6 = filechooserSystemDir.getSelectedFile();
+            this.jTextFieldSystemDirSeq6.setText(fileSystemDirSeq6.getPath());
+        }
+    }//GEN-LAST:event_jButtonSystemDirSeq6ActionPerformed
+
+    private void jButtonSystemDirSeq7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSystemDirSeq7ActionPerformed
+        JFileChooser filechooserSystemDir = new JFileChooser();
+        int selected = filechooserSystemDir.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+            File fileSystemDirSeq7 = filechooserSystemDir.getSelectedFile();
+            this.jTextFieldSystemDirSeq7.setText(fileSystemDirSeq7.getPath());
+        }
+    }//GEN-LAST:event_jButtonSystemDirSeq7ActionPerformed
+
+    private void jButtonSystemDirSeq8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSystemDirSeq8ActionPerformed
+        JFileChooser filechooserSystemDir = new JFileChooser();
+        int selected = filechooserSystemDir.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+            File fileSystemDirSeq8 = filechooserSystemDir.getSelectedFile();
+            this.jTextFieldSystemDirSeq8.setText(fileSystemDirSeq8.getPath());
+        }
+    }//GEN-LAST:event_jButtonSystemDirSeq8ActionPerformed
+
+    private void jButtonSystemDirSeq9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSystemDirSeq9ActionPerformed
+        JFileChooser filechooserSystemDir = new JFileChooser();
+        int selected = filechooserSystemDir.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+            File fileSystemDirSeq9 = filechooserSystemDir.getSelectedFile();
+            this.jTextFieldSystemDirSeq9.setText(fileSystemDirSeq9.getPath());
+        }
+    }//GEN-LAST:event_jButtonSystemDirSeq9ActionPerformed
+
+    private void jButtonSystemDirSeq10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSystemDirSeq10ActionPerformed
+        JFileChooser filechooserSystemDir = new JFileChooser();
+        int selected = filechooserSystemDir.showOpenDialog(this);
+        if (selected == JFileChooser.APPROVE_OPTION) {
+            File fileSystemDirSeq10 = filechooserSystemDir.getSelectedFile();
+            this.jTextFieldSystemDirSeq10.setText(fileSystemDirSeq10.getPath());
+        }
+    }//GEN-LAST:event_jButtonSystemDirSeq10ActionPerformed
+
+    private void storeItems() {
+        ConfigurationXML conf = new ConfigurationXML("ExecutionSys.XML"); //ファイルの位置は再考する
+
+        conf.upDateProperty("jTextFieldSeq1", this.jTextFieldSeq1.getText());
+        conf.upDateProperty("jTextFieldSeq2", this.jTextFieldSeq2.getText());
+        conf.upDateProperty("jTextFieldSeq3", this.jTextFieldSeq3.getText());
+        conf.upDateProperty("jTextFieldSeq4", this.jTextFieldSeq4.getText());
+        conf.upDateProperty("jTextFieldSeq5", this.jTextFieldSeq5.getText());
+        conf.upDateProperty("jTextFieldSeq6", this.jTextFieldSeq6.getText());
+        conf.upDateProperty("jTextFieldSeq7", this.jTextFieldSeq7.getText());
+        conf.upDateProperty("jTextFieldSeq8", this.jTextFieldSeq8.getText());
+        conf.upDateProperty("jTextFieldSeq9", this.jTextFieldSeq9.getText());
+        conf.upDateProperty("jTextFieldSeq10", this.jTextFieldSeq10.getText());
+
+        conf.upDateProperty("jTextFieldSystemDirSeq1", this.jTextFieldSystemDirSeq1.getText());
+        conf.upDateProperty("jTextFieldSystemDirSeq2", this.jTextFieldSystemDirSeq2.getText());
+        conf.upDateProperty("jTextFieldSystemDirSeq3", this.jTextFieldSystemDirSeq3.getText());
+        conf.upDateProperty("jTextFieldSystemDirSeq4", this.jTextFieldSystemDirSeq4.getText());
+        conf.upDateProperty("jTextFieldSystemDirSeq5", this.jTextFieldSystemDirSeq5.getText());
+        conf.upDateProperty("jTextFieldSystemDirSeq6", this.jTextFieldSystemDirSeq6.getText());
+        conf.upDateProperty("jTextFieldSystemDirSeq7", this.jTextFieldSystemDirSeq7.getText());
+        conf.upDateProperty("jTextFieldSystemDirSeq8", this.jTextFieldSystemDirSeq8.getText());
+        conf.upDateProperty("jTextFieldSystemDirSeq9", this.jTextFieldSystemDirSeq9.getText());
+        conf.upDateProperty("jTextFieldSystemDirSeq10", this.jTextFieldSystemDirSeq10.getText());
+
+        conf.storeToXML("ExecutionSys.XML", "成果物作成用の起動システム候補");
+    }
+
+    private void loadItems() {
+        ConfigurationXML conf = new ConfigurationXML("ExecutionSys.XML"); //ファイルの位置は再考する
+
+        this.jTextFieldSeq1.setText(conf.getProperty("jTextFieldSeq1"));
+        this.jTextFieldSeq2.setText(conf.getProperty("jTextFieldSeq2"));
+        this.jTextFieldSeq3.setText(conf.getProperty("jTextFieldSeq3"));
+        this.jTextFieldSeq4.setText(conf.getProperty("jTextFieldSeq4"));
+        this.jTextFieldSeq5.setText(conf.getProperty("jTextFieldSeq5"));
+        this.jTextFieldSeq6.setText(conf.getProperty("jTextFieldSeq6"));
+        this.jTextFieldSeq7.setText(conf.getProperty("jTextFieldSeq7"));
+        this.jTextFieldSeq8.setText(conf.getProperty("jTextFieldSeq8"));
+        this.jTextFieldSeq9.setText(conf.getProperty("jTextFieldSeq9"));
+        this.jTextFieldSeq10.setText(conf.getProperty("jTextFieldSeq10"));
+
+        this.jTextFieldSystemDirSeq1.setText(conf.getProperty("jTextFieldSystemDirSeq1"));
+        this.jTextFieldSystemDirSeq2.setText(conf.getProperty("jTextFieldSystemDirSeq2"));
+        this.jTextFieldSystemDirSeq3.setText(conf.getProperty("jTextFieldSystemDirSeq3"));
+        this.jTextFieldSystemDirSeq4.setText(conf.getProperty("jTextFieldSystemDirSeq4"));
+        this.jTextFieldSystemDirSeq5.setText(conf.getProperty("jTextFieldSystemDirSeq5"));
+        this.jTextFieldSystemDirSeq6.setText(conf.getProperty("jTextFieldSystemDirSeq6"));
+        this.jTextFieldSystemDirSeq7.setText(conf.getProperty("jTextFieldSystemDirSeq7"));
+        this.jTextFieldSystemDirSeq8.setText(conf.getProperty("jTextFieldSystemDirSeq8"));
+        this.jTextFieldSystemDirSeq9.setText(conf.getProperty("jTextFieldSystemDirSeq9"));
+        this.jTextFieldSystemDirSeq10.setText(conf.getProperty("jTextFieldSystemDirSeq10"));
+
+    }
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        System.out.println("Changed");
+        System.out.println(jTabbedPane1.getSelectedIndex());
+        if (jTabbedPane1.getSelectedIndex() == 4) { // 成果物の起動用システムのタブが選択された
+
+        } else { // 成果物の起動用システムのタブ以外が選択されたら強制保存するべきだが方法不明
+            //storeItems();
+            // 上を行うと初期状態の何も表示されていないデータでファイルが上書きされてしまう。
+        }
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void jPanelExeSysFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelExeSysFocusGained
+
+    }//GEN-LAST:event_jPanelExeSysFocusGained
+
+    private void jPanelExeSysFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelExeSysFocusLost
+
+    }//GEN-LAST:event_jPanelExeSysFocusLost
+
+    private void jPanelExeSysComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelExeSysComponentShown
+        loadItems();
+        this.isShowedSysPanel = true; // 一度でも表示されたか
+    }//GEN-LAST:event_jPanelExeSysComponentShown
+
+    private void jPanelExeSysComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelExeSysComponentHidden
+        if (this.isShowedSysPanel == true) {
+            storeItems(); // 一度でも表示されていればロードされている。
+        }
+
+    }//GEN-LAST:event_jPanelExeSysComponentHidden
+
+    private void jButtonEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterActionPerformed
+        storeItems();
+    }//GEN-LAST:event_jButtonEnterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -840,11 +1341,22 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCatDir2;
     private javax.swing.JButton jButtonCatDir3;
     private javax.swing.JButton jButtonDeleteItems;
+    private javax.swing.JButton jButtonEnter;
     private javax.swing.JButton jButtonEnterItems;
     private javax.swing.JButton jButtonIssueDir;
     private javax.swing.JButton jButtonSetDefaultItems;
     private javax.swing.JButton jButtonSourceDir;
     private javax.swing.JButton jButtonSystemDir;
+    private javax.swing.JButton jButtonSystemDirSeq1;
+    private javax.swing.JButton jButtonSystemDirSeq10;
+    private javax.swing.JButton jButtonSystemDirSeq2;
+    private javax.swing.JButton jButtonSystemDirSeq3;
+    private javax.swing.JButton jButtonSystemDirSeq4;
+    private javax.swing.JButton jButtonSystemDirSeq5;
+    private javax.swing.JButton jButtonSystemDirSeq6;
+    private javax.swing.JButton jButtonSystemDirSeq7;
+    private javax.swing.JButton jButtonSystemDirSeq8;
+    private javax.swing.JButton jButtonSystemDirSeq9;
     private javax.swing.JButton jButtonSystemInvoke;
     private javax.swing.JButton jButtonWriteCat1;
     private javax.swing.JButton jButtonWriteCat2;
@@ -877,10 +1389,21 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelSeq1;
+    private javax.swing.JLabel jLabelSeq10;
+    private javax.swing.JLabel jLabelSeq11;
+    private javax.swing.JLabel jLabelSeq12;
+    private javax.swing.JLabel jLabelSeq4;
+    private javax.swing.JLabel jLabelSeq5;
+    private javax.swing.JLabel jLabelSeq6;
+    private javax.swing.JLabel jLabelSeq7;
+    private javax.swing.JLabel jLabelSeq8;
+    private javax.swing.JLabel jLabelSeq9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanelExeSys;
     private javax.swing.JRadioButton jRadioButtonSaveCat1Fork;
     private javax.swing.JRadioButton jRadioButtonSaveCat1Paste;
     private javax.swing.JRadioButton jRadioButtonSaveCat2Fork;
@@ -905,8 +1428,28 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldCopyTarget2;
     private javax.swing.JTextField jTextFieldCopyTarget3;
     private javax.swing.JTextField jTextFieldIssueDir;
+    private javax.swing.JTextField jTextFieldSeq1;
+    private javax.swing.JTextField jTextFieldSeq10;
+    private javax.swing.JTextField jTextFieldSeq2;
+    private javax.swing.JTextField jTextFieldSeq3;
+    private javax.swing.JTextField jTextFieldSeq4;
+    private javax.swing.JTextField jTextFieldSeq5;
+    private javax.swing.JTextField jTextFieldSeq6;
+    private javax.swing.JTextField jTextFieldSeq7;
+    private javax.swing.JTextField jTextFieldSeq8;
+    private javax.swing.JTextField jTextFieldSeq9;
     private javax.swing.JTextField jTextFieldSourceDir;
     private javax.swing.JTextField jTextFieldSystemDir;
+    private javax.swing.JTextField jTextFieldSystemDirSeq1;
+    private javax.swing.JTextField jTextFieldSystemDirSeq10;
+    private javax.swing.JTextField jTextFieldSystemDirSeq2;
+    private javax.swing.JTextField jTextFieldSystemDirSeq3;
+    private javax.swing.JTextField jTextFieldSystemDirSeq4;
+    private javax.swing.JTextField jTextFieldSystemDirSeq5;
+    private javax.swing.JTextField jTextFieldSystemDirSeq6;
+    private javax.swing.JTextField jTextFieldSystemDirSeq7;
+    private javax.swing.JTextField jTextFieldSystemDirSeq8;
+    private javax.swing.JTextField jTextFieldSystemDirSeq9;
     // End of variables declaration//GEN-END:variables
 
 }

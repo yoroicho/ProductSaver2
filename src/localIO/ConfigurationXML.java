@@ -50,6 +50,12 @@ public class ConfigurationXML {
         }
     }
 
+        public void upDateProperty(String key, String value) {
+        // 単純アップデート
+            conf.setProperty(key, value);        
+    }
+    
+    
     public void addProperty(String key, String value) {
         if (conf.containsKey(key)) {
             System.err.println("Key already exists: " + key);
