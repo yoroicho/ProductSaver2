@@ -43,9 +43,6 @@ public class ConnectionClass {
                 statement.addBatch();
                 System.out.println(statement.toString());
 
-                
-                
-                
             }
 
             int[] result = statement.executeBatch();
@@ -65,27 +62,22 @@ public class ConnectionClass {
 
             }
 
-                        Statement stm = connection.createStatement();
+            Statement stm = connection.createStatement();
             String sql_select = "select * from music";
             ResultSet rs = stm.executeQuery(sql_select);
 
-            while(rs.next()){
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 System.out.println("取得結果 -> " + id + ":" + name);
             }
-            
-            
+
         } catch (SQLException e) {
             System.out.println("エラーが発生しました");
             e.printStackTrace();
 
         }
 
-        
-        
-        
-        
     }
 
 }

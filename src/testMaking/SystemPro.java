@@ -5,6 +5,8 @@
  */
 package testMaking;
 
+import java.util.Properties;
+
 /**
  *
  * @author 00499
@@ -75,7 +77,13 @@ public class SystemPro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-this.jTextArea1.setText(System.getProperty(this.jTextField1.getText()));        // TODO add your handling code here:
+        if (this.jTextField1.getText().equals("")) {
+            Properties properties = System.getProperties();
+        properties.list(System.out);
+        } else {
+            this.jTextArea1.setText(System.getProperty(this.jTextField1.getText()));
+        }
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
