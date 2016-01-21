@@ -894,10 +894,6 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addGroup(jPanelExeSysLayout.createSequentialGroup()
                                 .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelExeSysLayout.createSequentialGroup()
-                                        .addComponent(jLabelSeq12)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextFieldSeq10))
-                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
                                         .addComponent(jLabelSeq6)
                                         .addGap(12, 12, 12)
                                         .addComponent(jTextFieldSeq4))
@@ -916,9 +912,11 @@ public class MainJFrame extends javax.swing.JFrame {
                                     .addGroup(jPanelExeSysLayout.createSequentialGroup()
                                         .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabelSeq10)
-                                            .addComponent(jLabelSeq11))
+                                            .addComponent(jLabelSeq11)
+                                            .addComponent(jLabelSeq12))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextFieldSeq10)
                                             .addComponent(jTextFieldSeq8)
                                             .addComponent(jTextFieldSeq9))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1010,7 +1008,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(jTextFieldSeq10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonEnter)
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("実行SYS", jPanelExeSys);

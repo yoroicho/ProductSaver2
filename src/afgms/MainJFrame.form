@@ -941,11 +941,6 @@
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabelSeq12" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldSeq10" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabelSeq6" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                               <Component id="jTextFieldSeq4" max="32767" attributes="0"/>
@@ -965,13 +960,15 @@
                                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                               <Component id="jTextFieldSeq7" max="32767" attributes="0"/>
                                           </Group>
-                                          <Group type="102" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabelSeq10" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabelSeq11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabelSeq12" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jTextFieldSeq10" max="32767" attributes="0"/>
                                                   <Component id="jTextFieldSeq8" max="32767" attributes="0"/>
                                                   <Component id="jTextFieldSeq9" alignment="0" max="32767" attributes="0"/>
                                               </Group>
@@ -1087,7 +1084,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButtonEnter" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="258" max="32767" attributes="0"/>
+                      <EmptySpace pref="155" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
