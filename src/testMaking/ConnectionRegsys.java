@@ -5,6 +5,7 @@
  */
 package testMaking;
 
+import java.awt.event.FocusAdapter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -29,6 +30,31 @@ public class ConnectionRegsys extends javax.swing.JFrame {
      */
     public ConnectionRegsys() {
         initComponents();
+    }
+
+    private void updateJComboBoxItems() {
+        // コネクションの作成
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);) {
+
+            connection.setAutoCommit(false);
+
+            Statement stm = connection.createStatement();
+            String sql_select = "select * from regsys";
+            ResultSet rs = stm.executeQuery(sql_select);
+            this.jComboBoxTitle.removeAllItems();
+            while (rs.next()) {
+                String titleget = rs.getString("title");
+                jComboBoxTitle.addItem(titleget);
+                String sysDir = rs.getString("sysdir");
+                System.out.println("取得結果 -> " + titleget + ":" + sysDir);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("エラーが発生しました");
+            e.printStackTrace();
+
+        }
+
     }
 
     public void updateRegsys(String title, String sysdir, String extension, String remark) {
@@ -65,10 +91,53 @@ public class ConnectionRegsys extends javax.swing.JFrame {
             Statement stm = connection.createStatement();
             String sql_select = "select * from regsys";
             ResultSet rs = stm.executeQuery(sql_select);
-// jComboBoxTitle.setModel((ComboBoxModel) rs);
             while (rs.next()) {
                 String titleget = rs.getString("title");
-                jComboBoxTitle.addItem(titleget);
+                String sysDir = rs.getString("sysdir");
+                System.out.println("取得結果 -> " + titleget + ":" + sysDir);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("エラーが発生しました");
+            e.printStackTrace();
+
+        }
+
+    }
+
+    public void deleteRegsys(String title) {
+        String sql = "DELETE FROM regsys WHERE title = (?);";
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                PreparedStatement statement = connection.prepareStatement(sql);) {
+
+            connection.setAutoCommit(false);
+
+            statement.setString(1, title);
+            statement.addBatch();
+            System.out.println(statement.toString());
+
+            int[] result = statement.executeBatch();
+            System.out.println("削除：" + result.length + "件");
+
+            try {
+
+                connection.commit();
+                System.out.println("削除成功");
+
+            } catch (SQLException e) {
+
+                connection.rollback();
+                System.out.println("削除失敗：ロールバック実行");
+
+                e.printStackTrace();
+
+            }
+
+            Statement stm = connection.createStatement();
+            String sql_select = "select * from regsys";
+            ResultSet rs = stm.executeQuery(sql_select);
+            while (rs.next()) {
+                String titleget = rs.getString("title");
                 String sysDir = rs.getString("sysdir");
                 System.out.println("取得結果 -> " + titleget + ":" + sysDir);
             }
@@ -108,16 +177,35 @@ public class ConnectionRegsys extends javax.swing.JFrame {
         });
 
         jButtonDelete.setText("削除");
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
+
+        jTextFieldSysdir.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldSysdirFocusGained(evt);
+            }
+        });
 
         jTextAreaRemark.setColumns(20);
         jTextAreaRemark.setRows(5);
         jScrollPane1.setViewportView(jTextAreaRemark);
 
         jComboBoxTitle.setEditable(true);
-        jComboBoxTitle.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxTitle.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jComboBoxTitleFocusGained(evt);
+        jComboBoxTitle.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBoxTitlePopupMenuWillBecomeVisible(evt);
+            }
+        });
+        jComboBoxTitle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxTitleActionPerformed(evt);
             }
         });
 
@@ -163,12 +251,28 @@ public class ConnectionRegsys extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntryActionPerformed
-       updateRegsys(null,null,null,null);
+        updateRegsys(null, null, null, null);
     }//GEN-LAST:event_jButtonEntryActionPerformed
 
-    private void jComboBoxTitleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxTitleFocusGained
-        jComboBoxTitle.setModel(null);
-    }//GEN-LAST:event_jComboBoxTitleFocusGained
+    private void jTextFieldSysdirFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldSysdirFocusGained
+
+    }//GEN-LAST:event_jTextFieldSysdirFocusGained
+
+    private void jComboBoxTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTitleActionPerformed
+
+    }//GEN-LAST:event_jComboBoxTitleActionPerformed
+
+    private void jComboBoxTitlePopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxTitlePopupMenuWillBecomeVisible
+        // ComboBoxを編集可能にしているとこのイベントでしか拾えないらしい。
+        // http://d.hatena.ne.jp/wakamori/touch/20070518/p1
+        updateJComboBoxItems();
+    }//GEN-LAST:event_jComboBoxTitlePopupMenuWillBecomeVisible
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        deleteRegsys(this.jComboBoxTitle.getSelectedItem().toString());
+        updateJComboBoxItems();
+        this.jComboBoxTitle.setSelectedItem(null);
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     /**
      * @param args the command line arguments
