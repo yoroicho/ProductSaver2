@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.ComboBoxModel;
 import static testMaking.ConnectionClass.URL;
 
 /**
@@ -64,9 +65,10 @@ public class ConnectionRegsys extends javax.swing.JFrame {
             Statement stm = connection.createStatement();
             String sql_select = "select * from regsys";
             ResultSet rs = stm.executeQuery(sql_select);
-
+// jComboBoxTitle.setModel((ComboBoxModel) rs);
             while (rs.next()) {
                 String titleget = rs.getString("title");
+                jComboBoxTitle.addItem(titleget);
                 String sysDir = rs.getString("sysdir");
                 System.out.println("取得結果 -> " + titleget + ":" + sysDir);
             }
@@ -113,6 +115,11 @@ public class ConnectionRegsys extends javax.swing.JFrame {
 
         jComboBoxTitle.setEditable(true);
         jComboBoxTitle.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxTitle.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBoxTitleFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,6 +165,10 @@ public class ConnectionRegsys extends javax.swing.JFrame {
     private void jButtonEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntryActionPerformed
        updateRegsys(null,null,null,null);
     }//GEN-LAST:event_jButtonEntryActionPerformed
+
+    private void jComboBoxTitleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxTitleFocusGained
+        jComboBoxTitle.setModel(null);
+    }//GEN-LAST:event_jComboBoxTitleFocusGained
 
     /**
      * @param args the command line arguments
