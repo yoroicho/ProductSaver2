@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.ComboBoxModel;
+import javax.swing.JOptionPane;
 import static testMaking.ConnectionClass.URL;
 
 /**
@@ -45,12 +46,17 @@ public class ConnectionRegsys extends javax.swing.JFrame {
             while (rs.next()) {
                 String titleget = rs.getString("title");
                 jComboBoxTitle.addItem(titleget);
-                String sysDir = rs.getString("sysdir");
-                System.out.println("取得結果 -> " + titleget + ":" + sysDir);
+                this.jTextFieldSysdir.setText(rs.getString("sysdir"));
+                this.jTextFieldExtension.setText(rs.getString("extension"));
+                this.jTextAreaRemark.setText(rs.getString("remark"));
+                //String sysDir = rs.getString(rs.getString("sysdir"));
+                //System.out.println("取得結果 -> " + titleget + ":" + sysDir);
+                
             }
 
         } catch (SQLException e) {
             System.out.println("エラーが発生しました");
+             JOptionPane.showMessageDialog(null, "処理中にエラーが発生しました");
             e.printStackTrace();
 
         }
@@ -159,6 +165,7 @@ public class ConnectionRegsys extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        entityManager1 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("AutomaticFileGenerationManagementSystemPU").createEntityManager();
         jButtonEntry = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
         jTextFieldSysdir = new javax.swing.JTextField();
@@ -315,6 +322,7 @@ public class ConnectionRegsys extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.persistence.EntityManager entityManager1;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonEntry;
     private javax.swing.JComboBox jComboBoxTitle;
