@@ -22,7 +22,11 @@ import static testMaking.ConnectionClass.URL;
  */
 public class ConnectionRegsys extends javax.swing.JFrame {
 
-    static final String URL = "jdbc:mysql://localhost:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
+    //static final String URL = "jdbc:mysql://localhost:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
+    
+    static final String URL = "jdbc:mysql://49.212.131.91:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
+   
+    
     static final String USERNAME = "root";
     static final String PASSWORD = "pass";
 
