@@ -23,10 +23,8 @@ import static testMaking.ConnectionClass.URL;
 public class ConnectionRegsys extends javax.swing.JFrame {
 
     //static final String URL = "jdbc:mysql://localhost:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
-    
     static final String URL = "jdbc:mysql://49.212.131.91:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
-   
-    
+
     static final String USERNAME = "root";
     static final String PASSWORD = "pass";
 
@@ -55,12 +53,12 @@ public class ConnectionRegsys extends javax.swing.JFrame {
                 this.jTextAreaRemark.setText(rs.getString("remark"));
                 //String sysDir = rs.getString(rs.getString("sysdir"));
                 //System.out.println("取得結果 -> " + titleget + ":" + sysDir);
-                
+
             }
 
         } catch (SQLException e) {
             System.out.println("エラーが発生しました");
-             JOptionPane.showMessageDialog(null, "処理中にエラーが発生しました");
+            JOptionPane.showMessageDialog(null, "処理中にエラーが発生しました");
             e.printStackTrace();
 
         }
@@ -95,7 +93,8 @@ public class ConnectionRegsys extends javax.swing.JFrame {
                 System.out.println("登録失敗：ロールバック実行");
 
                 e.printStackTrace();
-
+                JOptionPane.showMessageDialog(null, "同じ名前で上書きはできません。");
+                System.out.println("同じ名前で上書きはできません。");
             }
 
             Statement stm = connection.createStatement();
@@ -110,7 +109,7 @@ public class ConnectionRegsys extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println("エラーが発生しました");
             e.printStackTrace();
-
+            JOptionPane.showMessageDialog(null, "同じ名前で上書きはできません。");
         }
 
     }
