@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
-import static testMaking.ConnectionClass.URL;
+
 
 /**
  *
@@ -33,36 +33,31 @@ public class ConnectionRegsys extends javax.swing.JFrame {
      */
     public ConnectionRegsys() {
         initComponents();
+        checkJCheckBoxNewState();
     }
 
     private void updateJComboBoxItems() {
         // コネクションの作成
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);) {
 
-            connection.setAutoCommit(false);
+            //connection.setAutoCommit(false);
 
             Statement stm = connection.createStatement();
             String sql_select = "select * from regsys";
             ResultSet rs = stm.executeQuery(sql_select);
-            this.jComboBoxTitle.removeAllItems();
+            this.jComboBoxTitles.removeAllItems();
             while (rs.next()) {
                 String titleget = rs.getString("title");
-                jComboBoxTitle.addItem(titleget);
+                jComboBoxTitles.addItem(titleget);
                 this.jTextFieldSysdir.setText(rs.getString("sysdir"));
                 this.jTextFieldExtension.setText(rs.getString("extension"));
                 this.jTextAreaRemark.setText(rs.getString("remark"));
-                //String sysDir = rs.getString(rs.getString("sysdir"));
-                //System.out.println("取得結果 -> " + titleget + ":" + sysDir);
-
             }
-
         } catch (SQLException e) {
             System.out.println("エラーが発生しました");
             JOptionPane.showMessageDialog(null, "処理中にエラーが発生しました");
             e.printStackTrace();
-
         }
-
     }
 
     public void updateRegsys(String title, String sysdir, String extension, String remark) {
@@ -175,6 +170,8 @@ public class ConnectionRegsys extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaRemark = new javax.swing.JTextArea();
         jComboBoxTitle = new javax.swing.JComboBox();
+        jComboBoxTitles = new javax.swing.JComboBox();
+        jCheckBoxNewState = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -212,9 +209,17 @@ public class ConnectionRegsys extends javax.swing.JFrame {
                 jComboBoxTitlePopupMenuWillBecomeVisible(evt);
             }
         });
-        jComboBoxTitle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxTitleActionPerformed(evt);
+
+        jComboBoxTitles.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBoxTitlesFocusGained(evt);
+            }
+        });
+
+        jCheckBoxNewState.setText("新規作成");
+        jCheckBoxNewState.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBoxNewStateStateChanged(evt);
             }
         });
 
@@ -227,28 +232,37 @@ public class ConnectionRegsys extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                     .addComponent(jTextFieldSysdir)
+                    .addComponent(jComboBoxTitles, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextFieldExtension, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonEntry)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonDelete)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBoxNewState)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextFieldExtension, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jButtonEntry)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButtonDelete))))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jComboBoxTitle, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jComboBoxTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jComboBoxTitles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBoxNewState)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jComboBoxTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldSysdir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldExtension, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEntry)
@@ -267,10 +281,6 @@ public class ConnectionRegsys extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextFieldSysdirFocusGained
 
-    private void jComboBoxTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTitleActionPerformed
-
-    }//GEN-LAST:event_jComboBoxTitleActionPerformed
-
     private void jComboBoxTitlePopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxTitlePopupMenuWillBecomeVisible
         // ComboBoxを編集可能にしているとこのイベントでしか拾えないらしい。
         // http://d.hatena.ne.jp/wakamori/touch/20070518/p1
@@ -282,6 +292,28 @@ public class ConnectionRegsys extends javax.swing.JFrame {
         updateJComboBoxItems();
         this.jComboBoxTitle.setSelectedItem(null);
     }//GEN-LAST:event_jButtonDeleteActionPerformed
+
+    private void checkJCheckBoxNewState(){
+        if(jCheckBoxNewState.isSelected()){
+    this.jTextFieldSysdir.setEnabled(true);
+    this.jTextFieldExtension.setEnabled(true);
+    this.jTextAreaRemark.setEnabled(true);
+    this.jButtonEntry.setEnabled(true);
+}else{
+    this.jTextFieldSysdir.setEnabled(false);
+    this.jTextFieldExtension.setEnabled(false);
+    this.jTextAreaRemark.setEnabled(false);
+    this.jButtonEntry.setEnabled(false);
+}
+    }
+    
+    private void jCheckBoxNewStateStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxNewStateStateChanged
+checkJCheckBoxNewState();
+    }//GEN-LAST:event_jCheckBoxNewStateStateChanged
+
+    private void jComboBoxTitlesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxTitlesFocusGained
+        updateJComboBoxItems();
+    }//GEN-LAST:event_jComboBoxTitlesFocusGained
 
     /**
      * @param args the command line arguments
@@ -326,7 +358,9 @@ public class ConnectionRegsys extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonEntry;
+    private javax.swing.JCheckBox jCheckBoxNewState;
     private javax.swing.JComboBox jComboBoxTitle;
+    private javax.swing.JComboBox jComboBoxTitles;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaRemark;
     private javax.swing.JTextField jTextFieldExtension;
