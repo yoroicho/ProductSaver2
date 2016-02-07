@@ -295,14 +295,14 @@ public class ConnectionRegsys extends javax.swing.JFrame {
 
     private void checkJCheckBoxNewState(){
         if(jCheckBoxNewState.isSelected()){
-    this.jTextFieldSysdir.setEnabled(true);
-    this.jTextFieldExtension.setEnabled(true);
-    this.jTextAreaRemark.setEnabled(true);
+    this.jTextFieldSysdir.setEditable(true);
+    this.jTextFieldExtension.setEditable(true);
+    this.jTextAreaRemark.setEditable(true);
     this.jButtonEntry.setEnabled(true);
 }else{
-    this.jTextFieldSysdir.setEnabled(false);
-    this.jTextFieldExtension.setEnabled(false);
-    this.jTextAreaRemark.setEnabled(false);
+    this.jTextFieldSysdir.setEditable(false);
+    this.jTextFieldExtension.setEditable(false);
+    this.jTextAreaRemark.setEditable(false);
     this.jButtonEntry.setEnabled(false);
 }
     }
