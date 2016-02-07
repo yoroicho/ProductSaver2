@@ -168,7 +168,6 @@ public class ConnectionRegsys extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        entityManager1 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("AutomaticFileGenerationManagementSystemPU").createEntityManager();
         jButtonEntry = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
         jTextFieldSysdir = new javax.swing.JTextField();
@@ -325,7 +324,6 @@ public class ConnectionRegsys extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.persistence.EntityManager entityManager1;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonEntry;
     private javax.swing.JComboBox jComboBoxTitle;
