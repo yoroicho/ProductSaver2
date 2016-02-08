@@ -37,7 +37,8 @@ public class ConnectionRegsys extends javax.swing.JFrame {
         checkJCheckBoxNewState();
     }
 
-    private Connection createConnection() { // コネクションを返す汎用メソッド
+    private static Connection createConnection() { // コネクションを返す汎用メソッド
+        // *** 各メソッドから呼ぶと使用時にエラーが出るので使えない ***
         // コネクションの作成
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);) {
             return connection;
@@ -123,12 +124,19 @@ public class ConnectionRegsys extends javax.swing.JFrame {
     private ResultSet selectOneRegsys(String title) { // キーひとつでの検索
         try {
             //String sql = "SELECT * FROM regsys WHERE title = " + title;
-
+            //Connection connectionSelectOneRegsys = createConnection();
             Connection connectionSelectOneRegsys = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                        Statement stm = connectionSelectOneRegsys.createStatement();
-            String sql_select = "select * from regsys where title = '"+title+"'";
-            ResultSet resultSet = stm.executeQuery(sql_select);
-resultSet.next();
+            PreparedStatement statement = connectionSelectOneRegsys.prepareStatement("select * from regsys where title = ?;");
+            statement.setString(1, title);
+            ResultSet resultSet = statement.executeQuery();
+
+            /*
+             Connection connectionSelectOneRegsys = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+             Statement stm = connectionSelectOneRegsys.createStatement();
+             String sql_select = "select * from regsys where title = '" + title + "'";
+             ResultSet resultSet = stm.executeQuery(sql_select);
+             */
+            resultSet.next();
             System.out.println("タイトルの索引" + resultSet.getString("title"));
 
             return resultSet;
