@@ -5,6 +5,7 @@
  */
 package testMaking;
 
+import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,8 +24,8 @@ import javax.swing.JOptionPane;
  */
 public class ConnectionRegsys extends javax.swing.JFrame {
 
-    // static final String URL = "jdbc:mysql://localhost:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
-    static final String URL = "jdbc:mysql://49.212.131.91:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
+    static final String URL = "jdbc:mysql://localhost:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
+    //static final String URL = "jdbc:mysql://49.212.131.91:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
 
     static final String USERNAME = "root";
     static final String PASSWORD = "pass";
@@ -35,6 +36,7 @@ public class ConnectionRegsys extends javax.swing.JFrame {
     public ConnectionRegsys() {
         initComponents();
         checkJCheckBoxNewState();
+        updateJComboBoxItems();
     }
 
     private static Connection createConnection() { // コネクションを返す汎用メソッド
@@ -79,10 +81,10 @@ public class ConnectionRegsys extends javax.swing.JFrame {
 
             connection.setAutoCommit(false);
 
-            statement.setString(1, this.jComboBoxTitle.getSelectedItem().toString());
-            statement.setString(2, this.jTextFieldSysdir.getText());
-            statement.setString(3, this.jTextFieldExtension.getText());
-            statement.setString(4, this.jTextAreaRemark.getText());
+            statement.setString(1, title);
+            statement.setString(2, sysdir);
+            statement.setString(3, extension);
+            statement.setString(4, remark);
             statement.addBatch();
             System.out.println(statement.toString());
 
@@ -212,6 +214,11 @@ public class ConnectionRegsys extends javax.swing.JFrame {
         jTextFieldTitle = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
         jButtonEntry.setText("登録");
         jButtonEntry.addActionListener(new java.awt.event.ActionListener() {
@@ -319,7 +326,23 @@ public class ConnectionRegsys extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntryActionPerformed
-        updateRegsys(null, null, null, null);
+        jButtonEntry.setEnabled(false); // 二重登録を抑止、ただしチェックボックスにフォーカスが行くと再び登録ボタンが有効になる。
+        updateRegsys(
+                this.jTextFieldTitle.getText(),
+                this.jTextFieldSysdir.getText(),
+                this.jTextFieldExtension.getText(),
+                this.jTextAreaRemark.getText()
+        );
+
+        //updateJComboBoxItems(); //登録後にコンボボックスを更新
+        jCheckBoxNewState.setSelected(false); // 登録したら一旦非新規ﾓｰﾄﾞへ
+        /**
+         * this.jComboBoxTitles.setSelectedItem(null); // コンボボックスをクリア
+         * this.jTextFieldTitle.setText(null); // 以下入力欄もクリア
+         * this.jTextFieldSysdir.setText(null);
+         * this.jTextFieldExtension.setText(null);
+         * this.jTextAreaRemark.setText(null);
+         */
     }//GEN-LAST:event_jButtonEntryActionPerformed
 
     private void jTextFieldSysdirFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldSysdirFocusGained
@@ -329,43 +352,54 @@ public class ConnectionRegsys extends javax.swing.JFrame {
     private void jComboBoxTitlePopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxTitlePopupMenuWillBecomeVisible
         // ComboBoxを編集可能にしているとこのイベントでしか拾えないらしい。
         // http://d.hatena.ne.jp/wakamori/touch/20070518/p1
-        updateJComboBoxItems();
+        //updateJComboBoxItems();
     }//GEN-LAST:event_jComboBoxTitlePopupMenuWillBecomeVisible
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-        deleteRegsys(this.jComboBoxTitle.getSelectedItem().toString());
-        updateJComboBoxItems();
-        this.jComboBoxTitle.setSelectedItem(null);
+        deleteRegsys(this.jComboBoxTitles.getSelectedItem().toString()); // 削除の空振りを防ぐため登録が確定しているコンボボックスを参照
+        //updateJComboBoxItems();
+        this.jComboBoxTitles.setSelectedItem(null);
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void checkJCheckBoxNewState() {
         if (jCheckBoxNewState.isSelected()) {
+            this.jTextFieldTitle.setEditable(true);
+            this.jTextFieldTitle.setBackground(Color.white); // Enable にすると分かりにくいので
             this.jTextFieldSysdir.setEditable(true);
             this.jTextFieldExtension.setEditable(true);
             this.jTextAreaRemark.setEditable(true);
             this.jButtonEntry.setEnabled(true);
+            this.jButtonDelete.setEnabled(false); // 新規ﾓｰﾄﾞで削除不許可
         } else {
+            this.jTextFieldTitle.setEditable(false);
+            this.jTextFieldTitle.setBackground(Color.LIGHT_GRAY); // Enable にすると分かりにくいので
             this.jTextFieldSysdir.setEditable(false);
             this.jTextFieldExtension.setEditable(false);
             this.jTextAreaRemark.setEditable(false);
             this.jButtonEntry.setEnabled(false);
+            this.jButtonDelete.setEnabled(true); // 非新規ﾓｰﾄﾞで削除可能へ
         }
     }
 
     private void jCheckBoxNewStateStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxNewStateStateChanged
+
         checkJCheckBoxNewState();
+
+
     }//GEN-LAST:event_jCheckBoxNewStateStateChanged
 
     private void jComboBoxTitlesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxTitlesFocusGained
-
+// フォームのイニシャライズ時と登録・更新のタイミングで更新。
+        // フォーカスがあたったときの更新だと一度別のコンポーネントにフォーカスが当たってからになる
+        // データベースから読み出すのに時間が掛かるせいもあり、このタイミングではやらないほうがよいかも。>なぜか削除のあと更新されないのでやはり入れる。
         updateJComboBoxItems();
 
 
     }//GEN-LAST:event_jComboBoxTitlesFocusGained
 
     private void jComboBoxTitlesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxTitlesItemStateChanged
-        if (true) {
-            if (!this.jComboBoxTitles.getSelectedItem().equals("")) {
+        try {
+            if (!this.jComboBoxTitles.getSelectedItem().equals("")) { // NullPointerException が発生する。
                 try {
                     // タイトルの選択が変わるに応じて内容を変化させる。
                     this.jTextFieldTitle.setText(
@@ -380,13 +414,22 @@ public class ConnectionRegsys extends javax.swing.JFrame {
                     this.jTextAreaRemark.setText(
                             this.selectOneRegsys(this.jComboBoxTitles.getSelectedItem().toString()).getString("remark")
                     );
+
                 } catch (SQLException ex) {
-                    Logger.getLogger(ConnectionRegsys.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ConnectionRegsys.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
+        } catch (Exception e) {
+            System.out.println("空欄");
         }
     }//GEN-LAST:event_jComboBoxTitlesItemStateChanged
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // コンボボックスを更新
+        updateJComboBoxItems(); // かえって弊害がでるかも>大丈夫っぽい
+    }//GEN-LAST:event_formFocusGained
 
     /**
      * @param args the command line arguments
