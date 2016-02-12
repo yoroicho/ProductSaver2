@@ -52,6 +52,409 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanelExeSys">
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jPanelExeSysFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jPanelExeSysFocusLost"/>
+            <EventHandler event="componentHidden" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jPanelExeSysComponentHidden"/>
+            <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jPanelExeSysComponentShown"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="&#x5b9f;&#x884c;SYS">
+                <Property name="tabTitle" type="java.lang.String" value="&#x5b9f;&#x884c;SYS"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jButtonEnter" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabelSeq4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="jTextFieldSeq2" pref="568" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jTextFieldSystemDirSeq2" min="-2" pref="464" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButtonSystemDirSeq2" min="-2" pref="28" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabelSeq1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jTextFieldSeq1" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jTextFieldSystemDirSeq1" min="-2" pref="464" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButtonSystemDirSeq1" min="-2" pref="28" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabelSeq5" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldSeq3" max="32767" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldSystemDirSeq3" min="-2" pref="464" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabelSeq6" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldSeq4" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabelSeq7" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldSeq5" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabelSeq8" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldSeq6" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabelSeq9" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldSeq7" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabelSeq10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabelSeq11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabelSeq12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jTextFieldSeq10" max="32767" attributes="0"/>
+                                                  <Component id="jTextFieldSeq8" max="32767" attributes="0"/>
+                                                  <Component id="jTextFieldSeq9" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jTextFieldSystemDirSeq4" alignment="1" min="-2" pref="464" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldSystemDirSeq5" alignment="1" min="-2" pref="464" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldSystemDirSeq6" alignment="1" min="-2" pref="464" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldSystemDirSeq7" alignment="1" min="-2" pref="464" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldSystemDirSeq8" alignment="1" min="-2" pref="464" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldSystemDirSeq9" alignment="1" min="-2" pref="464" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldSystemDirSeq10" alignment="1" min="-2" pref="464" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jButtonSystemDirSeq4" min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="jButtonSystemDirSeq5" min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="jButtonSystemDirSeq3" alignment="0" min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="jButtonSystemDirSeq6" min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="jButtonSystemDirSeq7" min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="jButtonSystemDirSeq8" min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="jButtonSystemDirSeq9" min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="jButtonSystemDirSeq10" min="-2" pref="28" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="378" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelSeq1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonSystemDirSeq1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldSystemDirSeq1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldSeq1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonSystemDirSeq2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSystemDirSeq2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSeq2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelSeq4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonSystemDirSeq3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSystemDirSeq3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSeq3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelSeq5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonSystemDirSeq4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSystemDirSeq4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSeq4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelSeq6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonSystemDirSeq5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSystemDirSeq5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSeq5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelSeq7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonSystemDirSeq6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSystemDirSeq6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSeq6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelSeq8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonSystemDirSeq7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSystemDirSeq7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSeq7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelSeq9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonSystemDirSeq8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSystemDirSeq8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSeq8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelSeq10" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonSystemDirSeq9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSystemDirSeq9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSeq9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelSeq11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonSystemDirSeq10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSystemDirSeq10" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabelSeq12" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldSeq10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButtonEnter" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="155" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabelSeq1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#xff11;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq1">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSeq1">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelSeq4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#xff12;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSeq2">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq2">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSeq3">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelSeq5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#xff13;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq3">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelSeq6">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#xff14;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq4">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSeq4">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelSeq7">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#xff15;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq5">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSeq5">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelSeq8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#xff16;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSeq6">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq6">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelSeq9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#xff17;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq7">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSeq7">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSeq8">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelSeq10">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#xff18;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq8">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelSeq11">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#xff19;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSeq9">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq9">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelSeq12">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="10"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSeq10">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq10">
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq2ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq3ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq4ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq5ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq6">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq6ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq7">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq7ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq8ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq9ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq10">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq10ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonEnter">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x9069;&#x3000;&#x3000;&#x7528;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEnterActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanelConfig">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="&#x74b0;&#x5883;&#x8a2d;&#x5b9a;">
+                <Property name="tabTitle" type="java.lang.String" value="&#x74b0;&#x5883;&#x8a2d;&#x5b9a;"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="1489" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="607" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
         <Container class="javax.swing.JPanel" name="jPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
@@ -74,7 +477,7 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane2" max="32767" attributes="0"/>
-                          <Component id="jTextField9" pref="1190" max="32767" attributes="0"/>
+                          <Component id="jTextField9" pref="1418" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -845,11 +1248,11 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel3">
+        <Container class="javax.swing.JPanel" name="jPanelAppInfo">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="tab3">
-                <Property name="tabTitle" type="java.lang.String" value="tab3"/>
+              <JTabbedPaneConstraints tabName="&#x30a2;&#x30d7;&#x30ea;&#x60c5;&#x5831;&#x8a2d;&#x5b9a;">
+                <Property name="tabTitle" type="java.lang.String" value="&#x30a2;&#x30d7;&#x30ea;&#x60c5;&#x5831;&#x8a2d;&#x5b9a;"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -857,149 +1260,30 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1261" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="607" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-        </Container>
-        <Container class="javax.swing.JPanel" name="jPanel4">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="&#x74b0;&#x5883;&#x8a2d;&#x5b9a;">
-                <Property name="tabTitle" type="java.lang.String" value="&#x74b0;&#x5883;&#x8a2d;&#x5b9a;"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1261" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="607" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-        </Container>
-        <Container class="javax.swing.JPanel" name="jPanelExeSys">
-          <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jPanelExeSysFocusGained"/>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jPanelExeSysFocusLost"/>
-            <EventHandler event="componentHidden" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jPanelExeSysComponentHidden"/>
-            <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jPanelExeSysComponentShown"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="&#x5b9f;&#x884c;SYS">
-                <Property name="tabTitle" type="java.lang.String" value="&#x5b9f;&#x884c;SYS"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jButtonEnter" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabelSeq4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="jTextFieldSeq2" pref="340" max="32767" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jTextFieldSystemDirSeq2" min="-2" pref="464" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonSystemDirSeq2" min="-2" pref="28" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jCheckBoxNewState" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
+                          <Component id="jTextFieldExtension" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelSeq1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jTextFieldSeq1" max="32767" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jTextFieldSystemDirSeq1" min="-2" pref="464" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonSystemDirSeq1" min="-2" pref="28" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelSeq5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldSeq3" max="32767" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldSystemDirSeq3" min="-2" pref="464" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jTextFieldSysdir" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jButtonSysdir" min="-2" pref="35" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabelSeq6" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldSeq4" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabelSeq7" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldSeq5" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabelSeq8" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldSeq6" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabelSeq9" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldSeq7" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabelSeq10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabelSeq11" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabelSeq12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jTextFieldSeq10" max="32767" attributes="0"/>
-                                                  <Component id="jTextFieldSeq8" max="32767" attributes="0"/>
-                                                  <Component id="jTextFieldSeq9" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTextFieldSystemDirSeq4" alignment="1" min="-2" pref="464" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldSystemDirSeq5" alignment="1" min="-2" pref="464" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldSystemDirSeq6" alignment="1" min="-2" pref="464" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldSystemDirSeq7" alignment="1" min="-2" pref="464" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldSystemDirSeq8" alignment="1" min="-2" pref="464" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldSystemDirSeq9" alignment="1" min="-2" pref="464" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldSystemDirSeq10" alignment="1" min="-2" pref="464" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="jTextFieldTitle" alignment="1" min="-2" pref="387" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane3" alignment="0" pref="469" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jButtonSystemDirSeq4" min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="jButtonSystemDirSeq5" min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="jButtonSystemDirSeq3" alignment="0" min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="jButtonSystemDirSeq6" min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="jButtonSystemDirSeq7" min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="jButtonSystemDirSeq8" min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="jButtonSystemDirSeq9" min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="jButtonSystemDirSeq10" min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="jButtonDelete" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonEntry" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="378" max="-2" attributes="0"/>
+                      <EmptySpace pref="891" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1007,267 +1291,106 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelSeq1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonSystemDirSeq1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldSystemDirSeq1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldSeq1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButtonSystemDirSeq2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSystemDirSeq2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSeq2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelSeq4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButtonSystemDirSeq3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSystemDirSeq3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSeq3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelSeq5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButtonSystemDirSeq4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSystemDirSeq4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSeq4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelSeq6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButtonSystemDirSeq5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSystemDirSeq5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSeq5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelSeq7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButtonSystemDirSeq6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSystemDirSeq6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSeq6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelSeq8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButtonSystemDirSeq7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSystemDirSeq7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSeq7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelSeq9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButtonSystemDirSeq8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSystemDirSeq8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSeq8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelSeq10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButtonSystemDirSeq9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSystemDirSeq9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSeq9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelSeq11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButtonSystemDirSeq10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSystemDirSeq10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jButtonDelete" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButtonEntry" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabelSeq12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldSeq10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jScrollPane3" min="-2" pref="69" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButtonEnter" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="155" max="32767" attributes="0"/>
+                      <Component id="jTextFieldTitle" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jCheckBoxNewState" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldSysdir" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonSysdir" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jTextFieldExtension" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="191" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabelSeq1">
+            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="jListTitles">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="appTitlesModel" type="code"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jListTitlesFocusGained"/>
+                    <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="jListTitlesValueChanged"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="jButtonDelete">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#xff11;"/>
+                <Property name="text" type="java.lang.String" value="&#x3000;&#x3000;&#x524a;&#x9664;&#x3000;&#x3000;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq1">
+            <Component class="javax.swing.JButton" name="jButtonEntry">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq1ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq1">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSeq1">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelSeq4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#xff12;"/>
+                <Property name="text" type="java.lang.String" value="&#x8a2d;&#x5b9a;&#x306e;&#x4fdd;&#x5b58;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSeq2">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq2">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSeq3">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelSeq5">
+            <Component class="javax.swing.JTextField" name="jTextFieldTitle">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#xff13;"/>
+                <Property name="text" type="java.lang.String" value="jTextField10"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq3">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelSeq6">
+            <Component class="javax.swing.JCheckBox" name="jCheckBoxNewState">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#xff14;"/>
+                <Property name="text" type="java.lang.String" value="&#x65b0;&#x3057;&#x3044;&#x8a2d;&#x5b9a;&#x3092;&#x4f5c;&#x6210;&#x3059;&#x308b;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq4">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSeq4">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelSeq7">
+            <Component class="javax.swing.JTextField" name="jTextFieldSysdir">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#xff15;"/>
+                <Property name="text" type="java.lang.String" value="jTextField11"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq5">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSeq5">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelSeq8">
+            <Component class="javax.swing.JButton" name="jButtonSysdir">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#xff16;"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSeq6">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq6">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelSeq9">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#xff17;"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq7">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSeq7">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSeq8">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelSeq10">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#xff18;"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq8">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelSeq11">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#xff19;"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSeq9">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq9">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelSeq12">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="10"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSeq10">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSystemDirSeq10">
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
+                <Property name="text" type="java.lang.String" value="&#x2026;"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSysdirActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq3">
+            <Component class="javax.swing.JTextField" name="jTextFieldExtension">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
+                <Property name="text" type="java.lang.String" value="jTextField12"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq3ActionPerformed"/>
-              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq4ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq5ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq6ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq7">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq7ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq8">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq8ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq9">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq9ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonSystemDirSeq10">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x53c2;&#x3000;&#x7167;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSystemDirSeq10ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonEnter">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x9069;&#x3000;&#x3000;&#x7528;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEnterActionPerformed"/>
-              </Events>
-            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="jTextAreaRemark">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>
