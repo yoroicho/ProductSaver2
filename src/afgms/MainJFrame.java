@@ -1086,9 +1086,11 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE))
                         .addGap(26, 26, 26)
                         .addGroup(jPanelAppInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonDelete)
+                            .addGroup(jPanelAppInfoLayout.createSequentialGroup()
+                                .addComponent(jButtonDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(2, 2, 2))
                             .addComponent(jButtonEntry))))
-                .addContainerGap(891, Short.MAX_VALUE))
+                .addGap(891, 891, 891))
         );
         jPanelAppInfoLayout.setVerticalGroup(
             jPanelAppInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1385,6 +1387,12 @@ public class MainJFrame extends javax.swing.JFrame {
         storeItems();
     }//GEN-LAST:event_jButtonEnterActionPerformed
 
+    /*
+    ここからAppInfoの設定
+    
+    */
+    
+    
     private void jButtonSysdirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSysdirActionPerformed
         // 各起動アプリの実行ファイルのディレクトリを抽出
         JFileChooser filechooserAppDir = new JFileChooser();
