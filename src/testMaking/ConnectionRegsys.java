@@ -24,8 +24,8 @@ import javax.swing.JOptionPane;
  */
 public class ConnectionRegsys extends javax.swing.JFrame {
 
-    static final String URL = "jdbc:mysql://localhost:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
-    //static final String URL = "jdbc:mysql://49.212.131.91:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
+   // static final String URL = "jdbc:mysql://localhost:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
+    static final String URL = "jdbc:mysql://49.212.131.91:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
 
     static final String USERNAME = "root";
     static final String PASSWORD = "pass";
@@ -326,7 +326,7 @@ public class ConnectionRegsys extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntryActionPerformed
-        jButtonEntry.setEnabled(false); // 二重登録を抑止、ただしチェックボックスにフォーカスが行くと再び登録ボタンが有効になる。
+        //jButtonEntry.setEnabled(false); // 二重登録を抑止、ただしチェックボックスにフォーカスが行くと再び登録ボタンが有効になる。
         updateRegsys(
                 this.jTextFieldTitle.getText(),
                 this.jTextFieldSysdir.getText(),

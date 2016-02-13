@@ -5,6 +5,7 @@
  */
 package afgms;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -1044,12 +1046,32 @@ public class MainJFrame extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jListTitles);
 
         jButtonDelete.setText("　　削除　　");
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
 
         jButtonEntry.setText("設定の保存");
+        jButtonEntry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEntryActionPerformed(evt);
+            }
+        });
 
         jTextFieldTitle.setText("jTextField10");
 
         jCheckBoxNewState.setText("新しい設定を作成する");
+        jCheckBoxNewState.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBoxNewStateStateChanged(evt);
+            }
+        });
+        jCheckBoxNewState.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxNewStateActionPerformed(evt);
+            }
+        });
 
         jTextFieldSysdir.setText("jTextField11");
 
@@ -1388,11 +1410,124 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEnterActionPerformed
 
     /*
-    ここからAppInfoの設定
+     ここからAppInfoの設定
     
-    */
-    
-    
+     */
+    public void deleteRegsys(String title) {
+        String sql = "DELETE FROM regsys WHERE title = (?);";
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                PreparedStatement statement = connection.prepareStatement(sql);) {
+
+            connection.setAutoCommit(false);
+
+            statement.setString(1, title);
+            statement.addBatch();
+            System.out.println(statement.toString());
+
+            int[] result = statement.executeBatch();
+            System.out.println("削除：" + result.length + "件");
+
+            try {
+
+                connection.commit();
+                System.out.println("削除成功");
+
+            } catch (SQLException e) {
+
+                connection.rollback();
+                System.out.println("削除失敗：ロールバック実行");
+
+                e.printStackTrace();
+
+            }
+
+            Statement stm = connection.createStatement();
+            String sql_select = "select * from regsys";
+            ResultSet rs = stm.executeQuery(sql_select);
+            while (rs.next()) {
+                String titleget = rs.getString("title");
+                String sysDir = rs.getString("sysdir");
+                System.out.println("取得結果 -> " + titleget + ":" + sysDir);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("エラーが発生しました");
+            e.printStackTrace();
+
+        }
+
+    }
+
+    public void updateRegsys(String title, String sysdir, String extension, String remark) {
+        String sql = "INSERT INTO  regsys VALUES (?, ?, ?, ?);";
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                PreparedStatement statement = connection.prepareStatement(sql);) {
+
+            connection.setAutoCommit(false);
+
+            statement.setString(1, title);
+            statement.setString(2, sysdir);
+            statement.setString(3, extension);
+            statement.setString(4, remark);
+            statement.addBatch();
+            System.out.println(statement.toString());
+
+            int[] result = statement.executeBatch();
+            System.out.println("登録：" + result.length + "件");
+
+            try {
+
+                connection.commit();
+                System.out.println("登録成功");
+
+            } catch (SQLException e) {
+
+                connection.rollback();
+                System.out.println("登録失敗：ロールバック実行");
+
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "同じ名前で上書きはできません。");
+                System.out.println("同じ名前で上書きはできません。");
+            }
+
+            Statement stm = connection.createStatement();
+            String sql_select = "select * from regsys";
+            ResultSet rs = stm.executeQuery(sql_select);
+            while (rs.next()) {
+                String titleget = rs.getString("title");
+                String sysDir = rs.getString("sysdir");
+                System.out.println("取得結果 -> " + titleget + ":" + sysDir);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("エラーが発生しました");
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "同じ名前で上書きはできません。");
+        }
+
+    }
+
+    private void checkJCheckBoxNewState() {
+        if (jCheckBoxNewState.isSelected()) {
+            this.jTextFieldTitle.setEditable(true);
+            this.jTextFieldTitle.setBackground(Color.white); // Enable にすると分かりにくいので
+            this.jTextFieldSysdir.setEditable(true);
+            this.jTextFieldExtension.setEditable(true);
+            this.jTextAreaRemark.setEditable(true);
+            this.jButtonEntry.setEnabled(true);
+            this.jButtonDelete.setEnabled(false); // 新規ﾓｰﾄﾞで削除不許可
+        } else {
+            this.jTextFieldTitle.setEditable(false);
+            this.jTextFieldTitle.setBackground(Color.LIGHT_GRAY); // Enable にすると分かりにくいので
+            this.jTextFieldSysdir.setEditable(false);
+            this.jTextFieldExtension.setEditable(false);
+            this.jTextAreaRemark.setEditable(false);
+            this.jButtonEntry.setEnabled(false);
+            this.jButtonDelete.setEnabled(true); // 非新規ﾓｰﾄﾞで削除可能へ
+        }
+    }
+
+
     private void jButtonSysdirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSysdirActionPerformed
         // 各起動アプリの実行ファイルのディレクトリを抽出
         JFileChooser filechooserAppDir = new JFileChooser();
@@ -1437,7 +1572,7 @@ public class MainJFrame extends javax.swing.JFrame {
             ResultSet resultSet = statement.executeQuery();
 
             this.jListTitles.removeAll();
-
+            appTitlesModel.removeAllElements();
             while (resultSet.next()) {
                 String titleget = resultSet.getString("title");
                 appTitlesModel.addElement(titleget);
@@ -1487,6 +1622,32 @@ public class MainJFrame extends javax.swing.JFrame {
         // フォーカスが来たらリストを更新
         updateJComboBoxItems();
     }//GEN-LAST:event_jListTitlesFocusGained
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        deleteRegsys(this.jListTitles.getSelectedValue().toString()); // 削除の空振りを防ぐため登録が確定しているコンボボックスを参照
+        updateJComboBoxItems();
+
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
+
+    private void jCheckBoxNewStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxNewStateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxNewStateActionPerformed
+
+    private void jCheckBoxNewStateStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxNewStateStateChanged
+        checkJCheckBoxNewState();
+    }//GEN-LAST:event_jCheckBoxNewStateStateChanged
+
+    private void jButtonEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntryActionPerformed
+        jButtonEntry.setEnabled(false); // 二重登録を抑止、ただしチェックボックスにフォーカスが行くと再び登録ボタンが有効になる。
+        updateRegsys(
+                this.jTextFieldTitle.getText(),
+                this.jTextFieldSysdir.getText(),
+                this.jTextFieldExtension.getText(),
+                this.jTextAreaRemark.getText()
+        );
+        jCheckBoxNewState.setSelected(false); // 登録したら一旦非新規ﾓｰﾄﾞへ
+        updateJComboBoxItems(); //登録後にコンボボックスを更新
+    }//GEN-LAST:event_jButtonEntryActionPerformed
 
     /**
      * @param args the command line arguments

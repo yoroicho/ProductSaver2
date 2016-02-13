@@ -1345,11 +1345,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x3000;&#x3000;&#x524a;&#x9664;&#x3000;&#x3000;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeleteActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonEntry">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x8a2d;&#x5b9a;&#x306e;&#x4fdd;&#x5b58;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEntryActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldTitle">
               <Properties>
@@ -1360,6 +1366,10 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x65b0;&#x3057;&#x3044;&#x8a2d;&#x5b9a;&#x3092;&#x4f5c;&#x6210;&#x3059;&#x308b;"/>
               </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jCheckBoxNewStateStateChanged"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxNewStateActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldSysdir">
               <Properties>
