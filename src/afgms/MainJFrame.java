@@ -36,8 +36,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private boolean isShowedSysPanel = false;
     DefaultListModel appTitlesModel = new DefaultListModel(); // appInfo で使用するリストのモデル
 
-    static final String URL = "jdbc:mysql://localhost:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
-    //static final String URL = "jdbc:mysql://49.212.131.91:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
+    // static final String URL = "jdbc:mysql://localhost:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
+    static final String URL = "jdbc:mysql://49.212.131.91:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
 
     static final String USERNAME = "root";
     static final String PASSWORD = "pass";
@@ -160,6 +160,15 @@ public class MainJFrame extends javax.swing.JFrame {
         jButtonSystemDirSeq10 = new javax.swing.JButton();
         jButtonEnter = new javax.swing.JButton();
         jPanelConfig = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
@@ -248,7 +257,9 @@ public class MainJFrame extends javax.swing.JFrame {
         jButtonSysdir = new javax.swing.JButton();
         jTextFieldExtension = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextAreaRemark = new javax.swing.JTextArea();
+        jTextAreaRemark = new javax.swing.JTextArea(25,80);
+        jTextFieldPrefix = new javax.swing.JTextField();
+        jTextFieldSufix = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -383,7 +394,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addGroup(jPanelExeSysLayout.createSequentialGroup()
                         .addComponent(jLabelSeq4)
                         .addGap(12, 12, 12)
-                        .addComponent(jTextFieldSeq2, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
+                        .addComponent(jTextFieldSeq2, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextFieldSystemDirSeq2, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -526,15 +537,74 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("実行SYS", jPanelExeSys);
 
+        jLabel20.setText("データベース");
+
+        jLabel21.setText("Hostname");
+
+        jLabel22.setText("Port");
+
+        jLabel23.setText("Username");
+
+        jLabel24.setText("Password");
+
+        jLabel25.setText("Schema");
+
+        jLabel26.setText("上書退避基点");
+
+        jLabel27.setText("世代蓄積基点");
+
+        jLabel28.setText("自動上書間隔");
+
         javax.swing.GroupLayout jPanelConfigLayout = new javax.swing.GroupLayout(jPanelConfig);
         jPanelConfig.setLayout(jPanelConfigLayout);
         jPanelConfigLayout.setHorizontalGroup(
             jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1489, Short.MAX_VALUE)
+            .addGroup(jPanelConfigLayout.createSequentialGroup()
+                .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelConfigLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelConfigLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel25)))
+                    .addGroup(jPanelConfigLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel27))
+                    .addGroup(jPanelConfigLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelConfigLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel28)))
+                .addContainerGap(1496, Short.MAX_VALUE))
         );
         jPanelConfigLayout.setVerticalGroup(
             jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 607, Short.MAX_VALUE)
+            .addGroup(jPanelConfigLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel25)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel27)
+                .addGap(50, 50, 50)
+                .addComponent(jLabel28)
+                .addContainerGap(246, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("環境設定", jPanelConfig);
@@ -560,7 +630,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(jButton9)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane2)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 1418, Short.MAX_VALUE))
+                    .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 1515, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -1032,6 +1102,12 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab2", jPanel2);
 
+        jPanelAppInfo.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanelAppInfoComponentShown(evt);
+            }
+        });
+
         jListTitles.setModel(appTitlesModel);
         jListTitles.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -1067,11 +1143,6 @@ public class MainJFrame extends javax.swing.JFrame {
                 jCheckBoxNewStateStateChanged(evt);
             }
         });
-        jCheckBoxNewState.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxNewStateActionPerformed(evt);
-            }
-        });
 
         jTextFieldSysdir.setText("jTextField11");
 
@@ -1084,9 +1155,14 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jTextFieldExtension.setText("jTextField12");
 
-        jTextAreaRemark.setColumns(20);
+        jTextAreaRemark.setColumns(80);
+        jTextAreaRemark.setLineWrap(true);
         jTextAreaRemark.setRows(5);
         jScrollPane4.setViewportView(jTextAreaRemark);
+
+        jTextFieldPrefix.setText("prefix");
+
+        jTextFieldSufix.setText("sufix");
 
         javax.swing.GroupLayout jPanelAppInfoLayout = new javax.swing.GroupLayout(jPanelAppInfo);
         jPanelAppInfo.setLayout(jPanelAppInfoLayout);
@@ -1096,25 +1172,32 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelAppInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAppInfoLayout.createSequentialGroup()
-                        .addComponent(jCheckBoxNewState, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanelAppInfoLayout.createSequentialGroup()
-                        .addGroup(jPanelAppInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextFieldExtension)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelAppInfoLayout.createSequentialGroup()
-                                .addComponent(jTextFieldSysdir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonSysdir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextFieldTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE))
-                        .addGap(26, 26, 26)
                         .addGroup(jPanelAppInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelAppInfoLayout.createSequentialGroup()
-                                .addComponent(jButtonDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(2, 2, 2))
-                            .addComponent(jButtonEntry))))
-                .addGap(891, 891, 891))
+                                .addComponent(jCheckBoxNewState, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanelAppInfoLayout.createSequentialGroup()
+                                .addGroup(jPanelAppInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTextFieldExtension)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanelAppInfoLayout.createSequentialGroup()
+                                        .addComponent(jTextFieldSysdir)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButtonSysdir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanelAppInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelAppInfoLayout.createSequentialGroup()
+                                        .addComponent(jButtonDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(2, 2, 2))
+                                    .addComponent(jButtonEntry))))
+                        .addGap(891, 891, 891))
+                    .addGroup(jPanelAppInfoLayout.createSequentialGroup()
+                        .addGroup(jPanelAppInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldPrefix, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSufix, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanelAppInfoLayout.setVerticalGroup(
             jPanelAppInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1135,10 +1218,14 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jTextFieldSysdir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonSysdir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldPrefix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addComponent(jTextFieldExtension, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldSufix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("アプリ情報設定", jPanelAppInfo);
@@ -1460,8 +1547,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
     }
 
-    public void updateRegsys(String title, String sysdir, String extension, String remark) {
-        String sql = "INSERT INTO  regsys VALUES (?, ?, ?, ?);";
+    public void updateRegsys(String title, String sysdir, String extension, String remark, String prefix, String sufix) {
+        String sql = "INSERT INTO  regsys VALUES (?, ?, ?, ?,?,?);";
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
                 PreparedStatement statement = connection.prepareStatement(sql);) {
 
@@ -1471,6 +1558,8 @@ public class MainJFrame extends javax.swing.JFrame {
             statement.setString(2, sysdir);
             statement.setString(3, extension);
             statement.setString(4, remark);
+            statement.setString(5, prefix);
+            statement.setString(6, sufix);
             statement.addBatch();
             System.out.println(statement.toString());
 
@@ -1608,6 +1697,12 @@ public class MainJFrame extends javax.swing.JFrame {
                     this.jTextAreaRemark.setText(
                             this.selectOneRegsys(this.jListTitles.getSelectedValue().toString()).getString("remark")
                     );
+                    this.jTextFieldPrefix.setText(
+                            this.selectOneRegsys(this.jListTitles.getSelectedValue().toString()).getString("prefix")
+                    );
+                    this.jTextFieldSufix.setText(
+                            this.selectOneRegsys(this.jListTitles.getSelectedValue().toString()).getString("sufix")
+                    );
 
                 } catch (SQLException ex) {
                     Logger.getLogger(ConnectionRegsys.class
@@ -1631,10 +1726,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
-    private void jCheckBoxNewStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxNewStateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxNewStateActionPerformed
-
     private void jCheckBoxNewStateStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxNewStateStateChanged
         checkJCheckBoxNewState();
     }//GEN-LAST:event_jCheckBoxNewStateStateChanged
@@ -1645,11 +1736,19 @@ public class MainJFrame extends javax.swing.JFrame {
                 this.jTextFieldTitle.getText(),
                 this.jTextFieldSysdir.getText(),
                 this.jTextFieldExtension.getText(),
-                this.jTextAreaRemark.getText()
+                this.jTextAreaRemark.getText(),
+                this.jTextFieldPrefix.getText(),
+                this.jTextFieldSufix.getText()
         );
         jCheckBoxNewState.setSelected(false); // 登録したら一旦非新規ﾓｰﾄﾞへ
         updateJComboBoxItems(); //登録後にコンボボックスを更新
     }//GEN-LAST:event_jButtonEntryActionPerformed
+
+    private void jPanelAppInfoComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelAppInfoComponentShown
+        // タブが表示されたらリストを更新
+        updateJComboBoxItems();
+        checkJCheckBoxNewState();
+    }//GEN-LAST:event_jPanelAppInfoComponentShown
 
     /**
      * @param args the command line arguments
@@ -1754,6 +1853,15 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1805,6 +1913,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldCopyTarget3;
     private javax.swing.JTextField jTextFieldExtension;
     private javax.swing.JTextField jTextFieldIssueDir;
+    private javax.swing.JTextField jTextFieldPrefix;
     private javax.swing.JTextField jTextFieldSeq1;
     private javax.swing.JTextField jTextFieldSeq10;
     private javax.swing.JTextField jTextFieldSeq2;
@@ -1816,6 +1925,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldSeq8;
     private javax.swing.JTextField jTextFieldSeq9;
     private javax.swing.JTextField jTextFieldSourceDir;
+    private javax.swing.JTextField jTextFieldSufix;
     private javax.swing.JTextField jTextFieldSysdir;
     private javax.swing.JTextField jTextFieldSystemDir;
     private javax.swing.JTextField jTextFieldSystemDirSeq1;
