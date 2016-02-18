@@ -33,7 +33,9 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private String crlf; // 改行コード
     private String cDir; // カレントディレクトリ
-
+private String pathSeparator; // パスの区切り文字
+private String fileSeparator; // ファイルの区切り文字
+    
     private boolean isShowedSysPanel = false;
     DefaultListModel appTitlesModel = new DefaultListModel(); // appInfo で使用するリストのモデル
 
@@ -66,6 +68,8 @@ public class MainJFrame extends javax.swing.JFrame {
         try {
             this.crlf = System.getProperty("line.separator");
             this.cDir = System.getProperty("user.dir");
+            this.pathSeparator = System.getProperty("path.separator");
+            this.fileSeparator = System.getProperty("file.separator");
             System.out.println("カレントディレクトリ　"+cDir);
         } catch (SecurityException e) {
         }
@@ -1438,7 +1442,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSystemDirSeq10ActionPerformed
 
     private void storeItems() {
-        ConfigurationXML conf = new ConfigurationXML(cDir+"ExecutionSys.XML"); //ファイルの位置は再考する
+        ConfigurationXML conf = new ConfigurationXML(cDir+fileSeparator+"ExecutionSys.XML"); //ファイルの位置は再考する
 
         conf.upDateProperty("jTextFieldSeq1", this.jTextFieldSeq1.getText());
         conf.upDateProperty("jTextFieldSeq2", this.jTextFieldSeq2.getText());
