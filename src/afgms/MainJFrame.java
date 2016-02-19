@@ -1442,8 +1442,10 @@ private String fileSeparator; // ファイルの区切り文字
     }//GEN-LAST:event_jButtonSystemDirSeq10ActionPerformed
 
     private void storeItems() {
+        try{
+             JOptionPane.showMessageDialog(null, "これからオープン");
         ConfigurationXML conf = new ConfigurationXML(cDir+fileSeparator+"ExecutionSys.XML"); //ファイルの位置は再考する
-
+       JOptionPane.showMessageDialog(null, "オープンした");
         conf.upDateProperty("jTextFieldSeq1", this.jTextFieldSeq1.getText());
         conf.upDateProperty("jTextFieldSeq2", this.jTextFieldSeq2.getText());
         conf.upDateProperty("jTextFieldSeq3", this.jTextFieldSeq3.getText());
@@ -1467,10 +1469,18 @@ private String fileSeparator; // ファイルの区切り文字
         conf.upDateProperty("jTextFieldSystemDirSeq10", this.jTextFieldSystemDirSeq10.getText());
 
         conf.storeToXML("ExecutionSys.XML", "成果物作成用の起動システム候補");
+        
+         }catch(Exception e){
+            System.out.println(e.toString());
+                            JOptionPane.showMessageDialog(null, "オープンエラー"+e.toString());
+        }
     }
 
     private void loadItems() {
-        ConfigurationXML conf = new ConfigurationXML("ExecutionSys.XML"); //ファイルの位置は再考する
+        try{
+         JOptionPane.showMessageDialog(null, "これからオープン");
+        ConfigurationXML conf = new ConfigurationXML(cDir+fileSeparator+"ExecutionSys.XML"); //ファイルの位置は再考する
+       JOptionPane.showMessageDialog(null, "オープンした");
 
         this.jTextFieldSeq1.setText(conf.getProperty("jTextFieldSeq1"));
         this.jTextFieldSeq2.setText(conf.getProperty("jTextFieldSeq2"));
@@ -1493,7 +1503,10 @@ private String fileSeparator; // ファイルの区切り文字
         this.jTextFieldSystemDirSeq8.setText(conf.getProperty("jTextFieldSystemDirSeq8"));
         this.jTextFieldSystemDirSeq9.setText(conf.getProperty("jTextFieldSystemDirSeq9"));
         this.jTextFieldSystemDirSeq10.setText(conf.getProperty("jTextFieldSystemDirSeq10"));
-
+ }catch(Exception e){
+            System.out.println(e.toString());
+                            JOptionPane.showMessageDialog(null, "オープンエラー"+e.toString());
+        }
     }
 
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
