@@ -3,6 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+/*
+参考サイト
+http://www.mlab.im.dendai.ac.jp/~yamada/java/properties/
+*/
+
 package testMaking;
 
 import java.io.FileInputStream;
@@ -16,7 +22,7 @@ public class Configuration {
     public Configuration(String filename){
         conf = new Properties();
         try {
-            conf.load(new FileInputStream(filename));
+            conf.loadFromXML(new FileInputStream(filename));
         } catch (IOException e) {
             System.err.println("Cannot open " + filename + ".");
             e.printStackTrace();
