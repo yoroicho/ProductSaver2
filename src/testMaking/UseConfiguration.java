@@ -5,6 +5,8 @@
  */
 package testMaking;
 
+import java.util.Date;
+
 /**
  *
  * @author 00499
@@ -14,7 +16,7 @@ public class UseConfiguration extends javax.swing.JFrame {
     /**
      * Creates new form UseConfiguration
      */
-    Configuration confg = new Configuration("test20160222.xml");
+    Configuration confg = new Configuration("test20160222");
 
     public UseConfiguration() {
         initComponents();
@@ -133,7 +135,8 @@ public class UseConfiguration extends javax.swing.JFrame {
     private void jButtonEnteｒActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnteｒActionPerformed
         //　登録
         confg.addProperty(this.jTextFieldKey.getText(), this.jTextFieldValue.getText());
-        confg.storeToXML("test20160222.xml", "登録");
+
+        confg.storeToXML("test20160222", "Last up date or new create. " + new Date().toString());
 
     }//GEN-LAST:event_jButtonEnteｒActionPerformed
 
@@ -151,15 +154,15 @@ public class UseConfiguration extends javax.swing.JFrame {
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
         // 更新
-        
-                confg.updateProperty(this.jTextFieldKey.getText(), this.jTextFieldValue.getText());
-        confg.storeToXML("test20160222.xml", "登録");
+
+        confg.updateProperty(this.jTextFieldKey.getText(), this.jTextFieldValue.getText());
+        confg.storeToXML("test20160222", "Last up date or new create. " + new Date().toString());
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // 削除
         confg.removeProperty(this.jTextFieldKey.getText());
-        confg.storeToXML("test20160222.xml", "登録");
+        confg.storeToXML("test20160222", "Last up date or new create. " + new Date().toString());
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     /**

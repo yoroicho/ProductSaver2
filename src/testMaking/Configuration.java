@@ -22,28 +22,36 @@ public class Configuration {
     private String lineSeparator;
     private String userDir;
     private String fileSeparator;
-    private String configurationPath ;
+    private String configurationPath;
 
-    public Configuration(String filename) {
+    public Configuration(String filename) { // args[0]で起動時に設定ファイル名を指定することで、起動時に環境を選択しなくてもよい。
+        /*
+         設定ファイルを分離する事により登録データベースならびに保存基ディレクトリを変更する
+         ことが可能だが、これを起動時に手動で行った場合錯誤が生じる可能性がある。
+         しかし、用途によってこれら環境を今後分離する可能性は否定できないため、コマンドライン
+         付きのショートカットのargs[0]にConfigファイル名を指定することで錯誤の防止と利便性の
+         向上を確保するものとする。
+         */
 
         try { // OS依存情報取得
             this.lineSeparator = System.getProperty("line.separator"); // 改行コード
             this.userDir = System.getProperty("user.dir"); // 自分自身のパス
             this.fileSeparator = System.getProperty("file.separator"); // Windowsでは円マーク
-System.out.println(this.lineSeparator+" "+this.userDir+" "+this.fileSeparator+" です。");
+            System.out.println(this.lineSeparator + " " + this.userDir + " " + this.fileSeparator + " です。");
         } catch (SecurityException e) {
             JOptionPane.showMessageDialog(null, "OS依存情報が取得できません、終了いたします。");
             System.exit(0);
         }
-        
-        configurationPath = userDir+fileSeparator+filename;
+
+        configurationPath = userDir + fileSeparator + filename + ".xml";
 
         conf = new Properties();
         try {
-            conf.loadFromXML(new FileInputStream(configurationPath));
+            conf.loadFromXML(new FileInputStream(configurationPath)); // XML形式で無い場合はconf.load()
         } catch (IOException e) {
             System.err.println("Cannot open " + configurationPath + ".");
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, userDir + fileSeparator + filename + ".xml" + "環境での初回起動です。");
         }
 
     }
@@ -53,6 +61,7 @@ System.out.println(this.lineSeparator+" "+this.userDir+" "+this.fileSeparator+" 
             conf.remove(key);
         } else {
             System.err.println("Key not found: " + key);
+            JOptionPane.showMessageDialog(null, "Key not found: " + key);
         }
     }
 
@@ -61,6 +70,7 @@ System.out.println(this.lineSeparator+" "+this.userDir+" "+this.fileSeparator+" 
             return conf.getProperty(key);
         } else {
             System.err.println("Key not found: " + key);
+             JOptionPane.showMessageDialog(null, "Key not found: " + key);
             return "";
         }
     }
@@ -68,6 +78,7 @@ System.out.println(this.lineSeparator+" "+this.userDir+" "+this.fileSeparator+" 
     public void updateProperty(String key, String value) {
         if (!conf.containsKey(key)) {
             System.err.println("Key not exists: " + key);
+             JOptionPane.showMessageDialog(null, "Key not exists: " + key);
         } else {
             conf.setProperty(key, value);
         }
@@ -76,6 +87,7 @@ System.out.println(this.lineSeparator+" "+this.userDir+" "+this.fileSeparator+" 
     public void addProperty(String key, String value) {
         if (conf.containsKey(key)) {
             System.err.println("Key already exists: " + key);
+            JOptionPane.showMessageDialog(null, "Key already exists: " + key);
         } else {
             conf.setProperty(key, value);
         }
@@ -86,6 +98,7 @@ System.out.println(this.lineSeparator+" "+this.userDir+" "+this.fileSeparator+" 
             conf.store(new FileOutputStream(configurationPath), comments);
         } catch (IOException e) {
             System.err.println("Cannot open " + configurationPath + ".");
+            JOptionPane.showMessageDialog(null, "Cannot open " + configurationPath + ".");
             e.printStackTrace();
         }
     }
@@ -95,11 +108,13 @@ System.out.println(this.lineSeparator+" "+this.userDir+" "+this.fileSeparator+" 
             conf.storeToXML(new FileOutputStream(configurationPath), comments);
         } catch (IOException e) {
             System.err.println("Cannot open " + configurationPath + ".");
+            JOptionPane.showMessageDialog(null, "Cannot open " + configurationPath + ".");
             e.printStackTrace();
         }
     }
 
     public static void main(String[] args) {
+        // mainのメソッドはすべてサンプル事例。
         Configuration conf = new Configuration(args[0]);
         // 読み込み
         System.out.println(conf.getProperty("university"));
@@ -111,5 +126,6 @@ System.out.println(this.lineSeparator+" "+this.userDir+" "+this.fileSeparator+" 
         // 説明を指定して保存
         conf.store(args[0], "configurations");
         //conf.storeToXML(args[0] + ".xml", "configurations");
+        // サンプル事例以上。
     }
 }
