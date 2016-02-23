@@ -54,8 +54,18 @@ public class UseConfiguration extends javax.swing.JFrame {
         });
 
         jButtonUpdate.setText("変更");
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
 
         jButtonDelete.setText("削除");
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Key");
 
@@ -138,6 +148,19 @@ public class UseConfiguration extends javax.swing.JFrame {
         // 読み込み
         this.jTextFieldValue.setText(confg.getProperty(this.jTextFieldKey.getText()));
     }//GEN-LAST:event_jButtonReadActionPerformed
+
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        // 更新
+        
+                confg.updateProperty(this.jTextFieldKey.getText(), this.jTextFieldValue.getText());
+        confg.storeToXML("test20160222.xml", "登録");
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        // 削除
+        confg.removeProperty(this.jTextFieldKey.getText());
+        confg.storeToXML("test20160222.xml", "登録");
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     /**
      * @param args the command line arguments
