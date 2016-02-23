@@ -456,9 +456,9 @@
                               </Group>
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextField10" min="-2" pref="607" max="-2" attributes="0"/>
-                                  <Component id="jTextField12" min="-2" pref="636" max="-2" attributes="0"/>
-                                  <Component id="jTextField13" alignment="0" min="-2" pref="606" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldDbUrl" min="-2" pref="607" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldDbUsername" min="-2" pref="636" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldDbPassword" alignment="0" min="-2" pref="606" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
@@ -468,25 +468,25 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxAutoSaveTime" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jTextField16" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldMultigenerationalBackupHome" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel26" min="-2" pref="78" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField15" min="-2" pref="593" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldPasteBuckupHome" min="-2" pref="593" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton10" min="-2" pref="709" max="-2" attributes="0"/>
+                              <Component id="jButtonEnterConfig" min="-2" pref="709" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="846" max="32767" attributes="0"/>
@@ -501,35 +501,35 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldDbUrl" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldDbUsername" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldDbPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="59" max="32767" attributes="0"/>
+                      <EmptySpace pref="57" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel26" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField15" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldPasteBuckupHome" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField16" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldMultigenerationalBackupHome" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxAutoSaveTime" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="94" max="32767" attributes="0"/>
-                      <Component id="jButton10" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="96" max="32767" attributes="0"/>
+                      <Component id="jButtonEnterConfig" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -568,20 +568,20 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel28">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x81ea;&#x52d5;&#x4e0a;&#x66f8;&#x9593;&#x9694;"/>
+                <Property name="text" type="java.lang.String" value="&#x81ea;&#x52d5;&#x4e0a;&#x66f8;&#x30b9;&#x30af;&#x30ea;&#x30d7;&#x30c8;&#x9593;&#x9694;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField10">
+            <Component class="javax.swing.JTextField" name="jTextFieldDbUrl">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField12">
+            <Component class="javax.swing.JTextField" name="jTextFieldDbUsername">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField13">
+            <Component class="javax.swing.JTextField" name="jTextFieldDbPassword">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField15">
+            <Component class="javax.swing.JTextField" name="jTextFieldPasteBuckupHome">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField16">
+            <Component class="javax.swing.JTextField" name="jTextFieldMultigenerationalBackupHome">
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="jComboBoxAutoSaveTime">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -593,10 +593,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton10">
+            <Component class="javax.swing.JButton" name="jButtonEnterConfig">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x9069;&#x7528;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEnterConfigActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -1409,7 +1412,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -1445,6 +1448,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jTextFieldPrefix" min="-2" pref="469" max="-2" attributes="0"/>
                                   <Component id="jTextFieldSufix" alignment="0" min="-2" pref="469" max="-2" attributes="0"/>
+                                  <Component id="jTextField11" alignment="0" min="-2" pref="566" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -1479,7 +1483,9 @@
                       <Component id="jTextFieldExtension" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTextFieldSufix" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jTextField11" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="112" max="32767" attributes="0"/>
                   </Group>
@@ -1581,6 +1587,11 @@
             <Component class="javax.swing.JTextField" name="jTextFieldSufix">
               <Properties>
                 <Property name="text" type="java.lang.String" value="sufix"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextField11">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x81ea;&#x52d5;&#x4e0a;&#x66f8;&#x304d;&#x30b9;&#x30af;&#x30ea;&#x30d7;&#x30c8;&#xff08;&#xff3e;S&#x3068;&#x304b;&#xff09;&#x30c7;&#x30fc;&#x30bf;&#x30d9;&#x30fc;&#x30b9;&#x3068;&#x306f;&#x307e;&#x3060;&#x9023;&#x643a;&#x3055;&#x305b;&#x3066;&#x3044;&#x306a;&#x3044;&#x3002;"/>
               </Properties>
             </Component>
           </SubComponents>

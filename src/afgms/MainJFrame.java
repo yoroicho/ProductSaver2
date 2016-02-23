@@ -17,6 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -31,10 +32,8 @@ import testMaking.ConnectionRegsys;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
-    private String crlf; // 改行コード
-    private String cDir; // カレントディレクトリ
-private String pathSeparator; // パスの区切り文字
-private String fileSeparator; // ファイルの区切り文字
+    String configFile;
+    
     
     private boolean isShowedSysPanel = false;
     DefaultListModel appTitlesModel = new DefaultListModel(); // appInfo で使用するリストのモデル
@@ -44,14 +43,19 @@ private String fileSeparator; // ファイルの区切り文字
 
     static final String USERNAME = "root";
     static final String PASSWORD = "pass";
+    private String lineSeparator;
+    private String userDir;
+    private String fileSeparator;
 
     /**
      * Creates new form NewJFrame
      */
-    public MainJFrame() {
+    public MainJFrame(String configFile) {
 
         initComponents();
 
+this.configFile = configFile;        
+        
         // 表示を初期化
         this.buttonGroupCat1.add(this.jRadioButtonSaveCat1Paste);
         this.buttonGroupCat1.add(this.jRadioButtonSaveCat1Fork);
@@ -63,15 +67,15 @@ private String fileSeparator; // ファイルの区切り文字
         this.jRadioButtonSaveCat2Paste.setSelected(true); // Cat2は基本上書き
         this.jRadioButtonSaveCat3Paste.setSelected(true); // Cat3は基本上書き
 
-        // 改行コードを取得
-        // this.crlf = "\n";
-        try {
-            this.crlf = System.getProperty("line.separator");
-            this.cDir = System.getProperty("user.dir");
-            this.pathSeparator = System.getProperty("path.separator");
-            this.fileSeparator = System.getProperty("file.separator");
-            System.out.println("カレントディレクトリ　"+cDir);
+        
+        try { // OS依存情報取得
+            this.lineSeparator = System.getProperty("line.separator"); // 改行コード
+            this.userDir = System.getProperty("user.dir"); // 自分自身のパス
+            this.fileSeparator = System.getProperty("file.separator"); // Windowsでは円マーク
+            System.out.println("プログラム起動ディレクトリは "+this.lineSeparator + " " + this.userDir + " " + this.fileSeparator + " です。");
         } catch (SecurityException e) {
+            JOptionPane.showMessageDialog(null, "OS依存情報が取得できません、終了いたします。");
+            System.exit(0);
         }
     }
 
@@ -96,7 +100,7 @@ private String fileSeparator; // ファイルの区切り文字
                     break;
                 }
                 System.out.println(line);
-                jTextAreaRedirectErrorStream.append(line + crlf);
+                jTextAreaRedirectErrorStream.append(line + userDir);
             }
         } finally {
             brSystemInvoke.close();
@@ -104,7 +108,7 @@ private String fileSeparator; // ファイルの区切り文字
     }
 
     public void setMessagejTextAreaRedirectErrorStream(String msg) {
-        jTextAreaRedirectErrorStream.append(msg + crlf);
+        jTextAreaRedirectErrorStream.append(msg + userDir);
     }
 
     private class AppInfo { // アプリ情報
@@ -174,13 +178,13 @@ private String fileSeparator; // ファイルの区切り文字
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
-        jButton10 = new javax.swing.JButton();
+        jTextFieldDbUrl = new javax.swing.JTextField();
+        jTextFieldDbUsername = new javax.swing.JTextField();
+        jTextFieldDbPassword = new javax.swing.JTextField();
+        jTextFieldPasteBuckupHome = new javax.swing.JTextField();
+        jTextFieldMultigenerationalBackupHome = new javax.swing.JTextField();
+        jComboBoxAutoSaveTime = new javax.swing.JComboBox();
+        jButtonEnterConfig = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
@@ -272,6 +276,7 @@ private String fileSeparator; // ファイルの区切り文字
         jTextAreaRemark = new javax.swing.JTextArea(25,80);
         jTextFieldPrefix = new javax.swing.JTextField();
         jTextFieldSufix = new javax.swing.JTextField();
+        jTextField11 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -561,11 +566,16 @@ private String fileSeparator; // ファイルの区切り文字
 
         jLabel27.setText("世代蓄積基点");
 
-        jLabel28.setText("自動上書間隔");
+        jLabel28.setText("自動上書スクリプト間隔");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxAutoSaveTime.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton10.setText("適用");
+        jButtonEnterConfig.setText("適用");
+        jButtonEnterConfig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEnterConfigActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelConfigLayout = new javax.swing.GroupLayout(jPanelConfig);
         jPanelConfig.setLayout(jPanelConfigLayout);
@@ -581,9 +591,9 @@ private String fileSeparator; // ファイルの区切り文字
                             .addComponent(jLabel24))
                         .addGap(22, 22, 22)
                         .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextFieldDbUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDbUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanelConfigLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -591,19 +601,19 @@ private String fileSeparator; // ファイルの区切り文字
                             .addGroup(jPanelConfigLayout.createSequentialGroup()
                                 .addComponent(jLabel28)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBoxAutoSaveTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelConfigLayout.createSequentialGroup()
                                     .addComponent(jLabel27)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextField16))
+                                    .addComponent(jTextFieldMultigenerationalBackupHome))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelConfigLayout.createSequentialGroup()
                                     .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jTextFieldPasteBuckupHome, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanelConfigLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonEnterConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(846, Short.MAX_VALUE))
         );
         jPanelConfigLayout.setVerticalGroup(
@@ -614,29 +624,29 @@ private String fileSeparator; // ファイルの区切り文字
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDbUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDbUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldPasteBuckupHome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldMultigenerationalBackupHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                .addComponent(jButton10)
+                    .addComponent(jComboBoxAutoSaveTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addComponent(jButtonEnterConfig)
                 .addGap(90, 90, 90))
         );
 
@@ -1197,6 +1207,8 @@ private String fileSeparator; // ファイルの区切り文字
 
         jTextFieldSufix.setText("sufix");
 
+        jTextField11.setText("自動上書きスクリプト（＾Sとか）データベースとはまだ連携させていない。");
+
         javax.swing.GroupLayout jPanelAppInfoLayout = new javax.swing.GroupLayout(jPanelAppInfo);
         jPanelAppInfo.setLayout(jPanelAppInfoLayout);
         jPanelAppInfoLayout.setHorizontalGroup(
@@ -1229,7 +1241,8 @@ private String fileSeparator; // ファイルの区切り文字
                     .addGroup(jPanelAppInfoLayout.createSequentialGroup()
                         .addGroup(jPanelAppInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldPrefix, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldSufix, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldSufix, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanelAppInfoLayout.setVerticalGroup(
@@ -1256,7 +1269,9 @@ private String fileSeparator; // ファイルの区切り文字
                 .addComponent(jTextFieldExtension, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldSufix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(112, Short.MAX_VALUE))
         );
@@ -1442,70 +1457,70 @@ private String fileSeparator; // ファイルの区切り文字
     }//GEN-LAST:event_jButtonSystemDirSeq10ActionPerformed
 
     private void storeItems() {
-        try{
-             JOptionPane.showMessageDialog(null, "これからオープン");
-        ConfigurationXML conf = new ConfigurationXML(cDir+fileSeparator+"ExecutionSys.XML"); //ファイルの位置は再考する
-       JOptionPane.showMessageDialog(null, "オープンした");
-        conf.upDateProperty("jTextFieldSeq1", this.jTextFieldSeq1.getText());
-        conf.upDateProperty("jTextFieldSeq2", this.jTextFieldSeq2.getText());
-        conf.upDateProperty("jTextFieldSeq3", this.jTextFieldSeq3.getText());
-        conf.upDateProperty("jTextFieldSeq4", this.jTextFieldSeq4.getText());
-        conf.upDateProperty("jTextFieldSeq5", this.jTextFieldSeq5.getText());
-        conf.upDateProperty("jTextFieldSeq6", this.jTextFieldSeq6.getText());
-        conf.upDateProperty("jTextFieldSeq7", this.jTextFieldSeq7.getText());
-        conf.upDateProperty("jTextFieldSeq8", this.jTextFieldSeq8.getText());
-        conf.upDateProperty("jTextFieldSeq9", this.jTextFieldSeq9.getText());
-        conf.upDateProperty("jTextFieldSeq10", this.jTextFieldSeq10.getText());
+        try {
+            JOptionPane.showMessageDialog(null, "これからオープン");
+            ConfigurationXML conf = new ConfigurationXML(userDir+ fileSeparator + "ExecutionSys.XML"); //ファイルの位置は再考する
+            JOptionPane.showMessageDialog(null, "オープンした");
+            conf.upDateProperty("jTextFieldSeq1", this.jTextFieldSeq1.getText());
+            conf.upDateProperty("jTextFieldSeq2", this.jTextFieldSeq2.getText());
+            conf.upDateProperty("jTextFieldSeq3", this.jTextFieldSeq3.getText());
+            conf.upDateProperty("jTextFieldSeq4", this.jTextFieldSeq4.getText());
+            conf.upDateProperty("jTextFieldSeq5", this.jTextFieldSeq5.getText());
+            conf.upDateProperty("jTextFieldSeq6", this.jTextFieldSeq6.getText());
+            conf.upDateProperty("jTextFieldSeq7", this.jTextFieldSeq7.getText());
+            conf.upDateProperty("jTextFieldSeq8", this.jTextFieldSeq8.getText());
+            conf.upDateProperty("jTextFieldSeq9", this.jTextFieldSeq9.getText());
+            conf.upDateProperty("jTextFieldSeq10", this.jTextFieldSeq10.getText());
 
-        conf.upDateProperty("jTextFieldSystemDirSeq1", this.jTextFieldSystemDirSeq1.getText());
-        conf.upDateProperty("jTextFieldSystemDirSeq2", this.jTextFieldSystemDirSeq2.getText());
-        conf.upDateProperty("jTextFieldSystemDirSeq3", this.jTextFieldSystemDirSeq3.getText());
-        conf.upDateProperty("jTextFieldSystemDirSeq4", this.jTextFieldSystemDirSeq4.getText());
-        conf.upDateProperty("jTextFieldSystemDirSeq5", this.jTextFieldSystemDirSeq5.getText());
-        conf.upDateProperty("jTextFieldSystemDirSeq6", this.jTextFieldSystemDirSeq6.getText());
-        conf.upDateProperty("jTextFieldSystemDirSeq7", this.jTextFieldSystemDirSeq7.getText());
-        conf.upDateProperty("jTextFieldSystemDirSeq8", this.jTextFieldSystemDirSeq8.getText());
-        conf.upDateProperty("jTextFieldSystemDirSeq9", this.jTextFieldSystemDirSeq9.getText());
-        conf.upDateProperty("jTextFieldSystemDirSeq10", this.jTextFieldSystemDirSeq10.getText());
+            conf.upDateProperty("jTextFieldSystemDirSeq1", this.jTextFieldSystemDirSeq1.getText());
+            conf.upDateProperty("jTextFieldSystemDirSeq2", this.jTextFieldSystemDirSeq2.getText());
+            conf.upDateProperty("jTextFieldSystemDirSeq3", this.jTextFieldSystemDirSeq3.getText());
+            conf.upDateProperty("jTextFieldSystemDirSeq4", this.jTextFieldSystemDirSeq4.getText());
+            conf.upDateProperty("jTextFieldSystemDirSeq5", this.jTextFieldSystemDirSeq5.getText());
+            conf.upDateProperty("jTextFieldSystemDirSeq6", this.jTextFieldSystemDirSeq6.getText());
+            conf.upDateProperty("jTextFieldSystemDirSeq7", this.jTextFieldSystemDirSeq7.getText());
+            conf.upDateProperty("jTextFieldSystemDirSeq8", this.jTextFieldSystemDirSeq8.getText());
+            conf.upDateProperty("jTextFieldSystemDirSeq9", this.jTextFieldSystemDirSeq9.getText());
+            conf.upDateProperty("jTextFieldSystemDirSeq10", this.jTextFieldSystemDirSeq10.getText());
 
-        conf.storeToXML("ExecutionSys.XML", "成果物作成用の起動システム候補");
-        
-         }catch(Exception e){
+            conf.storeToXML("ExecutionSys.XML", "成果物作成用の起動システム候補");
+
+        } catch (Exception e) {
             System.out.println(e.toString());
-                            JOptionPane.showMessageDialog(null, "オープンエラー"+e.toString());
+            JOptionPane.showMessageDialog(null, "オープンエラー" + e.toString());
         }
     }
 
     private void loadItems() {
-        try{
-         JOptionPane.showMessageDialog(null, "これからオープン");
-        ConfigurationXML conf = new ConfigurationXML(cDir+fileSeparator+"ExecutionSys.XML"); //ファイルの位置は再考する
-       JOptionPane.showMessageDialog(null, "オープンした");
+        try {
+            JOptionPane.showMessageDialog(null, "これからオープン");
+            ConfigurationXML conf = new ConfigurationXML(userDir + fileSeparator + "ExecutionSys.XML"); //ファイルの位置は再考する
+            JOptionPane.showMessageDialog(null, "オープンした");
 
-        this.jTextFieldSeq1.setText(conf.getProperty("jTextFieldSeq1"));
-        this.jTextFieldSeq2.setText(conf.getProperty("jTextFieldSeq2"));
-        this.jTextFieldSeq3.setText(conf.getProperty("jTextFieldSeq3"));
-        this.jTextFieldSeq4.setText(conf.getProperty("jTextFieldSeq4"));
-        this.jTextFieldSeq5.setText(conf.getProperty("jTextFieldSeq5"));
-        this.jTextFieldSeq6.setText(conf.getProperty("jTextFieldSeq6"));
-        this.jTextFieldSeq7.setText(conf.getProperty("jTextFieldSeq7"));
-        this.jTextFieldSeq8.setText(conf.getProperty("jTextFieldSeq8"));
-        this.jTextFieldSeq9.setText(conf.getProperty("jTextFieldSeq9"));
-        this.jTextFieldSeq10.setText(conf.getProperty("jTextFieldSeq10"));
+            this.jTextFieldSeq1.setText(conf.getProperty("jTextFieldSeq1"));
+            this.jTextFieldSeq2.setText(conf.getProperty("jTextFieldSeq2"));
+            this.jTextFieldSeq3.setText(conf.getProperty("jTextFieldSeq3"));
+            this.jTextFieldSeq4.setText(conf.getProperty("jTextFieldSeq4"));
+            this.jTextFieldSeq5.setText(conf.getProperty("jTextFieldSeq5"));
+            this.jTextFieldSeq6.setText(conf.getProperty("jTextFieldSeq6"));
+            this.jTextFieldSeq7.setText(conf.getProperty("jTextFieldSeq7"));
+            this.jTextFieldSeq8.setText(conf.getProperty("jTextFieldSeq8"));
+            this.jTextFieldSeq9.setText(conf.getProperty("jTextFieldSeq9"));
+            this.jTextFieldSeq10.setText(conf.getProperty("jTextFieldSeq10"));
 
-        this.jTextFieldSystemDirSeq1.setText(conf.getProperty("jTextFieldSystemDirSeq1"));
-        this.jTextFieldSystemDirSeq2.setText(conf.getProperty("jTextFieldSystemDirSeq2"));
-        this.jTextFieldSystemDirSeq3.setText(conf.getProperty("jTextFieldSystemDirSeq3"));
-        this.jTextFieldSystemDirSeq4.setText(conf.getProperty("jTextFieldSystemDirSeq4"));
-        this.jTextFieldSystemDirSeq5.setText(conf.getProperty("jTextFieldSystemDirSeq5"));
-        this.jTextFieldSystemDirSeq6.setText(conf.getProperty("jTextFieldSystemDirSeq6"));
-        this.jTextFieldSystemDirSeq7.setText(conf.getProperty("jTextFieldSystemDirSeq7"));
-        this.jTextFieldSystemDirSeq8.setText(conf.getProperty("jTextFieldSystemDirSeq8"));
-        this.jTextFieldSystemDirSeq9.setText(conf.getProperty("jTextFieldSystemDirSeq9"));
-        this.jTextFieldSystemDirSeq10.setText(conf.getProperty("jTextFieldSystemDirSeq10"));
- }catch(Exception e){
+            this.jTextFieldSystemDirSeq1.setText(conf.getProperty("jTextFieldSystemDirSeq1"));
+            this.jTextFieldSystemDirSeq2.setText(conf.getProperty("jTextFieldSystemDirSeq2"));
+            this.jTextFieldSystemDirSeq3.setText(conf.getProperty("jTextFieldSystemDirSeq3"));
+            this.jTextFieldSystemDirSeq4.setText(conf.getProperty("jTextFieldSystemDirSeq4"));
+            this.jTextFieldSystemDirSeq5.setText(conf.getProperty("jTextFieldSystemDirSeq5"));
+            this.jTextFieldSystemDirSeq6.setText(conf.getProperty("jTextFieldSystemDirSeq6"));
+            this.jTextFieldSystemDirSeq7.setText(conf.getProperty("jTextFieldSystemDirSeq7"));
+            this.jTextFieldSystemDirSeq8.setText(conf.getProperty("jTextFieldSystemDirSeq8"));
+            this.jTextFieldSystemDirSeq9.setText(conf.getProperty("jTextFieldSystemDirSeq9"));
+            this.jTextFieldSystemDirSeq10.setText(conf.getProperty("jTextFieldSystemDirSeq10"));
+        } catch (Exception e) {
             System.out.println(e.toString());
-                            JOptionPane.showMessageDialog(null, "オープンエラー"+e.toString());
+            JOptionPane.showMessageDialog(null, "オープンエラー" + e.toString());
         }
     }
 
@@ -1796,6 +1811,13 @@ private String fileSeparator; // ファイルの区切り文字
         checkJCheckBoxNewState();
     }//GEN-LAST:event_jPanelAppInfoComponentShown
 
+    private void jButtonEnterConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterConfigActionPerformed
+        // Configファイルに内容を記録
+        Configuration conf = new Configuration(configFile); // 起動時のargs[0]の指定が無かった場合のフォローがまだ。
+        conf.addProperty("dbUrl", this.jTextFieldDbUrl.getText()); // 追加は仮、更新のメソッドをつくらないといけない。
+        conf.storeToXML(configFile, new Date().toString());
+    }//GEN-LAST:event_jButtonEnterConfigActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1832,7 +1854,7 @@ private String fileSeparator; // ファイルの区切り文字
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainJFrame().setVisible(true);
+                new MainJFrame(args[0]).setVisible(true);
             }
         });
     }
@@ -1842,7 +1864,6 @@ private String fileSeparator; // ファイルの区切り文字
     private javax.swing.ButtonGroup buttonGroupCat2;
     private javax.swing.ButtonGroup buttonGroupCat3;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1857,6 +1878,7 @@ private String fileSeparator; // ファイルの区切り文字
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonDeleteItems;
     private javax.swing.JButton jButtonEnter;
+    private javax.swing.JButton jButtonEnterConfig;
     private javax.swing.JButton jButtonEnterItems;
     private javax.swing.JButton jButtonEntry;
     private javax.swing.JButton jButtonIssueDir;
@@ -1886,8 +1908,8 @@ private String fileSeparator; // ファイルの区切り文字
     private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JCheckBox jCheckBoxNewState;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox jComboBoxAutoSaveTime;
     private javax.swing.JComboBox jComboBoxMakeCode;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1946,11 +1968,7 @@ private String fileSeparator; // ファイルの区切り文字
     private javax.swing.JTextArea jTextAreaRedirectErrorStream;
     private javax.swing.JTextArea jTextAreaRemark;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -1962,8 +1980,13 @@ private String fileSeparator; // ファイルの区切り文字
     private javax.swing.JTextField jTextFieldCopyTarget1;
     private javax.swing.JTextField jTextFieldCopyTarget2;
     private javax.swing.JTextField jTextFieldCopyTarget3;
+    private javax.swing.JTextField jTextFieldDbPassword;
+    private javax.swing.JTextField jTextFieldDbUrl;
+    private javax.swing.JTextField jTextFieldDbUsername;
     private javax.swing.JTextField jTextFieldExtension;
     private javax.swing.JTextField jTextFieldIssueDir;
+    private javax.swing.JTextField jTextFieldMultigenerationalBackupHome;
+    private javax.swing.JTextField jTextFieldPasteBuckupHome;
     private javax.swing.JTextField jTextFieldPrefix;
     private javax.swing.JTextField jTextFieldSeq1;
     private javax.swing.JTextField jTextFieldSeq10;

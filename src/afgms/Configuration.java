@@ -8,8 +8,9 @@
  参考サイト
  http://www.mlab.im.dendai.ac.jp/~yamada/java/properties/
  */
-package testMaking;
+package afgms;
 
+import testMaking.*;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
