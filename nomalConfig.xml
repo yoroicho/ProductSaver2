@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Wed Feb 24 14:42:17 JST 2016</comment>
+<entry key="pasteBuckupHome">1440paste</entry>
+<entry key="autoSaveMouseY"/>
+<entry key="autoSaveMouseX"/>
+<entry key="autoSaveTime">60</entry>
+<entry key="dbUsername">1440use</entry>
+<entry key="dbUrl">1440url</entry>
+<entry key="autoSaveScript">alts</entry>
+<entry key="multigenerationalBackupHome">1440gen</entry>
+<entry key="dbPassword">1440pas</entry>
+</properties>

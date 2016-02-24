@@ -33,8 +33,7 @@ import testMaking.ConnectionRegsys;
 public class MainJFrame extends javax.swing.JFrame {
 
     String configFile;
-    
-    
+
     private boolean isShowedSysPanel = false;
     DefaultListModel appTitlesModel = new DefaultListModel(); // appInfo で使用するリストのモデル
 
@@ -54,8 +53,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         initComponents();
 
-this.configFile = configFile;        
-        
+        this.configFile = configFile;
+
         // 表示を初期化
         this.buttonGroupCat1.add(this.jRadioButtonSaveCat1Paste);
         this.buttonGroupCat1.add(this.jRadioButtonSaveCat1Fork);
@@ -67,12 +66,11 @@ this.configFile = configFile;
         this.jRadioButtonSaveCat2Paste.setSelected(true); // Cat2は基本上書き
         this.jRadioButtonSaveCat3Paste.setSelected(true); // Cat3は基本上書き
 
-        
         try { // OS依存情報取得
             this.lineSeparator = System.getProperty("line.separator"); // 改行コード
             this.userDir = System.getProperty("user.dir"); // 自分自身のパス
             this.fileSeparator = System.getProperty("file.separator"); // Windowsでは円マーク
-            System.out.println("プログラム起動ディレクトリは "+this.lineSeparator + " " + this.userDir + " " + this.fileSeparator + " です。");
+            System.out.println("プログラム起動ディレクトリは " + this.lineSeparator + " " + this.userDir + " " + this.fileSeparator + " です。");
         } catch (SecurityException e) {
             JOptionPane.showMessageDialog(null, "OS依存情報が取得できません、終了いたします。");
             System.exit(0);
@@ -185,6 +183,12 @@ this.configFile = configFile;
         jTextFieldMultigenerationalBackupHome = new javax.swing.JTextField();
         jComboBoxAutoSaveTime = new javax.swing.JComboBox();
         jButtonEnterConfig = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
+        jTextFieldAutoSaveScript = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jTextFieldAutoSaveMouseX = new javax.swing.JTextField();
+        jTextFieldAutoSaveMouseY = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
@@ -554,6 +558,12 @@ this.configFile = configFile;
 
         jTabbedPane1.addTab("試セーブ", jPanelExeSys);
 
+        jPanelConfig.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanelConfigComponentShown(evt);
+            }
+        });
+
         jLabel20.setText("データベース");
 
         jLabel21.setText("URL");
@@ -568,7 +578,8 @@ this.configFile = configFile;
 
         jLabel28.setText("自動上書スクリプト間隔");
 
-        jComboBoxAutoSaveTime.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxAutoSaveTime.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "20", "25", "30", "45", "60" }));
+        jComboBoxAutoSaveTime.setSelectedIndex(5);
 
         jButtonEnterConfig.setText("適用");
         jButtonEnterConfig.addActionListener(new java.awt.event.ActionListener() {
@@ -576,6 +587,12 @@ this.configFile = configFile;
                 jButtonEnterConfigActionPerformed(evt);
             }
         });
+
+        jLabel22.setText("自動スクリプト文字列");
+
+        jLabel25.setText("マウスポイントX(横）");
+
+        jLabel29.setText("マウスポイントY（縦）");
 
         javax.swing.GroupLayout jPanelConfigLayout = new javax.swing.GroupLayout(jPanelConfig);
         jPanelConfig.setLayout(jPanelConfigLayout);
@@ -590,31 +607,46 @@ this.configFile = configFile;
                             .addComponent(jLabel21)
                             .addComponent(jLabel24))
                         .addGap(22, 22, 22)
-                        .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldDbUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldDbUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldDbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldDbUrl, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
+                            .addComponent(jTextFieldDbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDbUsername)))
                     .addGroup(jPanelConfigLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelConfigLayout.createSequentialGroup()
-                                .addComponent(jLabel28)
+                                .addComponent(jLabel27)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBoxAutoSaveTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelConfigLayout.createSequentialGroup()
-                                    .addComponent(jLabel27)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFieldMultigenerationalBackupHome))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelConfigLayout.createSequentialGroup()
-                                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextFieldPasteBuckupHome, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jTextFieldMultigenerationalBackupHome))
+                            .addGroup(jPanelConfigLayout.createSequentialGroup()
+                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldPasteBuckupHome, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelConfigLayout.createSequentialGroup()
+                                .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanelConfigLayout.createSequentialGroup()
+                                        .addComponent(jLabel28)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBoxAutoSaveTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelConfigLayout.createSequentialGroup()
+                                        .addComponent(jLabel25)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldAutoSaveMouseX)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelConfigLayout.createSequentialGroup()
+                                        .addComponent(jLabel29)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldAutoSaveMouseY, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jTextFieldAutoSaveScript)))))
                     .addGroup(jPanelConfigLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButtonEnterConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(846, Short.MAX_VALUE))
+                .addContainerGap(865, Short.MAX_VALUE))
         );
         jPanelConfigLayout.setVerticalGroup(
             jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -633,7 +665,7 @@ this.configFile = configFile;
                 .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldDbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextFieldPasteBuckupHome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -644,8 +676,16 @@ this.configFile = configFile;
                 .addGap(44, 44, 44)
                 .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(jComboBoxAutoSaveTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                    .addComponent(jComboBoxAutoSaveTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22)
+                    .addComponent(jTextFieldAutoSaveScript, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel29)
+                    .addComponent(jTextFieldAutoSaveMouseX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldAutoSaveMouseY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(jButtonEnterConfig)
                 .addGap(90, 90, 90))
         );
@@ -1459,7 +1499,7 @@ this.configFile = configFile;
     private void storeItems() {
         try {
             JOptionPane.showMessageDialog(null, "これからオープン");
-            ConfigurationXML conf = new ConfigurationXML(userDir+ fileSeparator + "ExecutionSys.XML"); //ファイルの位置は再考する
+            ConfigurationXML conf = new ConfigurationXML(userDir + fileSeparator + "ExecutionSys.XML"); //ファイルの位置は再考する
             JOptionPane.showMessageDialog(null, "オープンした");
             conf.upDateProperty("jTextFieldSeq1", this.jTextFieldSeq1.getText());
             conf.upDateProperty("jTextFieldSeq2", this.jTextFieldSeq2.getText());
@@ -1813,10 +1853,43 @@ this.configFile = configFile;
 
     private void jButtonEnterConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterConfigActionPerformed
         // Configファイルに内容を記録
-        Configuration conf = new Configuration(configFile); // 起動時のargs[0]の指定が無かった場合のフォローがまだ。
-        conf.addProperty("dbUrl", this.jTextFieldDbUrl.getText()); // 追加は仮、更新のメソッドをつくらないといけない。
+        if (configFile.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "設定ファイルの指定がありません、終了します。");
+            System.exit(0);
+        }
+        Configuration conf = new Configuration(configFile); // 起動時のargs[0]の指定が無かった場合。
+        conf.setProperty("dbUrl", this.jTextFieldDbUrl.getText());
+        conf.setProperty("dbUsername", this.jTextFieldDbUsername.getText());
+        conf.setProperty("dbPassword", this.jTextFieldDbPassword.getText());
+        conf.setProperty("pasteBuckupHome", this.jTextFieldPasteBuckupHome.getText());
+        conf.setProperty("multigenerationalBackupHome",
+                this.jTextFieldMultigenerationalBackupHome.getText());
+        conf.setProperty("autoSaveTime", this.jComboBoxAutoSaveTime.getSelectedItem().toString());
+        conf.setProperty("autoSaveScript", this.jTextFieldAutoSaveScript.getText());
+        conf.setProperty("autoSaveMouseX", this.jTextFieldAutoSaveMouseX.getText());
+        conf.setProperty("autoSaveMouseY", this.jTextFieldAutoSaveMouseY.getText());
         conf.storeToXML(configFile, new Date().toString());
     }//GEN-LAST:event_jButtonEnterConfigActionPerformed
+
+    private void jPanelConfigComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelConfigComponentShown
+        // パネルが表示されるごとにConfig内容をファイルから反映
+        // Configファイルに内容を記録
+        if (configFile.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "設定ファイルの指定がありません、終了します。");
+            System.exit(0);
+        }
+        Configuration conf = new Configuration(configFile); // 起動時のargs[0]の指定が無かった場合。 
+        this.jTextFieldDbUrl.setText(conf.getProperty("dbUrl"));
+        this.jTextFieldDbUsername.setText(conf.getProperty("dbUsername"));
+        this.jTextFieldDbPassword.setText(conf.getProperty("dbPassword"));
+        this.jTextFieldPasteBuckupHome.setText(conf.getProperty("pasteBuckupHome"));
+        this.jTextFieldMultigenerationalBackupHome.setText(conf.getProperty("multigenerationalBackupHome"));
+        this.jComboBoxAutoSaveTime.setSelectedItem(conf.getProperty("autoSaveTime"));
+        this.jTextFieldAutoSaveScript.setText(conf.getProperty("autoSaveScript"));
+        this.jTextFieldAutoSaveMouseX.setText(conf.getProperty("autoSaveMouseX"));
+        this.jTextFieldAutoSaveMouseY.setText(conf.getProperty("autoSaveMouseY"));
+
+    }//GEN-LAST:event_jPanelConfigComponentShown
 
     /**
      * @param args the command line arguments
@@ -1850,6 +1923,16 @@ this.configFile = configFile;
         }
         //</editor-fold>
         //</editor-fold>
+        try { // 
+            if (args[0].isEmpty() || args[0].length() == 0) {
+                JOptionPane.showMessageDialog(null, "args[0](設定ファイル名)が空です。");
+                System.exit(0);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "不正な起動です、起動スクリプトを確認して下さい。");
+            System.exit(0);
+        }
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1925,11 +2008,14 @@ this.configFile = configFile;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1977,6 +2063,9 @@ this.configFile = configFile;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jTextFieldAutoSaveMouseX;
+    private javax.swing.JTextField jTextFieldAutoSaveMouseY;
+    private javax.swing.JTextField jTextFieldAutoSaveScript;
     private javax.swing.JTextField jTextFieldCopyTarget1;
     private javax.swing.JTextField jTextFieldCopyTarget2;
     private javax.swing.JTextField jTextFieldCopyTarget3;

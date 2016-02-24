@@ -87,6 +87,10 @@ public class Configuration {
             conf.setProperty(key, value);
         }
     }
+    
+        public void setProperty(String key, String value) { // キーの有無に関わらずファイルへ
+                    conf.setProperty(key, value);
+            }
 
     public void addProperty(String key, String value) {
         if (conf.containsKey(key)) {
