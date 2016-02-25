@@ -32,28 +32,33 @@ import testMaking.ConnectionRegsys;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
-    String configFile;
+    private String configFileName; // 設定ファイルの名前
+    private Configuration conf; // 設定ファイルのインスタンス（旧）
+    private Configuration configuration; // 設定ファイルのインスタンス（新）
 
     private boolean isShowedSysPanel = false;
     DefaultListModel appTitlesModel = new DefaultListModel(); // appInfo で使用するリストのモデル
 
-    // static final String URL = "jdbc:mysql://localhost:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
-    static final String URL = "jdbc:mysql://49.212.131.91:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
-
-    static final String USERNAME = "root";
-    static final String PASSWORD = "pass";
+    //static final String URL = "jdbc:mysql://localhost:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
     private String lineSeparator;
     private String userDir;
     private String fileSeparator;
 
+    //static final String URL = "jdbc:mysql://49.212.131.91:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull";
+    //static final String USERNAME = "root";
+    //static final String PASSWORD = "pass";
+
+    static String URL; // = conf.getProperty("dbUrl");
+    static String USERNAME; // = conf.getProperty("dbUsername");
+    static String PASSWORD; // = conf.getProperty("dbPassword");
     /**
      * Creates new form NewJFrame
+     *
+     * @param configFileName せってい
      */
-    public MainJFrame(String configFile) {
+    public MainJFrame(String configFileName) {
 
         initComponents();
-
-        this.configFile = configFile;
 
         // 表示を初期化
         this.buttonGroupCat1.add(this.jRadioButtonSaveCat1Paste);
@@ -70,11 +75,21 @@ public class MainJFrame extends javax.swing.JFrame {
             this.lineSeparator = System.getProperty("line.separator"); // 改行コード
             this.userDir = System.getProperty("user.dir"); // 自分自身のパス
             this.fileSeparator = System.getProperty("file.separator"); // Windowsでは円マーク
-            System.out.println("プログラム起動ディレクトリは " + this.lineSeparator + " " + this.userDir + " " + this.fileSeparator + " です。");
+            // System.out.println("プログラム起動ディレクトリは " + this.lineSeparator + " " + this.userDir + " " + this.fileSeparator + " です。");
         } catch (SecurityException e) {
             JOptionPane.showMessageDialog(null, "OS依存情報が取得できません、終了いたします。");
             System.exit(0);
         }
+
+        // this.configFileDir = userDir + fileSeparator + configFileName+".xml"; // 設定ファイルの場所をセット
+        this.configFileName = configFileName;
+        configuration = new Configuration(configFileName); // 設定ファイルとインスタンスをバインド
+
+        URL = configuration.getProperty("dbUrl");
+        USERNAME = configuration.getProperty("dbUsername");
+        PASSWORD = configuration.getProperty("dbPassword");
+        System.out.println(URL + USERNAME + PASSWORD);
+
     }
 
     private boolean basicSauceFileCopy(String sourceDir, String copyTarget, int copyMode) { // このシステムで基本とするソースファイルのコピー
@@ -82,8 +97,11 @@ public class MainJFrame extends javax.swing.JFrame {
             CopyFiles copyFiles = new CopyFiles();
             copyFiles.setMainJFrame(this);
             copyFiles.copySibling(sourceDir, copyTarget, copyMode);
+
         } catch (IOException ex) {
-            Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainJFrame.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
             this.setMessagejTextAreaRedirectErrorStream(ex.toString());
         }
         return true;
@@ -107,6 +125,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     public void setMessagejTextAreaRedirectErrorStream(String msg) {
         jTextAreaRedirectErrorStream.append(msg + userDir);
+
     }
 
     private class AppInfo { // アプリ情報
@@ -1604,7 +1623,7 @@ public class MainJFrame extends javax.swing.JFrame {
     
      */
     public void deleteRegsys(String title) {
-        String sql = "DELETE FROM regsys WHERE title = (?);";
+        String sql = "DELETE FROM regsys WHERE title = ?;";
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
                 PreparedStatement statement = connection.prepareStatement(sql);) {
 
@@ -1649,7 +1668,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     public void updateRegsys(String title, String sysdir, String extension, String remark, String prefix, String sufix) {
-        String sql = "INSERT INTO  regsys VALUES (?, ?, ?, ?,?,?);";
+        String sql = "INSERT INTO  regsys VALUES (?,?,?,?,?,?);";
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
                 PreparedStatement statement = connection.prepareStatement(sql);) {
 
@@ -1750,8 +1769,10 @@ public class MainJFrame extends javax.swing.JFrame {
             System.out.println("タイトルの索引" + resultSet.getString("title"));
 
             return resultSet;
+
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionRegsys.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConnectionRegsys.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -1853,42 +1874,32 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButtonEnterConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterConfigActionPerformed
         // Configファイルに内容を記録
-        if (configFile.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "設定ファイルの指定がありません、終了します。");
-            System.exit(0);
-        }
-        Configuration conf = new Configuration(configFile); // 起動時のargs[0]の指定が無かった場合。
-        conf.setProperty("dbUrl", this.jTextFieldDbUrl.getText());
-        conf.setProperty("dbUsername", this.jTextFieldDbUsername.getText());
-        conf.setProperty("dbPassword", this.jTextFieldDbPassword.getText());
-        conf.setProperty("pasteBuckupHome", this.jTextFieldPasteBuckupHome.getText());
-        conf.setProperty("multigenerationalBackupHome",
+
+        configuration.setProperty("dbUrl", this.jTextFieldDbUrl.getText());
+        configuration.setProperty("dbUsername", this.jTextFieldDbUsername.getText());
+        configuration.setProperty("dbPassword", this.jTextFieldDbPassword.getText());
+        configuration.setProperty("pasteBuckupHome", this.jTextFieldPasteBuckupHome.getText());
+        configuration.setProperty("multigenerationalBackupHome",
                 this.jTextFieldMultigenerationalBackupHome.getText());
-        conf.setProperty("autoSaveTime", this.jComboBoxAutoSaveTime.getSelectedItem().toString());
-        conf.setProperty("autoSaveScript", this.jTextFieldAutoSaveScript.getText());
-        conf.setProperty("autoSaveMouseX", this.jTextFieldAutoSaveMouseX.getText());
-        conf.setProperty("autoSaveMouseY", this.jTextFieldAutoSaveMouseY.getText());
-        conf.storeToXML(configFile, new Date().toString());
+        configuration.setProperty("autoSaveTime", this.jComboBoxAutoSaveTime.getSelectedItem().toString());
+        configuration.setProperty("autoSaveScript", this.jTextFieldAutoSaveScript.getText());
+        configuration.setProperty("autoSaveMouseX", this.jTextFieldAutoSaveMouseX.getText());
+        configuration.setProperty("autoSaveMouseY", this.jTextFieldAutoSaveMouseY.getText());
+        configuration.storeToXML(configFileName, new Date().toString()); // 即時ファイルに書込み
     }//GEN-LAST:event_jButtonEnterConfigActionPerformed
 
     private void jPanelConfigComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelConfigComponentShown
         // パネルが表示されるごとにConfig内容をファイルから反映
-        // Configファイルに内容を記録
-        if (configFile.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "設定ファイルの指定がありません、終了します。");
-            System.exit(0);
-        }
-        Configuration conf = new Configuration(configFile); // 起動時のargs[0]の指定が無かった場合。 
-        this.jTextFieldDbUrl.setText(conf.getProperty("dbUrl"));
-        this.jTextFieldDbUsername.setText(conf.getProperty("dbUsername"));
-        this.jTextFieldDbPassword.setText(conf.getProperty("dbPassword"));
-        this.jTextFieldPasteBuckupHome.setText(conf.getProperty("pasteBuckupHome"));
-        this.jTextFieldMultigenerationalBackupHome.setText(conf.getProperty("multigenerationalBackupHome"));
-        this.jComboBoxAutoSaveTime.setSelectedItem(conf.getProperty("autoSaveTime"));
-        this.jTextFieldAutoSaveScript.setText(conf.getProperty("autoSaveScript"));
-        this.jTextFieldAutoSaveMouseX.setText(conf.getProperty("autoSaveMouseX"));
-        this.jTextFieldAutoSaveMouseY.setText(conf.getProperty("autoSaveMouseY"));
-
+        // Configファイルから内容を表示
+        this.jTextFieldDbUrl.setText(configuration.getProperty("dbUrl"));
+        this.jTextFieldDbUsername.setText(configuration.getProperty("dbUsername"));
+        this.jTextFieldDbPassword.setText(configuration.getProperty("dbPassword"));
+        this.jTextFieldPasteBuckupHome.setText(configuration.getProperty("pasteBuckupHome"));
+        this.jTextFieldMultigenerationalBackupHome.setText(configuration.getProperty("multigenerationalBackupHome"));
+        this.jComboBoxAutoSaveTime.setSelectedItem(configuration.getProperty("autoSaveTime"));
+        this.jTextFieldAutoSaveScript.setText(configuration.getProperty("autoSaveScript"));
+        this.jTextFieldAutoSaveMouseX.setText(configuration.getProperty("autoSaveMouseX"));
+        this.jTextFieldAutoSaveMouseY.setText(configuration.getProperty("autoSaveMouseY"));
     }//GEN-LAST:event_jPanelConfigComponentShown
 
     /**
