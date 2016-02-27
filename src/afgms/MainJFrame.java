@@ -1755,7 +1755,7 @@ public class MainJFrame extends javax.swing.JFrame {
             //String sql = "SELECT * FROM regsys WHERE title = " + title;
             //Connection connectionSelectOneRegsys = createConnection();
             Connection connectionSelectOneRegsys = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            PreparedStatement statement = connectionSelectOneRegsys.prepareStatement("select * from regsys where title = ?;"); // なぜか初期作動時に title = (?) になっていた。
+            PreparedStatement statement = connectionSelectOneRegsys.prepareStatement("select * from regsys where title = (?);"); // なぜか初期作動時に title = (?) になっていた。
             statement.setString(1, title);
             ResultSet resultSet = statement.executeQuery();
 
