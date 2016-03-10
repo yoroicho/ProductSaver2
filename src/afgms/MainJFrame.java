@@ -210,10 +210,15 @@ public class MainJFrame extends javax.swing.JFrame {
         jTextFieldAutoSaveMouseY = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        jTextFieldShipNameO = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton9 = new javax.swing.JButton();
+        jTextAreaShipRemark = new javax.swing.JTextArea();
+        jButtonShipEnter = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        jTextFieldShipNameY = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
+        jTextFieldShipCode = new javax.swing.JTextField();
+        jButtonShipSelectWhereShipCode = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jRadioButtonSaveCat3Paste = new javax.swing.JRadioButton();
         jRadioButtonSaveCat3Fork = new javax.swing.JRadioButton();
@@ -713,11 +718,22 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel19.setText("Vessel");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jTextAreaShipRemark.setColumns(20);
+        jTextAreaShipRemark.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaShipRemark);
 
-        jButton9.setText("jButton9");
+        jButtonShipEnter.setText("入力");
+        jButtonShipEnter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonShipEnterActionPerformed(evt);
+            }
+        });
+
+        jLabel30.setText("よみ");
+
+        jLabel31.setText("CODE");
+
+        jButtonShipSelectWhereShipCode.setText("照会");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -725,28 +741,54 @@ public class MainJFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton9)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 1515, Short.MAX_VALUE))
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonShipEnter)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldShipNameO, javax.swing.GroupLayout.DEFAULT_SIZE, 1515, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldShipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonShipSelectWhereShipCode))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldShipNameY, javax.swing.GroupLayout.PREFERRED_SIZE, 954, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel31)
+                    .addComponent(jTextFieldShipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonShipSelectWhereShipCode))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldShipNameO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton9)
-                .addContainerGap(449, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel30)
+                    .addComponent(jTextFieldShipNameY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonShipEnter)
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("基幹情報", jPanel1);
@@ -1902,6 +1944,36 @@ public class MainJFrame extends javax.swing.JFrame {
         this.jTextFieldAutoSaveMouseY.setText(configuration.getProperty("autoSaveMouseY"));
     }//GEN-LAST:event_jPanelConfigComponentShown
 
+    private void jButtonShipEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShipEnterActionPerformed
+        // Shipテーブルに書き込みもしくは上書き
+         try (Connection connectionUpdateJComboBoxItems = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
+                PreparedStatement statement = connectionUpdateJComboBoxItems.prepareStatement("select * from ship where code = ?;");) {
+             if(statement.getFetchSize()>0){ // すでにCODEキーが存在（更新）する場合
+                 JOptionPane.showConfirmDialog(null,"更新しますか。","更新の確認",JOptionPane.OK_CANCEL_OPTION);
+             }else{ // CODEキーが存在しない（新規）の場合
+                               int flg = JOptionPane.showConfirmDialog(null,"新規登録しますか。","新規登録の確認",JOptionPane.OK_CANCEL_OPTION);
+             }
+             
+            //statement.setString(1, "%");
+            ResultSet resultSet = statement.executeQuery();
+
+            this.jListTitles.removeAll();
+            appTitlesModel.removeAllElements();
+            while (resultSet.next()) {
+                String titleget = resultSet.getString("title");
+                appTitlesModel.addElement(titleget);
+
+                System.out.println("タイトル　" + titleget);
+            }
+            resultSet.close();
+
+        } catch (SQLException e) {
+            System.out.println("エラーが発生しました");
+            JOptionPane.showMessageDialog(null, "処理中にエラーが発生しました");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButtonShipEnterActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1965,7 +2037,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonCatDir1;
     private javax.swing.JButton jButtonCatDir2;
     private javax.swing.JButton jButtonCatDir3;
@@ -1977,6 +2048,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEntry;
     private javax.swing.JButton jButtonIssueDir;
     private javax.swing.JButton jButtonSetDefaultItems;
+    private javax.swing.JButton jButtonShipEnter;
+    private javax.swing.JButton jButtonShipSelectWhereShipCode;
     private javax.swing.JButton jButtonSourceDir;
     private javax.swing.JButton jButtonSysdir;
     private javax.swing.JButton jButtonSystemDir;
@@ -2028,6 +2101,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -2061,9 +2136,9 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextAreaRedirectErrorStream;
     private javax.swing.JTextArea jTextAreaRemark;
+    private javax.swing.JTextArea jTextAreaShipRemark;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
@@ -2073,7 +2148,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField jTextFieldAutoSaveMouseX;
     private javax.swing.JTextField jTextFieldAutoSaveMouseY;
     private javax.swing.JTextField jTextFieldAutoSaveScript;
@@ -2098,6 +2172,9 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldSeq7;
     private javax.swing.JTextField jTextFieldSeq8;
     private javax.swing.JTextField jTextFieldSeq9;
+    private javax.swing.JTextField jTextFieldShipCode;
+    private javax.swing.JTextField jTextFieldShipNameO;
+    private javax.swing.JTextField jTextFieldShipNameY;
     private javax.swing.JTextField jTextFieldSourceDir;
     private javax.swing.JTextField jTextFieldSufix;
     private javax.swing.JTextField jTextFieldSysdir;
