@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-<comment>Sun Mar 06 16:33:34 JST 2016</comment>
-<entry key="pasteBuckupHome"/>
-<entry key="autoSaveMouseY"/>
-<entry key="autoSaveMouseX"/>
-<entry key="autoSaveTime">5</entry>
+<comment>Sat Mar 19 17:34:36 JST 2016</comment>
+<entry key="pasteBuckupHome">homeUppe</entry>
+<entry key="autoSaveMouseY">9</entry>
+<entry key="autoSaveMouseX">0</entry>
+<entry key="autoSaveTime">7</entry>
 <entry key="dbUsername">root</entry>
 <entry key="dbUrl">jdbc:mysql://49.212.131.91:3306/test_swing_jdbc?zeroDateTimeBehavior=convertToNull</entry>
-<entry key="autoSaveScript"/>
-<entry key="multigenerationalBackupHome"/>
+<entry key="autoSaveScript">^S</entry>
+<entry key="multigenerationalBackupHome">HomeDown</entry>
 <entry key="dbPassword">pass</entry>
 </properties>

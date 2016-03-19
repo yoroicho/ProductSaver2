@@ -194,20 +194,12 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
         jTextFieldDbUrl = new javax.swing.JTextField();
         jTextFieldDbUsername = new javax.swing.JTextField();
         jTextFieldDbPassword = new javax.swing.JTextField();
         jTextFieldPasteBuckupHome = new javax.swing.JTextField();
         jTextFieldMultigenerationalBackupHome = new javax.swing.JTextField();
-        jComboBoxAutoSaveTime = new javax.swing.JComboBox();
         jButtonEnterConfig = new javax.swing.JButton();
-        jLabel22 = new javax.swing.JLabel();
-        jTextFieldAutoSaveScript = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jTextFieldAutoSaveMouseX = new javax.swing.JTextField();
-        jTextFieldAutoSaveMouseY = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jTextFieldShipNameO = new javax.swing.JTextField();
@@ -305,6 +297,14 @@ public class MainJFrame extends javax.swing.JFrame {
         jTextFieldPrefix = new javax.swing.JTextField();
         jTextFieldSufix = new javax.swing.JTextField();
         jTextField11 = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        jComboBoxAutoSaveTime = new javax.swing.JComboBox();
+        jLabel22 = new javax.swing.JLabel();
+        jTextFieldAutoSaveScript = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jTextFieldAutoSaveMouseX = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        jTextFieldAutoSaveMouseY = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -600,23 +600,12 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel27.setText("世代蓄積基点");
 
-        jLabel28.setText("自動上書スクリプト間隔");
-
-        jComboBoxAutoSaveTime.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "20", "25", "30", "45", "60" }));
-        jComboBoxAutoSaveTime.setSelectedIndex(5);
-
         jButtonEnterConfig.setText("適用");
         jButtonEnterConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEnterConfigActionPerformed(evt);
             }
         });
-
-        jLabel22.setText("自動スクリプト文字列");
-
-        jLabel25.setText("マウスポイントX(横）");
-
-        jLabel29.setText("マウスポイントY（縦）");
 
         javax.swing.GroupLayout jPanelConfigLayout = new javax.swing.GroupLayout(jPanelConfig);
         jPanelConfig.setLayout(jPanelConfigLayout);
@@ -646,27 +635,7 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addGroup(jPanelConfigLayout.createSequentialGroup()
                                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldPasteBuckupHome, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelConfigLayout.createSequentialGroup()
-                                .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanelConfigLayout.createSequentialGroup()
-                                        .addComponent(jLabel28)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBoxAutoSaveTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanelConfigLayout.createSequentialGroup()
-                                        .addComponent(jLabel25)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldAutoSaveMouseX)))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel22)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelConfigLayout.createSequentialGroup()
-                                        .addComponent(jLabel29)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldAutoSaveMouseY, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jTextFieldAutoSaveScript)))))
+                                .addComponent(jTextFieldPasteBuckupHome, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanelConfigLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButtonEnterConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -697,19 +666,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(jTextFieldMultigenerationalBackupHome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel28)
-                    .addComponent(jComboBoxAutoSaveTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22)
-                    .addComponent(jTextFieldAutoSaveScript, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(jLabel29)
-                    .addComponent(jTextFieldAutoSaveMouseX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldAutoSaveMouseY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                 .addComponent(jButtonEnterConfig)
                 .addGap(90, 90, 90))
         );
@@ -1310,6 +1267,17 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jTextField11.setText("自動上書きスクリプト（＾Sとか）データベースとはまだ連携させていない。");
 
+        jLabel28.setText("自動上書スクリプト間隔");
+
+        jComboBoxAutoSaveTime.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "20", "25", "30", "45", "60" }));
+        jComboBoxAutoSaveTime.setSelectedIndex(5);
+
+        jLabel22.setText("自動スクリプト文字列");
+
+        jLabel25.setText("マウスポイントX(横）");
+
+        jLabel29.setText("マウスポイントY（縦）");
+
         javax.swing.GroupLayout jPanelAppInfoLayout = new javax.swing.GroupLayout(jPanelAppInfo);
         jPanelAppInfo.setLayout(jPanelAppInfoLayout);
         jPanelAppInfoLayout.setHorizontalGroup(
@@ -1337,7 +1305,27 @@ public class MainJFrame extends javax.swing.JFrame {
                                     .addGroup(jPanelAppInfoLayout.createSequentialGroup()
                                         .addComponent(jButtonDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(2, 2, 2))
-                                    .addComponent(jButtonEntry))))
+                                    .addComponent(jButtonEntry)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAppInfoLayout.createSequentialGroup()
+                                .addGroup(jPanelAppInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanelAppInfoLayout.createSequentialGroup()
+                                        .addComponent(jLabel28)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBoxAutoSaveTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelAppInfoLayout.createSequentialGroup()
+                                        .addComponent(jLabel25)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldAutoSaveMouseX, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelAppInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelAppInfoLayout.createSequentialGroup()
+                                        .addComponent(jLabel29)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldAutoSaveMouseY, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jTextFieldAutoSaveScript))))
                         .addGap(891, 891, 891))
                     .addGroup(jPanelAppInfoLayout.createSequentialGroup()
                         .addGroup(jPanelAppInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1374,10 +1362,22 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelAppInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(jComboBoxAutoSaveTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22)
+                    .addComponent(jTextFieldAutoSaveScript, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelAppInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel29)
+                    .addComponent(jTextFieldAutoSaveMouseX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldAutoSaveMouseY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("アプリ情報設定", jPanelAppInfo);
+        jTabbedPane1.addTab("配下設定", jPanelAppInfo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1923,10 +1923,12 @@ public class MainJFrame extends javax.swing.JFrame {
         configuration.setProperty("pasteBuckupHome", this.jTextFieldPasteBuckupHome.getText());
         configuration.setProperty("multigenerationalBackupHome",
                 this.jTextFieldMultigenerationalBackupHome.getText());
+        /*
         configuration.setProperty("autoSaveTime", this.jComboBoxAutoSaveTime.getSelectedItem().toString());
         configuration.setProperty("autoSaveScript", this.jTextFieldAutoSaveScript.getText());
         configuration.setProperty("autoSaveMouseX", this.jTextFieldAutoSaveMouseX.getText());
         configuration.setProperty("autoSaveMouseY", this.jTextFieldAutoSaveMouseY.getText());
+        */
         configuration.storeToXML(configFileName, new Date().toString()); // 即時ファイルに書込み
     }//GEN-LAST:event_jButtonEnterConfigActionPerformed
 
@@ -1938,10 +1940,12 @@ public class MainJFrame extends javax.swing.JFrame {
         this.jTextFieldDbPassword.setText(configuration.getProperty("dbPassword"));
         this.jTextFieldPasteBuckupHome.setText(configuration.getProperty("pasteBuckupHome"));
         this.jTextFieldMultigenerationalBackupHome.setText(configuration.getProperty("multigenerationalBackupHome"));
+        /*
         this.jComboBoxAutoSaveTime.setSelectedItem(configuration.getProperty("autoSaveTime"));
         this.jTextFieldAutoSaveScript.setText(configuration.getProperty("autoSaveScript"));
         this.jTextFieldAutoSaveMouseX.setText(configuration.getProperty("autoSaveMouseX"));
         this.jTextFieldAutoSaveMouseY.setText(configuration.getProperty("autoSaveMouseY"));
+        */
     }//GEN-LAST:event_jPanelConfigComponentShown
 
     private void jButtonShipEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShipEnterActionPerformed
