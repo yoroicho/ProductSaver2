@@ -580,8 +580,8 @@
         <Container class="javax.swing.JPanel" name="jPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="&#x57fa;&#x5e79;&#x60c5;&#x5831;">
-                <Property name="tabTitle" type="java.lang.String" value="&#x57fa;&#x5e79;&#x60c5;&#x5831;"/>
+              <JTabbedPaneConstraints tabName="&#x672c;&#x8239;&#x60c5;&#x5831;">
+                <Property name="tabTitle" type="java.lang.String" value="&#x672c;&#x8239;&#x60c5;&#x5831;"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -598,6 +598,8 @@
                                   <Component id="jScrollPane2" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="jButtonShipEnter" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jButton9" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -651,7 +653,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="157" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonShipEnter" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButtonShipEnter" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace pref="286" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -705,6 +710,11 @@
             <Component class="javax.swing.JButton" name="jButtonShipSelectWhereShipCode">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x7167;&#x4f1a;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x524a;&#x9664;"/>
               </Properties>
             </Component>
           </SubComponents>

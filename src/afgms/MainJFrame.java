@@ -207,6 +207,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jTextFieldShipCode = new javax.swing.JTextField();
         jButtonShipSelectWhereShipCode = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jRadioButtonSaveCat3Paste = new javax.swing.JRadioButton();
         jRadioButtonSaveCat3Fork = new javax.swing.JRadioButton();
@@ -692,6 +693,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jButtonShipSelectWhereShipCode.setText("照会");
 
+        jButton9.setText("削除");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -705,6 +708,8 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(jScrollPane2)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButtonShipEnter)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton9)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel19)
@@ -744,11 +749,13 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonShipEnter)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonShipEnter)
+                    .addComponent(jButton9))
                 .addContainerGap(286, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("基幹情報", jPanel1);
+        jTabbedPane1.addTab("本船情報", jPanel1);
 
         jRadioButtonSaveCat3Paste.setText("無世代");
         jRadioButtonSaveCat3Paste.addActionListener(new java.awt.event.ActionListener() {
@@ -2011,26 +2018,62 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButtonShipEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShipEnterActionPerformed
         // Shipテーブルに書き込みもしくは上書き
-        try (Connection connectionUpdateJComboBoxItems = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
-                PreparedStatement statement = connectionUpdateJComboBoxItems.prepareStatement("select * from ship where code = ?;");) {
-            if (statement.getFetchSize() > 0) { // すでにCODEキーが存在（更新）する場合
-                JOptionPane.showConfirmDialog(null, "更新しますか。", "更新の確認", JOptionPane.OK_CANCEL_OPTION);
+        try (Connection connectionShip = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
+                PreparedStatement statementShip = connectionShip.prepareStatement("select * from ship where code = ?;");) {
+            if (statementShip.getFetchSize() > 0) { // すでにCODEキーが存在（更新）する場合
+                int flg = JOptionPane.showConfirmDialog(null, "すでにある内容を更新しますか。", "更新の確認", JOptionPane.OK_CANCEL_OPTION);
+                if (flg == JOptionPane.CANCEL_OPTION) {
+                    JOptionPane.showMessageDialog(null, "キャンセルしました。");
+                } else {
+                    //更新処理
+                    String sql = "UPDATE regsys VALUES (?,?,?,?) where code = ?;";
+
+                    connectionShip.setAutoCommit(false);
+
+                    statementShip.setString(1, this.jTextFieldShipCode.getText().trim());
+                    statementShip.setString(2, this.jTextFieldShipNameO.getText().trim());
+                    statementShip.setString(3, this.jTextFieldShipNameY.getText().trim());
+                    statementShip.setString(4, this.jTextAreaShipRemark.getText());
+                    statementShip.setString(5, this.jTextFieldShipCode.getText().trim()); // where 条件
+
+                    statementShip.addBatch();
+
+                }
             } else { // CODEキーが存在しない（新規）の場合
-                int flg = JOptionPane.showConfirmDialog(null, "新規登録しますか。", "新規登録の確認", JOptionPane.OK_CANCEL_OPTION);
+                int flg = JOptionPane.showConfirmDialog(null, "新規で登録しますか。", "新規登録の確認", JOptionPane.OK_CANCEL_OPTION);
+                if (flg == JOptionPane.CANCEL_OPTION) {
+                    JOptionPane.showMessageDialog(null, "キャンセルしました。");
+                } else {
+                    //新規（挿入）処理
+                    String sql = "INSERT INTO  regsys VALUES (?,?,?,?);";
+
+                    connectionShip.setAutoCommit(false);
+
+                    statementShip.setString(1, this.jTextFieldShipCode.getText().trim());
+                    statementShip.setString(2, this.jTextFieldShipNameO.getText().trim());
+                    statementShip.setString(3, this.jTextFieldShipNameY.getText().trim());
+                    statementShip.setString(4, this.jTextAreaShipRemark.getText());
+
+                    statementShip.addBatch();
+                }
             }
 
-            //statement.setString(1, "%");
-            ResultSet resultSet = statement.executeQuery();
+            int[] result = statementShip.executeBatch();
+            System.out.println("登録/更新：" + result.length + "件");
 
-            this.jListTitles.removeAll();
-            appTitlesModel.removeAllElements();
-            while (resultSet.next()) {
-                String titleget = resultSet.getString("title");
-                appTitlesModel.addElement(titleget);
+            try {
 
-                System.out.println("タイトル　" + titleget);
+                connectionShip.commit();
+                System.out.println("登録成功");
+
+            } catch (SQLException e) {
+
+                connectionShip.rollback();
+                System.out.println("登録失敗：ロールバック実行");
+
+                e.printStackTrace();
+
             }
-            resultSet.close();
 
         } catch (SQLException e) {
             System.out.println("エラーが発生しました");
@@ -2102,6 +2145,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonCatDir1;
     private javax.swing.JButton jButtonCatDir2;
     private javax.swing.JButton jButtonCatDir3;
