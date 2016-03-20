@@ -2019,62 +2019,68 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jButtonShipEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShipEnterActionPerformed
         // Shipテーブルに書き込みもしくは上書き
         try (Connection connectionShip = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
-                PreparedStatement statementShip = connectionShip.prepareStatement("select * from ship where code = ?;");) {
-            if (statementShip.getFetchSize() > 0) { // すでにCODEキーが存在（更新）する場合
-                int flg = JOptionPane.showConfirmDialog(null, "すでにある内容を更新しますか。", "更新の確認", JOptionPane.OK_CANCEL_OPTION);
+                PreparedStatement statementShip = connectionShip.prepareStatement("select * from ship where code = ?;");) { // そもそもこれが正しいか不明
+            statementShip.setString(1, this.jTextFieldShipCode.getText().trim());
+            statementShip.addBatch();
+            ResultSet resultSetShip = statementShip.executeQuery();
+            resultSetShip.last();
+            int resultSetShipCount = resultSetShip.getRow();
+            resultSetShip.close();
+            int flg;
+            if (resultSetShipCount > 0) { // すでにCODEキーが存在（更新）する場合
+                flg = JOptionPane.showConfirmDialog(null, "すでにある内容を更新しますか。", "更新の確認", JOptionPane.OK_CANCEL_OPTION);
                 if (flg == JOptionPane.CANCEL_OPTION) {
                     JOptionPane.showMessageDialog(null, "キャンセルしました。");
-                } else {
-                    //更新処理
-                    String sql = "UPDATE regsys VALUES (?,?,?,?) where code = ?;";
-
-                    connectionShip.setAutoCommit(false);
-
-                    statementShip.setString(1, this.jTextFieldShipCode.getText().trim());
-                    statementShip.setString(2, this.jTextFieldShipNameO.getText().trim());
-                    statementShip.setString(3, this.jTextFieldShipNameY.getText().trim());
-                    statementShip.setString(4, this.jTextAreaShipRemark.getText());
-                    statementShip.setString(5, this.jTextFieldShipCode.getText().trim()); // where 条件
-
-                    statementShip.addBatch();
-
                 }
+                // 更新処理
+                try (Connection connectionShipUpdate = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
+                        PreparedStatement statementShipUpdate = connectionShipUpdate.prepareStatement(
+                                "UPDATE ship SET code = ?, nameo = ?, namey = ?, remark = ? where code = ?;");) {
+                    connectionShipUpdate.setAutoCommit(false);
+                    statementShipUpdate.setString(1, this.jTextFieldShipCode.getText().trim());
+                    statementShipUpdate.setString(2, this.jTextFieldShipNameO.getText().trim());
+                    statementShipUpdate.setString(3, this.jTextFieldShipNameY.getText().trim());
+                    statementShipUpdate.setString(4, this.jTextAreaShipRemark.getText());
+                    statementShipUpdate.setString(5, this.jTextFieldShipCode.getText().trim()); // where 条件
+                    statementShipUpdate.addBatch();
+                    int[] result = statementShipUpdate.executeBatch();
+                    System.out.println("登録：" + result.length + "件");
+                    try {
+                        connectionShipUpdate.commit();
+                        System.out.println("登録成功");
+                    } catch (SQLException e) {
+                        connectionShipUpdate.rollback();
+                        System.out.println("登録失敗：ロールバック実行");
+                        e.printStackTrace();
+                    }
+                }
+
             } else { // CODEキーが存在しない（新規）の場合
-                int flg = JOptionPane.showConfirmDialog(null, "新規で登録しますか。", "新規登録の確認", JOptionPane.OK_CANCEL_OPTION);
+                flg = JOptionPane.showConfirmDialog(null, "新規で登録しますか。", "新規登録の確認", JOptionPane.OK_CANCEL_OPTION);
                 if (flg == JOptionPane.CANCEL_OPTION) {
                     JOptionPane.showMessageDialog(null, "キャンセルしました。");
-                } else {
-                    //新規（挿入）処理
-                    String sql = "INSERT INTO  regsys VALUES (?,?,?,?);";
-
-                    connectionShip.setAutoCommit(false);
-
-                    statementShip.setString(1, this.jTextFieldShipCode.getText().trim());
-                    statementShip.setString(2, this.jTextFieldShipNameO.getText().trim());
-                    statementShip.setString(3, this.jTextFieldShipNameY.getText().trim());
-                    statementShip.setString(4, this.jTextAreaShipRemark.getText());
-
-                    statementShip.addBatch();
+                }
+                //新規（挿入）処理
+                try (Connection connectionShipInsert = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
+                        PreparedStatement statementShipInsert = connectionShipInsert.prepareStatement("INSERT INTO ship VALUES (?,?,?,?);");) {
+                    connectionShipInsert.setAutoCommit(false);
+                    statementShipInsert.setString(1, this.jTextFieldShipCode.getText().trim());
+                    statementShipInsert.setString(2, this.jTextFieldShipNameO.getText().trim());
+                    statementShipInsert.setString(3, this.jTextFieldShipNameY.getText().trim());
+                    statementShipInsert.setString(4, this.jTextAreaShipRemark.getText());
+                    statementShipInsert.addBatch();
+                    int[] result = statementShipInsert.executeBatch();
+                    System.out.println("登録：" + result.length + "件");
+                    try {
+                        connectionShipInsert.commit();
+                        System.out.println("登録成功");
+                    } catch (SQLException e) {
+                        connectionShipInsert.rollback();
+                        System.out.println("登録失敗：ロールバック実行");
+                        e.printStackTrace();
+                    }
                 }
             }
-
-            int[] result = statementShip.executeBatch();
-            System.out.println("登録/更新：" + result.length + "件");
-
-            try {
-
-                connectionShip.commit();
-                System.out.println("登録成功");
-
-            } catch (SQLException e) {
-
-                connectionShip.rollback();
-                System.out.println("登録失敗：ロールバック実行");
-
-                e.printStackTrace();
-
-            }
-
         } catch (SQLException e) {
             System.out.println("エラーが発生しました");
             JOptionPane.showMessageDialog(null, "処理中にエラーが発生しました");
