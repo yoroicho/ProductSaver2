@@ -74,7 +74,7 @@ public class MainJFrame extends javax.swing.JFrame {
         this.jRadioButtonSaveCat3Paste.setSelected(true); // Cat3は基本上書き
 
         this.jButtonShipDelete.setEnabled(false); // Shipコード削除ボタンを無効化
-        
+
         try { // OS依存情報取得
             this.lineSeparator = System.getProperty("line.separator"); // 改行コード
             this.userDir = System.getProperty("user.dir"); // 自分自身のパス
@@ -2052,9 +2052,19 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelConfigComponentShown
 
     private void jButtonShipEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShipEnterActionPerformed
+        // 事前処理（SHIPコードをすべて半角の大文字へ）
+        jTextFieldShipCode.setText(jTextFieldShipCode.getText().toUpperCase());
+
+        // 入力値検査（将来もっと厳格にする、ただし一部はDBに委託）
+        if (this.jTextFieldShipCode.getText().trim().length() != SHIP_CODE_LENGTH) {
+            JOptionPane.showMessageDialog(rootPane, "SHIPコードの桁数が不正です" + this.lineSeparator + "（修正後はコード競合に注意が必要です）");
+            jTextFieldShipCode.requestFocusInWindow();
+            return;
+        }
+        
         // Shipテーブルに書き込みもしくは上書き
         try (Connection connectionShip = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
-                PreparedStatement statementShip = connectionShip.prepareStatement("select * from ship where code = ?;");) {
+                PreparedStatement statementShip = connectionShip.prepareStatement("select * from ship where  code = ?;");) {
             statementShip.setString(1, this.jTextFieldShipCode.getText().trim());
             statementShip.addBatch();
             ResultSet resultSetShip = statementShip.executeQuery();
@@ -2070,7 +2080,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     // 更新処理
                     try (Connection connectionShipUpdate = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
                             PreparedStatement statementShipUpdate = connectionShipUpdate.prepareStatement(
-                                    "UPDATE ship SET code = ?, nameo = ?, namey = ?, remark = ? where code = ?;");) {
+                                    "UPDATE ship SET code = ?, nameo = ?, namey = ?, remark = ? where  code = ?;");) {
                         connectionShipUpdate.setAutoCommit(false);
                         statementShipUpdate.setString(1, this.jTextFieldShipCode.getText().trim());
                         statementShipUpdate.setString(2, this.jTextFieldShipNameO.getText().trim());
@@ -2091,7 +2101,7 @@ public class MainJFrame extends javax.swing.JFrame {
                             this.jTextFieldShipNameY.setText(null);
                             this.jTextAreaShipRemark.setText(null);
                             this.jButtonShipDelete.setEnabled(false); // 削除ボタンを無効化
-                            //this.jButtonShipSelectWhereShipCode.setEnabled(true); // 照会ボタンを有効化
+                            this.jButtonShipSelectWhereShipCode.setEnabled(true); // 照会ボタンを有効化
                         } catch (SQLException e) {
                             connectionShipUpdate.rollback();
                             System.out.println("登録失敗：ロールバック実行");
@@ -2126,7 +2136,7 @@ public class MainJFrame extends javax.swing.JFrame {
                             this.jTextFieldShipNameY.setText(null);
                             this.jTextAreaShipRemark.setText(null);
                             this.jButtonShipDelete.setEnabled(false); // 削除ボタンを無効化
-                            //this.jButtonShipSelectWhereShipCode.setEnabled(true); // 照会ボタンを有効化
+                            this.jButtonShipSelectWhereShipCode.setEnabled(true); // 照会ボタンを有効化
                         } catch (SQLException e) {
                             connectionShipInsert.rollback();
                             System.out.println("登録失敗：ロールバック実行");
@@ -2144,13 +2154,14 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jTextFieldShipCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldShipCodeFocusLost
         if (this.jTextFieldShipCode.getText().trim().length() != SHIP_CODE_LENGTH) {
-            this.jLabelShipEntryCondition.setText("形式不正");
-            jTextFieldShipCode.requestFocusInWindow();
-            return; // SHIP_CODE_LENGTH以外の文字数での遷移処理を回避（以上の場合は未検討）
+            //this.jLabelShipEntryCondition.setText("形式不正");
+            //jTextFieldShipCode.requestFocusInWindow();
+            return; // SHIP_CODE_LENGTH以外の文字数での検索処理を回避
         }
         // 登録がある場合は内容を呼び出す
         try (Connection connectionShip = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                PreparedStatement statementShip = connectionShip.prepareStatement("select * from ship where code = ?;");) {
+                PreparedStatement statementShip = connectionShip.prepareStatement(
+                        "select * from ship where  code = ?;");) { // 大文字小文字を区別
             statementShip.setString(1, this.jTextFieldShipCode.getText().trim());
             statementShip.addBatch();
             ResultSet resultSetShip = statementShip.executeQuery();
@@ -2166,18 +2177,18 @@ public class MainJFrame extends javax.swing.JFrame {
                 this.jTextFieldShipNameY.setText(null);
                 this.jTextAreaShipRemark.setText(null);
                 this.jButtonShipDelete.setEnabled(false); // 削除ボタンを無効化
-                //this.jButtonShipSelectWhereShipCode.setEnabled(false); // 照会ボタンを無効化
+                this.jButtonShipSelectWhereShipCode.setEnabled(false); // 照会ボタンを無効化
             } else { // 登録があった場合
                 //JOptionPane.showMessageDialog(null, "変更入力です。", "変更", JOptionPane.PLAIN_MESSAGE);
                 jLabelShipEntryCondition.setText("既存変更");
                 jTextFieldShipCode.setEditable(false); // コードを変更できないようにロック
-                                jTextFieldShipCode.setBackground(Color.LIGHT_GRAY);
+                jTextFieldShipCode.setBackground(Color.LIGHT_GRAY);
                 resultSetShip.first();
                 this.jTextFieldShipNameO.setText(resultSetShip.getString("nameo"));
                 this.jTextFieldShipNameY.setText(resultSetShip.getString("namey"));
                 this.jTextAreaShipRemark.setText(resultSetShip.getString("remark"));
                 this.jButtonShipDelete.setEnabled(true); // 削除ボタンを有効化
-                   //this.jButtonShipSelectWhereShipCode.setEnabled(false); // 照会ボタンを無効化
+                this.jButtonShipSelectWhereShipCode.setEnabled(false); // 照会ボタンを無効化
                 resultSetShip.close();
             }
         } catch (SQLException e) {
@@ -2214,15 +2225,18 @@ public class MainJFrame extends javax.swing.JFrame {
                 //this.jTextAreaShipRemark.setText(null);
             } else if (resultSetShipCount == 1) { // 登録が一件だけあった場合
                 JOptionPane.showMessageDialog(null, "特定しました。", "検索結果（１件）", JOptionPane.PLAIN_MESSAGE);
-                                jTextFieldShipCode.setEditable(false); // コードを変更できないようにロック
-                                jTextFieldShipCode.setBackground(Color.LIGHT_GRAY);
+                this.jLabelShipEntryCondition.setText("既存変更（検索経由）");
+                jTextFieldShipCode.setEditable(false); // コードを変更できないようにロック
+                jButtonShipSelectWhereShipCode.setEnabled(false); // 行き当たった場合はもう検索させない。
+                jButtonShipDelete.setEnabled(true); // 削除を可能とさせる。
+                jTextFieldShipCode.setBackground(Color.LIGHT_GRAY);
                 resultSetShip.first();
                 this.jTextFieldShipCode.setText(resultSetShip.getString("code"));
                 this.jTextFieldShipNameO.setText(resultSetShip.getString("nameo"));
                 this.jTextFieldShipNameY.setText(resultSetShip.getString("namey"));
                 this.jTextAreaShipRemark.setText(resultSetShip.getString("remark"));
                 resultSetShip.close();
-                
+
             } else if (resultSetShipCount > 1) { // 複数件の登録があった場合
                 JOptionPane.showMessageDialog(null, "絞り込むことができませんでした、検索条件を見なおしてください。", "検索結果（複数件）", JOptionPane.PLAIN_MESSAGE);
                 //this.jTextFieldShipCode.setText(null); 
@@ -2241,14 +2255,14 @@ public class MainJFrame extends javax.swing.JFrame {
         // シップコードをクリアし入力可能状態とする
         jLabelShipEntryCondition.setText(null);
         jTextFieldShipCode.setEditable(true); // コードを変更できるようにロック解除
-              jTextFieldShipCode.setBackground(Color.WHITE); // 色も変える
+        jTextFieldShipCode.setBackground(Color.WHITE); // 色も変える
         this.jTextFieldShipCode.setText(null);
         this.jTextFieldShipNameO.setText(null);
         this.jTextFieldShipNameY.setText(null);
         this.jTextAreaShipRemark.setText(null);
         this.jButtonShipDelete.setEnabled(false); // 削除ボタンを無効化
-         //this.jButtonShipSelectWhereShipCode.setEnabled(true); // 照会ボタンを有効化
-        
+        this.jButtonShipSelectWhereShipCode.setEnabled(true); // 照会ボタンを有効化
+
     }//GEN-LAST:event_jButtonShipCodeCleraActionPerformed
 
     private void jButtonShipDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShipDeleteActionPerformed
@@ -2258,39 +2272,45 @@ public class MainJFrame extends javax.swing.JFrame {
                 "警告",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.WARNING_MESSAGE)
-                == JOptionPane.NO_OPTION) {
-            // 削除しない
-        } else {
-            // 削除処理
-            try (Connection connectionShipUpdate = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
-                    PreparedStatement statementShipUpdate = connectionShipUpdate.prepareStatement(
-                            "DELETE FROM ship WHERE code = ?;");) {
-                connectionShipUpdate.setAutoCommit(false);
-                statementShipUpdate.setString(1, this.jTextFieldShipCode.getText().trim()); // 削除条件
-                statementShipUpdate.addBatch();
-                int[] result = statementShipUpdate.executeBatch();
-                System.out.println("削除：" + result.length + "件");
-                try {
-                    connectionShipUpdate.commit();
-                    System.out.println("削除成功");
-                    jLabelShipEntryCondition.setText(null);
-                    jTextFieldShipCode.setEditable(true); // コードを変更できるようにロック解除
-                    jTextFieldShipCode.setBackground(Color.WHITE); // 色も変える
-                    this.jTextFieldShipCode.setText(null);
-                    this.jTextFieldShipNameO.setText(null);
-                    this.jTextFieldShipNameY.setText(null);
-                    this.jTextAreaShipRemark.setText(null);
-                    this.jButtonShipDelete.setEnabled(false); // 削除ボタンを無効化
-                    //this.jButtonShipSelectWhereShipCode.setEnabled(true); // 照会ボタンを有効化
+                == JOptionPane.YES_OPTION) {
+            if (JOptionPane.showConfirmDialog(
+                    null,
+                    "本当に" + this.jTextFieldShipCode.getText().trim() + "を削除しますか。",
+                    "最終警告",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE)
+                    == JOptionPane.YES_OPTION) {
+                // 削除処理
+                try (Connection connectionShipUpdate = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
+                        PreparedStatement statementShipUpdate = connectionShipUpdate.prepareStatement(
+                                "DELETE FROM ship WHERE  code = ?;");) {
+                    connectionShipUpdate.setAutoCommit(false);
+                    statementShipUpdate.setString(1, this.jTextFieldShipCode.getText().trim()); // 削除条件
+                    statementShipUpdate.addBatch();
+                    int[] result = statementShipUpdate.executeBatch();
+                    System.out.println("削除：" + result.length + "件");
+                    try {
+                        connectionShipUpdate.commit();
+                        System.out.println("削除成功");
+                        jLabelShipEntryCondition.setText(null);
+                        jTextFieldShipCode.setEditable(true); // コードを変更できるようにロック解除
+                        jTextFieldShipCode.setBackground(Color.WHITE); // 色も変える
+                        this.jTextFieldShipCode.setText(null);
+                        this.jTextFieldShipNameO.setText(null);
+                        this.jTextFieldShipNameY.setText(null);
+                        this.jTextAreaShipRemark.setText(null);
+                        this.jButtonShipDelete.setEnabled(false); // 削除ボタンを無効化
+                        this.jButtonShipSelectWhereShipCode.setEnabled(true); // 照会ボタンを有効化
+                    } catch (SQLException e) {
+                        connectionShipUpdate.rollback();
+                        System.out.println("登録失敗：ロールバック実行");
+                        e.printStackTrace();
+                    }
                 } catch (SQLException e) {
-                    connectionShipUpdate.rollback();
-                    System.out.println("登録失敗：ロールバック実行");
+                    System.out.println("エラーが発生しました");
+                    JOptionPane.showMessageDialog(null, "処理中にエラーが発生しました");
                     e.printStackTrace();
                 }
-            } catch (SQLException e) {
-                System.out.println("エラーが発生しました");
-                JOptionPane.showMessageDialog(null, "処理中にエラーが発生しました");
-                e.printStackTrace();
             }
         }
     }//GEN-LAST:event_jButtonShipDeleteActionPerformed
