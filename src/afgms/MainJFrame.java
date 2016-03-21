@@ -51,6 +51,8 @@ public class MainJFrame extends javax.swing.JFrame {
     static String USERNAME; // = conf.getProperty("dbUsername");
     static String PASSWORD; // = conf.getProperty("dbPassword");
 
+    static final int SHIP_CODE_LENGTH = 4;
+
     /**
      * Creates new form NewJFrame
      *
@@ -71,6 +73,8 @@ public class MainJFrame extends javax.swing.JFrame {
         this.jRadioButtonSaveCat2Paste.setSelected(true); // Cat2は基本上書き
         this.jRadioButtonSaveCat3Paste.setSelected(true); // Cat3は基本上書き
 
+        this.jButtonShipDelete.setEnabled(false); // Shipコード削除ボタンを無効化
+        
         try { // OS依存情報取得
             this.lineSeparator = System.getProperty("line.separator"); // 改行コード
             this.userDir = System.getProperty("user.dir"); // 自分自身のパス
@@ -141,6 +145,20 @@ public class MainJFrame extends javax.swing.JFrame {
         buttonGroupCat2 = new javax.swing.ButtonGroup();
         buttonGroupCat3 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jTextFieldShipNameO = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaShipRemark = new javax.swing.JTextArea();
+        jButtonShipEnter = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        jTextFieldShipNameY = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
+        jTextFieldShipCode = new javax.swing.JTextField();
+        jButtonShipSelectWhereShipCode = new javax.swing.JButton();
+        jButtonShipDelete = new javax.swing.JButton();
+        jButtonShipCodeClera = new javax.swing.JButton();
+        jLabelShipEntryCondition = new javax.swing.JLabel();
         jPanelConfig = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -154,18 +172,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jTextFieldPasteBuckupHome = new javax.swing.JTextField();
         jTextFieldMultigenerationalBackupHome = new javax.swing.JTextField();
         jButtonEnterConfig = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        jTextFieldShipNameO = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextAreaShipRemark = new javax.swing.JTextArea();
-        jButtonShipEnter = new javax.swing.JButton();
-        jLabel30 = new javax.swing.JLabel();
-        jTextFieldShipNameY = new javax.swing.JTextField();
-        jLabel31 = new javax.swing.JLabel();
-        jTextFieldShipCode = new javax.swing.JTextField();
-        jButtonShipSelectWhereShipCode = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jRadioButtonSaveCat3Paste = new javax.swing.JRadioButton();
         jRadioButtonSaveCat3Fork = new javax.swing.JRadioButton();
@@ -315,6 +321,124 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel1ComponentShown(evt);
+            }
+        });
+
+        jLabel19.setText("Vessel");
+
+        jTextAreaShipRemark.setColumns(20);
+        jTextAreaShipRemark.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaShipRemark);
+
+        jButtonShipEnter.setText("入力");
+        jButtonShipEnter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonShipEnterActionPerformed(evt);
+            }
+        });
+
+        jLabel30.setText("よみ");
+
+        jLabel31.setText("CODE");
+
+        jTextFieldShipCode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldShipCodeFocusLost(evt);
+            }
+        });
+
+        jButtonShipSelectWhereShipCode.setText("照会");
+        jButtonShipSelectWhereShipCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonShipSelectWhereShipCodeActionPerformed(evt);
+            }
+        });
+
+        jButtonShipDelete.setText("削除");
+        jButtonShipDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonShipDeleteActionPerformed(evt);
+            }
+        });
+
+        jButtonShipCodeClera.setText("クリア");
+        jButtonShipCodeClera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonShipCodeCleraActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonShipEnter)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonShipDelete)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldShipNameO, javax.swing.GroupLayout.DEFAULT_SIZE, 1544, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldShipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelShipEntryCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonShipCodeClera)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonShipSelectWhereShipCode))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldShipNameY, javax.swing.GroupLayout.PREFERRED_SIZE, 954, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31)
+                    .addComponent(jTextFieldShipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonShipSelectWhereShipCode)
+                    .addComponent(jButtonShipCodeClera)
+                    .addComponent(jLabelShipEntryCondition))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldShipNameO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel30)
+                    .addComponent(jTextFieldShipNameY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonShipEnter)
+                    .addComponent(jButtonShipDelete))
+                .addContainerGap(286, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("本船情報", jPanel1);
+
         jPanelConfig.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 jPanelConfigComponentShown(evt);
@@ -405,89 +529,6 @@ public class MainJFrame extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("環境設定", jPanelConfig);
-
-        jLabel19.setText("Vessel");
-
-        jTextAreaShipRemark.setColumns(20);
-        jTextAreaShipRemark.setRows(5);
-        jScrollPane2.setViewportView(jTextAreaShipRemark);
-
-        jButtonShipEnter.setText("入力");
-        jButtonShipEnter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonShipEnterActionPerformed(evt);
-            }
-        });
-
-        jLabel30.setText("よみ");
-
-        jLabel31.setText("CODE");
-
-        jButtonShipSelectWhereShipCode.setText("照会");
-
-        jButton9.setText("削除");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButtonShipEnter)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton9)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldShipNameO, javax.swing.GroupLayout.DEFAULT_SIZE, 1544, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldShipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonShipSelectWhereShipCode))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldShipNameY, javax.swing.GroupLayout.PREFERRED_SIZE, 954, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel31)
-                    .addComponent(jTextFieldShipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonShipSelectWhereShipCode))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldShipNameO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel30)
-                    .addComponent(jTextFieldShipNameY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonShipEnter)
-                    .addComponent(jButton9))
-                .addContainerGap(286, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("本船情報", jPanel1);
 
         jRadioButtonSaveCat3Paste.setText("無世代");
         jRadioButtonSaveCat3Paste.addActionListener(new java.awt.event.ActionListener() {
@@ -2008,18 +2049,12 @@ public class MainJFrame extends javax.swing.JFrame {
         this.jTextFieldDbPassword.setText(configuration.getProperty("dbPassword"));
         this.jTextFieldPasteBuckupHome.setText(configuration.getProperty("pasteBuckupHome"));
         this.jTextFieldMultigenerationalBackupHome.setText(configuration.getProperty("multigenerationalBackupHome"));
-        /*
-         this.jComboBoxAutoSaveTime.setSelectedItem(configuration.getProperty("autoSaveTime"));
-         this.jTextFieldAutoSaveScript.setText(configuration.getProperty("autoSaveScript"));
-         this.jTextFieldAutoSaveMouseX.setText(configuration.getProperty("autoSaveMouseX"));
-         this.jTextFieldAutoSaveMouseY.setText(configuration.getProperty("autoSaveMouseY"));
-         */
     }//GEN-LAST:event_jPanelConfigComponentShown
 
     private void jButtonShipEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShipEnterActionPerformed
         // Shipテーブルに書き込みもしくは上書き
         try (Connection connectionShip = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
-                PreparedStatement statementShip = connectionShip.prepareStatement("select * from ship where code = ?;");) { // そもそもこれが正しいか不明
+                PreparedStatement statementShip = connectionShip.prepareStatement("select * from ship where code = ?;");) {
             statementShip.setString(1, this.jTextFieldShipCode.getText().trim());
             statementShip.addBatch();
             ResultSet resultSetShip = statementShip.executeQuery();
@@ -2030,54 +2065,73 @@ public class MainJFrame extends javax.swing.JFrame {
             if (resultSetShipCount > 0) { // すでにCODEキーが存在（更新）する場合
                 flg = JOptionPane.showConfirmDialog(null, "すでにある内容を更新しますか。", "更新の確認", JOptionPane.OK_CANCEL_OPTION);
                 if (flg == JOptionPane.CANCEL_OPTION) {
-                    JOptionPane.showMessageDialog(null, "キャンセルしました。");
-                }
-                // 更新処理
-                try (Connection connectionShipUpdate = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
-                        PreparedStatement statementShipUpdate = connectionShipUpdate.prepareStatement(
-                                "UPDATE ship SET code = ?, nameo = ?, namey = ?, remark = ? where code = ?;");) {
-                    connectionShipUpdate.setAutoCommit(false);
-                    statementShipUpdate.setString(1, this.jTextFieldShipCode.getText().trim());
-                    statementShipUpdate.setString(2, this.jTextFieldShipNameO.getText().trim());
-                    statementShipUpdate.setString(3, this.jTextFieldShipNameY.getText().trim());
-                    statementShipUpdate.setString(4, this.jTextAreaShipRemark.getText());
-                    statementShipUpdate.setString(5, this.jTextFieldShipCode.getText().trim()); // where 条件
-                    statementShipUpdate.addBatch();
-                    int[] result = statementShipUpdate.executeBatch();
-                    System.out.println("登録：" + result.length + "件");
-                    try {
-                        connectionShipUpdate.commit();
-                        System.out.println("登録成功");
-                    } catch (SQLException e) {
-                        connectionShipUpdate.rollback();
-                        System.out.println("登録失敗：ロールバック実行");
-                        e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "キャンセルしました。"); // キャンセル
+                } else { // 非キャンセル
+                    // 更新処理
+                    try (Connection connectionShipUpdate = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
+                            PreparedStatement statementShipUpdate = connectionShipUpdate.prepareStatement(
+                                    "UPDATE ship SET code = ?, nameo = ?, namey = ?, remark = ? where code = ?;");) {
+                        connectionShipUpdate.setAutoCommit(false);
+                        statementShipUpdate.setString(1, this.jTextFieldShipCode.getText().trim());
+                        statementShipUpdate.setString(2, this.jTextFieldShipNameO.getText().trim());
+                        statementShipUpdate.setString(3, this.jTextFieldShipNameY.getText().trim());
+                        statementShipUpdate.setString(4, this.jTextAreaShipRemark.getText());
+                        statementShipUpdate.setString(5, this.jTextFieldShipCode.getText().trim()); // where 条件
+                        statementShipUpdate.addBatch();
+                        int[] result = statementShipUpdate.executeBatch();
+                        System.out.println("登録：" + result.length + "件");
+                        try {
+                            connectionShipUpdate.commit();
+                            System.out.println("登録成功");
+                            jLabelShipEntryCondition.setText(null);
+                            jTextFieldShipCode.setEditable(true); // コードを変更できるようにロック解除
+                            jTextFieldShipCode.setBackground(Color.WHITE); // 色も変える
+                            this.jTextFieldShipCode.setText(null);
+                            this.jTextFieldShipNameO.setText(null);
+                            this.jTextFieldShipNameY.setText(null);
+                            this.jTextAreaShipRemark.setText(null);
+                            this.jButtonShipDelete.setEnabled(false); // 削除ボタンを無効化
+                            //this.jButtonShipSelectWhereShipCode.setEnabled(true); // 照会ボタンを有効化
+                        } catch (SQLException e) {
+                            connectionShipUpdate.rollback();
+                            System.out.println("登録失敗：ロールバック実行");
+                            e.printStackTrace();
+                        }
                     }
                 }
-
             } else { // CODEキーが存在しない（新規）の場合
                 flg = JOptionPane.showConfirmDialog(null, "新規で登録しますか。", "新規登録の確認", JOptionPane.OK_CANCEL_OPTION);
                 if (flg == JOptionPane.CANCEL_OPTION) {
                     JOptionPane.showMessageDialog(null, "キャンセルしました。");
-                }
-                //新規（挿入）処理
-                try (Connection connectionShipInsert = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
-                        PreparedStatement statementShipInsert = connectionShipInsert.prepareStatement("INSERT INTO ship VALUES (?,?,?,?);");) {
-                    connectionShipInsert.setAutoCommit(false);
-                    statementShipInsert.setString(1, this.jTextFieldShipCode.getText().trim());
-                    statementShipInsert.setString(2, this.jTextFieldShipNameO.getText().trim());
-                    statementShipInsert.setString(3, this.jTextFieldShipNameY.getText().trim());
-                    statementShipInsert.setString(4, this.jTextAreaShipRemark.getText());
-                    statementShipInsert.addBatch();
-                    int[] result = statementShipInsert.executeBatch();
-                    System.out.println("登録：" + result.length + "件");
-                    try {
-                        connectionShipInsert.commit();
-                        System.out.println("登録成功");
-                    } catch (SQLException e) {
-                        connectionShipInsert.rollback();
-                        System.out.println("登録失敗：ロールバック実行");
-                        e.printStackTrace();
+                } else {
+                    //新規（挿入）処理
+                    try (Connection connectionShipInsert = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
+                            PreparedStatement statementShipInsert = connectionShipInsert.prepareStatement("INSERT INTO ship VALUES (?,?,?,?);");) {
+                        connectionShipInsert.setAutoCommit(false);
+                        statementShipInsert.setString(1, this.jTextFieldShipCode.getText().trim());
+                        statementShipInsert.setString(2, this.jTextFieldShipNameO.getText().trim());
+                        statementShipInsert.setString(3, this.jTextFieldShipNameY.getText().trim());
+                        statementShipInsert.setString(4, this.jTextAreaShipRemark.getText());
+                        statementShipInsert.addBatch();
+                        int[] result = statementShipInsert.executeBatch();
+                        System.out.println("登録：" + result.length + "件");
+                        try {
+                            connectionShipInsert.commit();
+                            System.out.println("登録成功");
+                            jLabelShipEntryCondition.setText(null);
+                            jTextFieldShipCode.setEditable(true); // コードを変更できるようにロック解除
+                            jTextFieldShipCode.setBackground(Color.WHITE); // 色も変える
+                            this.jTextFieldShipCode.setText(null);
+                            this.jTextFieldShipNameO.setText(null);
+                            this.jTextFieldShipNameY.setText(null);
+                            this.jTextAreaShipRemark.setText(null);
+                            this.jButtonShipDelete.setEnabled(false); // 削除ボタンを無効化
+                            //this.jButtonShipSelectWhereShipCode.setEnabled(true); // 照会ボタンを有効化
+                        } catch (SQLException e) {
+                            connectionShipInsert.rollback();
+                            System.out.println("登録失敗：ロールバック実行");
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
@@ -2087,6 +2141,164 @@ public class MainJFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButtonShipEnterActionPerformed
+
+    private void jTextFieldShipCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldShipCodeFocusLost
+        if (this.jTextFieldShipCode.getText().trim().length() != SHIP_CODE_LENGTH) {
+            this.jLabelShipEntryCondition.setText("形式不正");
+            jTextFieldShipCode.requestFocusInWindow();
+            return; // SHIP_CODE_LENGTH以外の文字数での遷移処理を回避（以上の場合は未検討）
+        }
+        // 登録がある場合は内容を呼び出す
+        try (Connection connectionShip = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                PreparedStatement statementShip = connectionShip.prepareStatement("select * from ship where code = ?;");) {
+            statementShip.setString(1, this.jTextFieldShipCode.getText().trim());
+            statementShip.addBatch();
+            ResultSet resultSetShip = statementShip.executeQuery();
+            resultSetShip.last();
+            int resultSetShipCount = resultSetShip.getRow();
+            if (resultSetShipCount == 0) { // 登録がなかった場合
+                resultSetShip.close();
+                //JOptionPane.showMessageDialog(null, "コードの実績がありません。", "新規", JOptionPane.INFORMATION_MESSAGE);
+                jLabelShipEntryCondition.setText("新規");
+                jTextFieldShipCode.setEditable(false); // コードを変更できないようにロック
+                jTextFieldShipCode.setBackground(Color.LIGHT_GRAY);
+                this.jTextFieldShipNameO.setText(null);
+                this.jTextFieldShipNameY.setText(null);
+                this.jTextAreaShipRemark.setText(null);
+                this.jButtonShipDelete.setEnabled(false); // 削除ボタンを無効化
+                //this.jButtonShipSelectWhereShipCode.setEnabled(false); // 照会ボタンを無効化
+            } else { // 登録があった場合
+                //JOptionPane.showMessageDialog(null, "変更入力です。", "変更", JOptionPane.PLAIN_MESSAGE);
+                jLabelShipEntryCondition.setText("既存変更");
+                jTextFieldShipCode.setEditable(false); // コードを変更できないようにロック
+                                jTextFieldShipCode.setBackground(Color.LIGHT_GRAY);
+                resultSetShip.first();
+                this.jTextFieldShipNameO.setText(resultSetShip.getString("nameo"));
+                this.jTextFieldShipNameY.setText(resultSetShip.getString("namey"));
+                this.jTextAreaShipRemark.setText(resultSetShip.getString("remark"));
+                this.jButtonShipDelete.setEnabled(true); // 削除ボタンを有効化
+                   //this.jButtonShipSelectWhereShipCode.setEnabled(false); // 照会ボタンを無効化
+                resultSetShip.close();
+            }
+        } catch (SQLException e) {
+            System.out.println("エラーが発生しました");
+            JOptionPane.showMessageDialog(null, "処理中にエラーが発生しました");
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_jTextFieldShipCodeFocusLost
+
+    private void jButtonShipSelectWhereShipCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShipSelectWhereShipCodeActionPerformed
+        // 中間一致・複数条件での検索　暫定実装
+        // ミスタイプを防ぐため、バーコードが印刷された紙の台帳を基準とする為、
+        // 検索の利便性は慎重に考える。
+        try (Connection connectionShip = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                PreparedStatement statementShip = connectionShip.prepareStatement(
+                        "select * from ship where  "
+                        + "nameo LIKE CONCAT('%',?,'%')"
+                        + "AND namey LIKE CONCAT('%',?,'%')"
+                        + "AND remark LIKE CONCAT('%',?,'%');");) {
+            statementShip.setString(1, this.jTextFieldShipNameO.getText().trim());
+            statementShip.setString(2, this.jTextFieldShipNameY.getText().trim());
+            statementShip.setString(3, this.jTextAreaShipRemark.getText().trim());
+            statementShip.addBatch();
+            ResultSet resultSetShip = statementShip.executeQuery();
+            resultSetShip.last();
+            int resultSetShipCount = resultSetShip.getRow();
+            if (resultSetShipCount == 0) { // 登録がなかった場合
+                resultSetShip.close();
+                JOptionPane.showMessageDialog(null, "なにも見つけられませんでした。", "検索結果（０件）", JOptionPane.INFORMATION_MESSAGE);
+                //this.jTextFieldShipCode.setText(null); 
+                //this.jTextFieldShipNameO.setText(null);
+                //this.jTextFieldShipNameY.setText(null);
+                //this.jTextAreaShipRemark.setText(null);
+            } else if (resultSetShipCount == 1) { // 登録が一件だけあった場合
+                JOptionPane.showMessageDialog(null, "特定しました。", "検索結果（１件）", JOptionPane.PLAIN_MESSAGE);
+                                jTextFieldShipCode.setEditable(false); // コードを変更できないようにロック
+                                jTextFieldShipCode.setBackground(Color.LIGHT_GRAY);
+                resultSetShip.first();
+                this.jTextFieldShipCode.setText(resultSetShip.getString("code"));
+                this.jTextFieldShipNameO.setText(resultSetShip.getString("nameo"));
+                this.jTextFieldShipNameY.setText(resultSetShip.getString("namey"));
+                this.jTextAreaShipRemark.setText(resultSetShip.getString("remark"));
+                resultSetShip.close();
+                
+            } else if (resultSetShipCount > 1) { // 複数件の登録があった場合
+                JOptionPane.showMessageDialog(null, "絞り込むことができませんでした、検索条件を見なおしてください。", "検索結果（複数件）", JOptionPane.PLAIN_MESSAGE);
+                //this.jTextFieldShipCode.setText(null); 
+                //this.jTextFieldShipNameO.setText(null);
+                //this.jTextFieldShipNameY.setText(null);
+                //this.jTextAreaShipRemark.setText(null);
+            }
+        } catch (SQLException e) {
+            System.out.println("エラーが発生しました");
+            JOptionPane.showMessageDialog(null, "処理中にエラーが発生しました");
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButtonShipSelectWhereShipCodeActionPerformed
+
+    private void jButtonShipCodeCleraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShipCodeCleraActionPerformed
+        // シップコードをクリアし入力可能状態とする
+        jLabelShipEntryCondition.setText(null);
+        jTextFieldShipCode.setEditable(true); // コードを変更できるようにロック解除
+              jTextFieldShipCode.setBackground(Color.WHITE); // 色も変える
+        this.jTextFieldShipCode.setText(null);
+        this.jTextFieldShipNameO.setText(null);
+        this.jTextFieldShipNameY.setText(null);
+        this.jTextAreaShipRemark.setText(null);
+        this.jButtonShipDelete.setEnabled(false); // 削除ボタンを無効化
+         //this.jButtonShipSelectWhereShipCode.setEnabled(true); // 照会ボタンを有効化
+        
+    }//GEN-LAST:event_jButtonShipCodeCleraActionPerformed
+
+    private void jButtonShipDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShipDeleteActionPerformed
+        if (JOptionPane.showConfirmDialog(
+                null,
+                this.jTextFieldShipCode.getText().trim() + "を削除しますか。",
+                "警告",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE)
+                == JOptionPane.NO_OPTION) {
+            // 削除しない
+        } else {
+            // 削除処理
+            try (Connection connectionShipUpdate = DriverManager.getConnection(URL, USERNAME, PASSWORD); //connection.setAutoCommit(false);
+                    PreparedStatement statementShipUpdate = connectionShipUpdate.prepareStatement(
+                            "DELETE FROM ship WHERE code = ?;");) {
+                connectionShipUpdate.setAutoCommit(false);
+                statementShipUpdate.setString(1, this.jTextFieldShipCode.getText().trim()); // 削除条件
+                statementShipUpdate.addBatch();
+                int[] result = statementShipUpdate.executeBatch();
+                System.out.println("削除：" + result.length + "件");
+                try {
+                    connectionShipUpdate.commit();
+                    System.out.println("削除成功");
+                    jLabelShipEntryCondition.setText(null);
+                    jTextFieldShipCode.setEditable(true); // コードを変更できるようにロック解除
+                    jTextFieldShipCode.setBackground(Color.WHITE); // 色も変える
+                    this.jTextFieldShipCode.setText(null);
+                    this.jTextFieldShipNameO.setText(null);
+                    this.jTextFieldShipNameY.setText(null);
+                    this.jTextAreaShipRemark.setText(null);
+                    this.jButtonShipDelete.setEnabled(false); // 削除ボタンを無効化
+                    //this.jButtonShipSelectWhereShipCode.setEnabled(true); // 照会ボタンを有効化
+                } catch (SQLException e) {
+                    connectionShipUpdate.rollback();
+                    System.out.println("登録失敗：ロールバック実行");
+                    e.printStackTrace();
+                }
+            } catch (SQLException e) {
+                System.out.println("エラーが発生しました");
+                JOptionPane.showMessageDialog(null, "処理中にエラーが発生しました");
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_jButtonShipDeleteActionPerformed
+
+    private void jPanel1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentShown
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jPanel1ComponentShown
 
     /**
      * @param args the command line arguments
@@ -2151,7 +2363,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonCatDir1;
     private javax.swing.JButton jButtonCatDir2;
     private javax.swing.JButton jButtonCatDir3;
@@ -2163,6 +2374,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEntry;
     private javax.swing.JButton jButtonIssueDir;
     private javax.swing.JButton jButtonSetDefaultItems;
+    private javax.swing.JButton jButtonShipCodeClera;
+    private javax.swing.JButton jButtonShipDelete;
     private javax.swing.JButton jButtonShipEnter;
     private javax.swing.JButton jButtonShipSelectWhereShipCode;
     private javax.swing.JButton jButtonSourceDir;
@@ -2239,6 +2452,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSeq7;
     private javax.swing.JLabel jLabelSeq8;
     private javax.swing.JLabel jLabelSeq9;
+    private javax.swing.JLabel jLabelShipEntryCondition;
     private javax.swing.JList jListTitles;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
