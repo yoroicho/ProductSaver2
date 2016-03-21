@@ -141,48 +141,6 @@ public class MainJFrame extends javax.swing.JFrame {
         buttonGroupCat2 = new javax.swing.ButtonGroup();
         buttonGroupCat3 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanelExeSys = new javax.swing.JPanel();
-        jLabelSeq1 = new javax.swing.JLabel();
-        jButtonSystemDirSeq1 = new javax.swing.JButton();
-        jTextFieldSystemDirSeq1 = new javax.swing.JTextField();
-        jTextFieldSeq1 = new javax.swing.JTextField();
-        jLabelSeq4 = new javax.swing.JLabel();
-        jTextFieldSeq2 = new javax.swing.JTextField();
-        jTextFieldSystemDirSeq2 = new javax.swing.JTextField();
-        jTextFieldSeq3 = new javax.swing.JTextField();
-        jLabelSeq5 = new javax.swing.JLabel();
-        jTextFieldSystemDirSeq3 = new javax.swing.JTextField();
-        jLabelSeq6 = new javax.swing.JLabel();
-        jTextFieldSystemDirSeq4 = new javax.swing.JTextField();
-        jTextFieldSeq4 = new javax.swing.JTextField();
-        jLabelSeq7 = new javax.swing.JLabel();
-        jTextFieldSystemDirSeq5 = new javax.swing.JTextField();
-        jTextFieldSeq5 = new javax.swing.JTextField();
-        jLabelSeq8 = new javax.swing.JLabel();
-        jTextFieldSeq6 = new javax.swing.JTextField();
-        jTextFieldSystemDirSeq6 = new javax.swing.JTextField();
-        jLabelSeq9 = new javax.swing.JLabel();
-        jTextFieldSystemDirSeq7 = new javax.swing.JTextField();
-        jTextFieldSeq7 = new javax.swing.JTextField();
-        jTextFieldSeq8 = new javax.swing.JTextField();
-        jLabelSeq10 = new javax.swing.JLabel();
-        jTextFieldSystemDirSeq8 = new javax.swing.JTextField();
-        jLabelSeq11 = new javax.swing.JLabel();
-        jTextFieldSeq9 = new javax.swing.JTextField();
-        jTextFieldSystemDirSeq9 = new javax.swing.JTextField();
-        jLabelSeq12 = new javax.swing.JLabel();
-        jTextFieldSeq10 = new javax.swing.JTextField();
-        jTextFieldSystemDirSeq10 = new javax.swing.JTextField();
-        jButtonSystemDirSeq2 = new javax.swing.JButton();
-        jButtonSystemDirSeq3 = new javax.swing.JButton();
-        jButtonSystemDirSeq4 = new javax.swing.JButton();
-        jButtonSystemDirSeq5 = new javax.swing.JButton();
-        jButtonSystemDirSeq6 = new javax.swing.JButton();
-        jButtonSystemDirSeq7 = new javax.swing.JButton();
-        jButtonSystemDirSeq8 = new javax.swing.JButton();
-        jButtonSystemDirSeq9 = new javax.swing.JButton();
-        jButtonSystemDirSeq10 = new javax.swing.JButton();
-        jButtonEnter = new javax.swing.JButton();
         jPanelConfig = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -306,6 +264,48 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
+        jPanelExeSys = new javax.swing.JPanel();
+        jLabelSeq1 = new javax.swing.JLabel();
+        jButtonSystemDirSeq1 = new javax.swing.JButton();
+        jTextFieldSystemDirSeq1 = new javax.swing.JTextField();
+        jTextFieldSeq1 = new javax.swing.JTextField();
+        jLabelSeq4 = new javax.swing.JLabel();
+        jTextFieldSeq2 = new javax.swing.JTextField();
+        jTextFieldSystemDirSeq2 = new javax.swing.JTextField();
+        jTextFieldSeq3 = new javax.swing.JTextField();
+        jLabelSeq5 = new javax.swing.JLabel();
+        jTextFieldSystemDirSeq3 = new javax.swing.JTextField();
+        jLabelSeq6 = new javax.swing.JLabel();
+        jTextFieldSystemDirSeq4 = new javax.swing.JTextField();
+        jTextFieldSeq4 = new javax.swing.JTextField();
+        jLabelSeq7 = new javax.swing.JLabel();
+        jTextFieldSystemDirSeq5 = new javax.swing.JTextField();
+        jTextFieldSeq5 = new javax.swing.JTextField();
+        jLabelSeq8 = new javax.swing.JLabel();
+        jTextFieldSeq6 = new javax.swing.JTextField();
+        jTextFieldSystemDirSeq6 = new javax.swing.JTextField();
+        jLabelSeq9 = new javax.swing.JLabel();
+        jTextFieldSystemDirSeq7 = new javax.swing.JTextField();
+        jTextFieldSeq7 = new javax.swing.JTextField();
+        jTextFieldSeq8 = new javax.swing.JTextField();
+        jLabelSeq10 = new javax.swing.JLabel();
+        jTextFieldSystemDirSeq8 = new javax.swing.JTextField();
+        jLabelSeq11 = new javax.swing.JLabel();
+        jTextFieldSeq9 = new javax.swing.JTextField();
+        jTextFieldSystemDirSeq9 = new javax.swing.JTextField();
+        jLabelSeq12 = new javax.swing.JLabel();
+        jTextFieldSeq10 = new javax.swing.JTextField();
+        jTextFieldSystemDirSeq10 = new javax.swing.JTextField();
+        jButtonSystemDirSeq2 = new javax.swing.JButton();
+        jButtonSystemDirSeq3 = new javax.swing.JButton();
+        jButtonSystemDirSeq4 = new javax.swing.JButton();
+        jButtonSystemDirSeq5 = new javax.swing.JButton();
+        jButtonSystemDirSeq6 = new javax.swing.JButton();
+        jButtonSystemDirSeq7 = new javax.swing.JButton();
+        jButtonSystemDirSeq8 = new javax.swing.JButton();
+        jButtonSystemDirSeq9 = new javax.swing.JButton();
+        jButtonSystemDirSeq10 = new javax.swing.JButton();
+        jButtonEnter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -314,274 +314,6 @@ public class MainJFrame extends javax.swing.JFrame {
                 jTabbedPane1StateChanged(evt);
             }
         });
-
-        jPanelExeSys.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanelExeSysFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPanelExeSysFocusLost(evt);
-            }
-        });
-        jPanelExeSys.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentHidden(java.awt.event.ComponentEvent evt) {
-                jPanelExeSysComponentHidden(evt);
-            }
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                jPanelExeSysComponentShown(evt);
-            }
-        });
-
-        jLabelSeq1.setText("１");
-
-        jButtonSystemDirSeq1.setText("参　照");
-        jButtonSystemDirSeq1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSystemDirSeq1ActionPerformed(evt);
-            }
-        });
-
-        jLabelSeq4.setText("２");
-
-        jLabelSeq5.setText("３");
-
-        jLabelSeq6.setText("４");
-
-        jLabelSeq7.setText("５");
-
-        jLabelSeq8.setText("６");
-
-        jLabelSeq9.setText("７");
-
-        jLabelSeq10.setText("８");
-
-        jLabelSeq11.setText("９");
-
-        jLabelSeq12.setText("10");
-
-        jButtonSystemDirSeq2.setText("参　照");
-        jButtonSystemDirSeq2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSystemDirSeq2ActionPerformed(evt);
-            }
-        });
-
-        jButtonSystemDirSeq3.setText("参　照");
-        jButtonSystemDirSeq3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSystemDirSeq3ActionPerformed(evt);
-            }
-        });
-
-        jButtonSystemDirSeq4.setText("参　照");
-        jButtonSystemDirSeq4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSystemDirSeq4ActionPerformed(evt);
-            }
-        });
-
-        jButtonSystemDirSeq5.setText("参　照");
-        jButtonSystemDirSeq5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSystemDirSeq5ActionPerformed(evt);
-            }
-        });
-
-        jButtonSystemDirSeq6.setText("参　照");
-        jButtonSystemDirSeq6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSystemDirSeq6ActionPerformed(evt);
-            }
-        });
-
-        jButtonSystemDirSeq7.setText("参　照");
-        jButtonSystemDirSeq7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSystemDirSeq7ActionPerformed(evt);
-            }
-        });
-
-        jButtonSystemDirSeq8.setText("参　照");
-        jButtonSystemDirSeq8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSystemDirSeq8ActionPerformed(evt);
-            }
-        });
-
-        jButtonSystemDirSeq9.setText("参　照");
-        jButtonSystemDirSeq9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSystemDirSeq9ActionPerformed(evt);
-            }
-        });
-
-        jButtonSystemDirSeq10.setText("参　照");
-        jButtonSystemDirSeq10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSystemDirSeq10ActionPerformed(evt);
-            }
-        });
-
-        jButtonEnter.setText("適　　用");
-        jButtonEnter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEnterActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelExeSysLayout = new javax.swing.GroupLayout(jPanelExeSys);
-        jPanelExeSys.setLayout(jPanelExeSysLayout);
-        jPanelExeSysLayout.setHorizontalGroup(
-            jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelExeSysLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonEnter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
-                        .addComponent(jLabelSeq4)
-                        .addGap(12, 12, 12)
-                        .addComponent(jTextFieldSeq2, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldSystemDirSeq2, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonSystemDirSeq2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelExeSysLayout.createSequentialGroup()
-                        .addComponent(jLabelSeq1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldSeq1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldSystemDirSeq1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonSystemDirSeq1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelExeSysLayout.createSequentialGroup()
-                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelExeSysLayout.createSequentialGroup()
-                                .addComponent(jLabelSeq5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldSeq3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldSystemDirSeq3, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelExeSysLayout.createSequentialGroup()
-                                .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
-                                        .addComponent(jLabelSeq6)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jTextFieldSeq4))
-                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
-                                        .addComponent(jLabelSeq7)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jTextFieldSeq5))
-                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
-                                        .addComponent(jLabelSeq8)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jTextFieldSeq6))
-                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
-                                        .addComponent(jLabelSeq9)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jTextFieldSeq7))
-                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
-                                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabelSeq10)
-                                            .addComponent(jLabelSeq11)
-                                            .addComponent(jLabelSeq12))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextFieldSeq10)
-                                            .addComponent(jTextFieldSeq8)
-                                            .addComponent(jTextFieldSeq9))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldSystemDirSeq4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldSystemDirSeq5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldSystemDirSeq6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldSystemDirSeq7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldSystemDirSeq8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldSystemDirSeq9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldSystemDirSeq10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonSystemDirSeq4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonSystemDirSeq5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonSystemDirSeq3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonSystemDirSeq6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonSystemDirSeq7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonSystemDirSeq8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonSystemDirSeq9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonSystemDirSeq10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(378, 378, 378))
-        );
-        jPanelExeSysLayout.setVerticalGroup(
-            jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelExeSysLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelSeq1)
-                    .addComponent(jButtonSystemDirSeq1)
-                    .addComponent(jTextFieldSystemDirSeq1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldSeq1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
-                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonSystemDirSeq2)
-                            .addComponent(jTextFieldSystemDirSeq2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldSeq2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSeq4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonSystemDirSeq3)
-                            .addComponent(jTextFieldSystemDirSeq3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldSeq3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSeq5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonSystemDirSeq4)
-                            .addComponent(jTextFieldSystemDirSeq4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldSeq4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSeq6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonSystemDirSeq5)
-                            .addComponent(jTextFieldSystemDirSeq5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldSeq5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSeq7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonSystemDirSeq6)
-                            .addComponent(jTextFieldSystemDirSeq6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldSeq6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSeq8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonSystemDirSeq7)
-                            .addComponent(jTextFieldSystemDirSeq7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldSeq7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSeq9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonSystemDirSeq8)
-                            .addComponent(jTextFieldSystemDirSeq8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldSeq8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSeq10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonSystemDirSeq9)
-                            .addComponent(jTextFieldSystemDirSeq9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldSeq9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSeq11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonSystemDirSeq10)
-                            .addComponent(jTextFieldSystemDirSeq10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelSeq12)
-                        .addComponent(jTextFieldSeq10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jButtonEnter)
-                .addContainerGap(216, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("試セーブ", jPanelExeSys);
 
         jPanelConfig.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -1404,6 +1136,274 @@ public class MainJFrame extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("配下起動", jPanelAppInfo);
+
+        jPanelExeSys.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanelExeSysFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jPanelExeSysFocusLost(evt);
+            }
+        });
+        jPanelExeSys.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                jPanelExeSysComponentHidden(evt);
+            }
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanelExeSysComponentShown(evt);
+            }
+        });
+
+        jLabelSeq1.setText("１");
+
+        jButtonSystemDirSeq1.setText("参　照");
+        jButtonSystemDirSeq1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq1ActionPerformed(evt);
+            }
+        });
+
+        jLabelSeq4.setText("２");
+
+        jLabelSeq5.setText("３");
+
+        jLabelSeq6.setText("４");
+
+        jLabelSeq7.setText("５");
+
+        jLabelSeq8.setText("６");
+
+        jLabelSeq9.setText("７");
+
+        jLabelSeq10.setText("８");
+
+        jLabelSeq11.setText("９");
+
+        jLabelSeq12.setText("10");
+
+        jButtonSystemDirSeq2.setText("参　照");
+        jButtonSystemDirSeq2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq2ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq3.setText("参　照");
+        jButtonSystemDirSeq3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq3ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq4.setText("参　照");
+        jButtonSystemDirSeq4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq4ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq5.setText("参　照");
+        jButtonSystemDirSeq5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq5ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq6.setText("参　照");
+        jButtonSystemDirSeq6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq6ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq7.setText("参　照");
+        jButtonSystemDirSeq7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq7ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq8.setText("参　照");
+        jButtonSystemDirSeq8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq8ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq9.setText("参　照");
+        jButtonSystemDirSeq9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq9ActionPerformed(evt);
+            }
+        });
+
+        jButtonSystemDirSeq10.setText("参　照");
+        jButtonSystemDirSeq10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSystemDirSeq10ActionPerformed(evt);
+            }
+        });
+
+        jButtonEnter.setText("適　　用");
+        jButtonEnter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEnterActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelExeSysLayout = new javax.swing.GroupLayout(jPanelExeSys);
+        jPanelExeSys.setLayout(jPanelExeSysLayout);
+        jPanelExeSysLayout.setHorizontalGroup(
+            jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelExeSysLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonEnter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                        .addComponent(jLabelSeq4)
+                        .addGap(12, 12, 12)
+                        .addComponent(jTextFieldSeq2, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldSystemDirSeq2, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonSystemDirSeq2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelExeSysLayout.createSequentialGroup()
+                        .addComponent(jLabelSeq1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldSeq1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldSystemDirSeq1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonSystemDirSeq1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelExeSysLayout.createSequentialGroup()
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                                .addComponent(jLabelSeq5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldSeq3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldSystemDirSeq3, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                                .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                                        .addComponent(jLabelSeq6)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jTextFieldSeq4))
+                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                                        .addComponent(jLabelSeq7)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jTextFieldSeq5))
+                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                                        .addComponent(jLabelSeq8)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jTextFieldSeq6))
+                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                                        .addComponent(jLabelSeq9)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jTextFieldSeq7))
+                                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabelSeq10)
+                                            .addComponent(jLabelSeq11)
+                                            .addComponent(jLabelSeq12))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextFieldSeq10)
+                                            .addComponent(jTextFieldSeq8)
+                                            .addComponent(jTextFieldSeq9))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldSystemDirSeq4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSystemDirSeq5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSystemDirSeq6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSystemDirSeq7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSystemDirSeq8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSystemDirSeq9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSystemDirSeq10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonSystemDirSeq4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSystemDirSeq5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSystemDirSeq3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSystemDirSeq6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSystemDirSeq7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSystemDirSeq8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSystemDirSeq9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSystemDirSeq10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(378, 378, 378))
+        );
+        jPanelExeSysLayout.setVerticalGroup(
+            jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSeq1)
+                    .addComponent(jButtonSystemDirSeq1)
+                    .addComponent(jTextFieldSystemDirSeq1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldSeq1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelExeSysLayout.createSequentialGroup()
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq2)
+                            .addComponent(jTextFieldSystemDirSeq2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq3)
+                            .addComponent(jTextFieldSystemDirSeq3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq4)
+                            .addComponent(jTextFieldSystemDirSeq4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq5)
+                            .addComponent(jTextFieldSystemDirSeq5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq6)
+                            .addComponent(jTextFieldSystemDirSeq6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq7)
+                            .addComponent(jTextFieldSystemDirSeq7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq8)
+                            .addComponent(jTextFieldSystemDirSeq8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq9)
+                            .addComponent(jTextFieldSystemDirSeq9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSeq9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSeq11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSystemDirSeq10)
+                            .addComponent(jTextFieldSystemDirSeq10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanelExeSysLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelSeq12)
+                        .addComponent(jTextFieldSeq10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonEnter)
+                .addContainerGap(216, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("試セーブ", jPanelExeSys);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
