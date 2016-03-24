@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>成果物作成用の起動システム候補</comment>
+<entry key="jTextFieldSeq10"/>
+<entry key="jTextFieldSeq9"/>
+<entry key="jTextFieldSeq8"/>
+<entry key="jTextFieldSeq7">7</entry>
+<entry key="jTextFieldSeq6"/>
+<entry key="jTextFieldSeq5">5</entry>
+<entry key="jTextFieldSeq4"/>
+<entry key="jTextFieldSeq3">3</entry>
+<entry key="jTextFieldSeq2">2</entry>
+<entry key="jTextFieldSeq1">1</entry>
+<entry key="jTextFieldSystemDirSeq10"/>
+<entry key="jTextFieldSystemDirSeq9"/>
+<entry key="jTextFieldSystemDirSeq8"/>
+<entry key="jTextFieldSystemDirSeq7">C:\Users\AnyUser\Documents\NetBeansProjects\Gold7JavaApplication\build.xml</entry>
+<entry key="jTextFieldSystemDirSeq6"/>
+<entry key="jTextFieldSystemDirSeq5"/>
+<entry key="jTextFieldSystemDirSeq4"/>
+<entry key="jTextFieldSystemDirSeq3">C:\Users\AnyUser\Documents\縮退計画（第三次）.pdf</entry>
+<entry key="jTextFieldSystemDirSeq2">C:\Users\AnyUser\Documents\縮退計画（第二次）temp.txt</entry>
+<entry key="jTextFieldSystemDirSeq1">one</entry>
+</properties>

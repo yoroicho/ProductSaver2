@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Wed Feb 24 10:57:32 JST 2016</comment>
+<entry key="multigenerationalBackupHome"/>
+<entry key="dbUsername"/>
+<entry key="autoSaveTime">Item 1</entry>
+<entry key="pasteBuckupHome"/>
+<entry key="dbPassword"/>
+<entry key="dbUrl">1058</entry>
+</properties>
