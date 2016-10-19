@@ -5,6 +5,8 @@
  */
 package toolkeyrobot;
 
+import java.awt.Robot;
+import java.awt.event.InputEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,7 +32,7 @@ public class CenterPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabelArrow = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaLetter = new javax.swing.JTextArea();
         jButton1DoSend = new javax.swing.JButton();
@@ -50,8 +52,9 @@ public class CenterPanel extends javax.swing.JFrame {
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
 
-        jLabel1.setText("jLabel1");
+        jLabelArrow.setText("jLabel1");
 
         jTextAreaLetter.setColumns(20);
         jTextAreaLetter.setRows(5);
@@ -131,19 +134,17 @@ public class CenterPanel extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1))
             .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
                 .addGap(155, 155, 155)
                 .addComponent(jButton1DoSend)
                 .addContainerGap(168, Short.MAX_VALUE))
+            .addComponent(jLabelArrow, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(jLabelArrow)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -160,8 +161,12 @@ public class CenterPanel extends javax.swing.JFrame {
 
     private void jButton1DoSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1DoSendActionPerformed
         try {
-           // wait(1000);
-            Keyboard keyboard = new Keyboard();
+            Robot robot = new Robot();
+            robot.mouseMove(this.getX()-10, this.getY()-10);
+            robot.mousePress(InputEvent.BUTTON1_MASK);
+            robot.mouseRelease(InputEvent.BUTTON1_MASK);
+            Keyboard keyboard = new Keyboard(robot);
+            keyboard.doTyping(this.jTextAreaLetter.getText());
         } catch (Exception ex) {
             Logger.getLogger(CenterPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -214,7 +219,7 @@ public class CenterPanel extends javax.swing.JFrame {
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JButton jButton1DoSend;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelArrow;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaLetter;
     private javax.swing.JMenuBar menuBar;
